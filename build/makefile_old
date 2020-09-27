@@ -1,0 +1,25 @@
+vpath %.c ../src
+vpath %.h ../src
+hello = ../src/hello.o
+print = ../src/print.o
+add = ../src/add.o
+object = $(hello) $(print) $(add)
+
+CC = gcc -std=c99
+target = ../bin/yangchao
+tmp = $(shell ls ../src)
+
+
+$(target):$(object) shell_1
+	@$(CC) -o $(target) $(object)
+$(object):%.o:%.c 
+	@$(CC) -c $< -o $@
+shell_1:
+	@echo $(tmp)
+.PHONY:clean cleanobj cleanbin
+clean:cleanobj cleanbin
+	-rm -rf ../src/*.gch
+cleanobj:
+	-rm $(object)
+cleanbin:
+	@-rm $(target)

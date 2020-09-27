@@ -1,0 +1,24 @@
+vpath %.c ../src
+vpath %.h ../src
+hello = ../src/hello.o
+print = ../src/print.o
+add = ../src/add.o
+object = $(hello) $(print) $(add)
+
+CC = gcc -std=c99
+target = ../bin/weike
+$(target):$(object)
+	$(CC) -o $(target) $(object)
+$(hello):
+	$(CC) -c ../src/hello.c -o $(hello)
+$(print):print.h
+	$(CC) -c ../src/print.c -o $(print)
+$(add):add.h
+	$(CC) -c ../src/add.c -o $(add)
+.PHONY:clean cleanobj cleanbin
+clean:cleanobj cleanbin
+	-rm ../src/*.gch
+cleanobj:
+	-rm $(object)
+cleanbin:
+	-rm $(target)
