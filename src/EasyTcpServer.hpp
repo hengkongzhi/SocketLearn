@@ -132,8 +132,12 @@ public:
 	}
 
 	//处理网络消息
+	fd_set _fdRead_bak;
+	bool _clients_change;
+	SOCKET _maxSock;
 	bool OnRun()
 	{
+		_clients_change = true;	
 		while (isRun())
 		{
 			if (_clientsBuff.size() > 0)
@@ -144,6 +148,8 @@ public:
 					_clients.push_back(pClient);
 				}
 				_clientsBuff.clear();
+				_clients_change = true;
+
 			}
 
 			//如果没有需要处理的客户端，就跳过
@@ -159,18 +165,30 @@ public:
 			//清理集合
 			FD_ZERO(&fdRead);
 			//将描述符（socket）加入集合
-			SOCKET maxSock = _clients[0]->sockfd();
-			for (int n = (int)_clients.size() - 1; n >= 0; n--)
+			
+			if (_clients_change)
 			{
-				FD_SET(_clients[n]->sockfd(), &fdRead);
-				if (maxSock < _clients[n]->sockfd())
+				_clients_change = false;
+				_maxSock = _clients[0]->sockfd();
+				for (int n = (int)_clients.size() - 1; n >= 0; n--)
 				{
-					maxSock = _clients[n]->sockfd();
+					FD_SET(_clients[n]->sockfd(), &fdRead);
+					if (_maxSock < _clients[n]->sockfd())
+					{
+						_maxSock = _clients[n]->sockfd();
+					}
 				}
+				memcpy(&_fdRead_bak, &fdRead, sizeof(fd_set));
 			}
+			else
+			{
+				memcpy(&fdRead, &_fdRead_bak, sizeof(fd_set));
+			}
+			
+
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			int ret = select(maxSock + 1, &fdRead, nullptr, nullptr, nullptr);
+			int ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, nullptr);
 			if (ret < 0)
 			{
 				printf("select任务结束。\n");
@@ -187,6 +205,7 @@ public:
 						auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
 						if (iter != _clients.end())
 						{
+							_clients_change = true;
 							if(_pNetEvent)
 								_pNetEvent->OnNetLeave(_clients[n]);
 							delete _clients[n];
