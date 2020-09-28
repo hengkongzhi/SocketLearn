@@ -6,6 +6,8 @@
 #include <thread>
 #include "EasyTcpClient.hpp"
 #include <chrono>
+#include <atomic>
+#include "CELLTimestamp.hpp"
 using namespace std;
 bool g_bRun = true;
 void cmdThread()
@@ -43,6 +45,8 @@ void cmdThread()
 };
 const int cCount = 10000;
 const int tCount = 4;
+atomic_int sendCount(0);
+atomic_int readyCount(0);
 EasyTcpClient* client[cCount];
 
 void sendThread(int id)
@@ -65,8 +69,15 @@ void sendThread(int id)
 
     }
     printf("Thread<%d>, Connect<begin=%d, end=%d>\n", id, begin, end);
-    std::chrono::milliseconds t(3000);
-    std::this_thread::sleep_for(t);
+    
+    readyCount++;
+    while (readyCount < tCount)
+    {
+        std::chrono::milliseconds t(10);
+        std::this_thread::sleep_for(t);
+    }
+    
+
     Login login[1];
     for (int i = 0; i < 1; i++)
     {
@@ -80,8 +91,12 @@ void sendThread(int id)
     {
         for (int i = begin; i < end; i++)
         {
-            client[i]->SendData(login, nLen);
-            client[i]->OnRun();
+            if (SOCKET_ERROR != client[i]->SendData(login, nLen))
+            {
+                sendCount++;
+            }
+
+            // client[i]->OnRun();
         }
        
     }
@@ -102,9 +117,17 @@ int main()
         std::thread t(sendThread, n + 1);
         t.detach();   
     }
+    CELLTimestamp tTime;
     while (g_bRun)
     {
-        sleep(100);
+        auto t = tTime.getElapsedSecond();
+        if (t >= 1.0)
+        {
+            printf("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)sendCount);
+            tTime.update();
+            sendCount = 0;
+        }
+        sleep(1);
     }
    // client1.Close();
     return 0;
