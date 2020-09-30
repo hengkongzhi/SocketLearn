@@ -209,12 +209,17 @@ public:
 	}
 
 	//发送数据
-	int SendData(DataHeader* header,int nLen)
+	int SendData(DataHeader* header, int nLen)
 	{
 		int ret = SOCKET_ERROR;
 		if (isRun() && header)
 		{
-			ret = send(_sock, (const char*)header, nLen, 0);
+			for (int n = 0; n < nLen; n++)
+			{
+				ret = send(_sock, (const char*)header + n, 1, 0);
+			}
+
+			
 			if (SOCKET_ERROR == ret)
 			{
 				Close();
