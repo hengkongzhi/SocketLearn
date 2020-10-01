@@ -43,8 +43,8 @@ void cmdThread()
         }
     }
 };
-const int cCount = 4;
-const int tCount = 4;
+const int cCount = 10000;
+const int tCount = 8;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
 EasyTcpClient* client[cCount];
@@ -93,10 +93,10 @@ void sendThread(int id)
         {
             if (SOCKET_ERROR != client[i]->SendData(login, nLen))
             {
-                sendCount += 100;
+                sendCount++;
             }
 
-            // client[i]->OnRun();
+            client[i]->OnRun();
         }
        
     }
@@ -129,6 +129,7 @@ int main()
         }
         sleep(1);
     }
+    
    // client1.Close();
     return 0;
 
