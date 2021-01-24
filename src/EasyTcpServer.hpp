@@ -22,7 +22,8 @@
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
-#define RECV_BUFF_SZIE 10240
+#define RECV_BUFF_SZIE 10240 * 5
+#define SEND_BUFF_SZIE RECV_BUFF_SZIE
 #endif // !RECV_BUFF_SZIE
 
 //客户端数据类型
@@ -32,8 +33,10 @@ public:
 	ClientSocket(SOCKET sockfd = INVALID_SOCKET)
 	{
 		_sockfd = sockfd;
-		memset(_szMsgBuf, 0, sizeof(_szMsgBuf));
+		memset(_szMsgBuf, 0, RECV_BUFF_SZIE);
 		_lastPos = 0;
+		memset(_szSendBuf, 0, SEND_BUFF_SZIE);
+		_lastSendPos = 0;
 	}
 
 	SOCKET sockfd()
@@ -58,20 +61,36 @@ public:
 	//发送数据
 	int SendData(DataHeader* header)
 	{
+		int ret = SOCKET_ERROR;
 		if (header)
 		{
-			return send(_sockfd, (const char*)header, header->dataLength, 0);
+			int nSendLen = header->dataLength;
+			const char * pSendData = (const char*)header;
+			while (_lastSendPos + nSendLen >= SEND_BUFF_SZIE)
+			{
+				int nCopyLen = SEND_BUFF_SZIE - _lastSendPos;
+				memcpy(_szSendBuf + _lastSendPos, pSendData, nCopyLen);
+				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
+				pSendData += nCopyLen;
+				nSendLen -= nCopyLen;
+				_lastSendPos = 0;
+			}
+			memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
+			_lastSendPos += nSendLen;
 		}
-		return SOCKET_ERROR;
+		return ret;
 	}
 
 private:
 	// socket fd_set  file desc set
 	SOCKET _sockfd;
 	//第二缓冲区 消息缓冲区
-	char _szMsgBuf[RECV_BUFF_SZIE * 5];
+	char _szMsgBuf[RECV_BUFF_SZIE];
 	//消息缓冲区的数据尾部位置
 	int _lastPos;
+
+	char _szSendBuf[SEND_BUFF_SZIE];
+	int _lastSendPos;
 };
 
 //网络事件接口
@@ -218,14 +237,13 @@ public:
 			}
 		}
 	}
-	//缓冲区
-	char _szRecv[RECV_BUFF_SZIE] = {};
+
 	//接收数据 处理粘包 拆分包
 	int RecvData(ClientSocket* pClient)
 	{
 		// 5 接收客户端数据
 		char *szRecv = pClient->msgBuf() + pClient->getLastPos();
-		int nLen = (int)recv(pClient->sockfd(), szRecv, RECV_BUFF_SZIE * 5 - pClient->getLastPos(), 0);
+		int nLen = (int)recv(pClient->sockfd(), szRecv, RECV_BUFF_SZIE - pClient->getLastPos(), 0);
 		_pNetEvent->OnNetRecv(pClient);
 		//printf("nLen=%d\n", nLen);
 		if (nLen <= 0)
