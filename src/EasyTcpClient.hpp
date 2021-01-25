@@ -129,8 +129,6 @@ public:
 	char _szMsgBuf[RECV_BUFF_SZIE * 5] = {};
 	//消息缓冲区的数据尾部位置
 	int _lastPos = 0;
-	//接收缓冲区
-	char _szRecv[RECV_BUFF_SZIE] = {};
 
 	//接收数据 处理粘包 拆分包
 	int RecvData(SOCKET cSock)

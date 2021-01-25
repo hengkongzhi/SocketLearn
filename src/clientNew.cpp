@@ -43,7 +43,7 @@ void cmdThread()
         }
     }
 };
-const int cCount = 10000;
+const int cCount = 1000;
 const int tCount = 8;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
@@ -78,8 +78,8 @@ void sendThread(int id)
     }
     
 
-    Login login[1];
-    for (int i = 0; i < 1; i++)
+    Login login[10];
+    for (int i = 0; i < 10; i++)
     {
         strcpy(login[i].userName, "yc");
         strcpy(login[i].PassWord, "yc123");
