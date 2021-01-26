@@ -19,6 +19,7 @@
 
 #include"MessageHeader.hpp"
 #include"CELLTimestamp.hpp"
+#include"CELLTask.hpp"
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
@@ -71,6 +72,10 @@ public:
 				int nCopyLen = SEND_BUFF_SZIE - _lastSendPos;
 				memcpy(_szSendBuf + _lastSendPos, pSendData, nCopyLen);
 				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
+				if (SOCKET_ERROR == ret)
+				{
+					return ret;
+				}
 				pSendData += nCopyLen;
 				nSendLen -= nCopyLen;
 				_lastSendPos = 0;
@@ -93,6 +98,8 @@ private:
 	int _lastSendPos;
 };
 
+class CellServer;
+
 //网络事件接口
 class INetEvent
 {
@@ -103,13 +110,30 @@ public:
 	//客户端离开事件
 	virtual void OnNetLeave(ClientSocket* pClient) = 0;
 	//客户端消息事件
-	virtual void OnNetMsg(ClientSocket* pClient, DataHeader* header) = 0;
+	virtual void OnNetMsg(CellServer* pCellServer, ClientSocket* pClient, DataHeader* header) = 0;
 	//Recv事件
 	virtual void OnNetRecv(ClientSocket* pClient) = 0;
 private:
 
 };
+class CellSendMsg2ClientTask : public CellTask
+{
+private:
+	ClientSocket* _pClient;
+	DataHeader* _pHeader;
+public:
+	CellSendMsg2ClientTask(ClientSocket* pClient, DataHeader* pHeader)
+	{
+		_pClient = pClient;
+		_pHeader = pHeader;
+	}
+	void doTask()
+	{
+		_pClient->SendData(_pHeader);
+		delete _pHeader;
+	}
 
+};
 class CellServer
 {
 public:
@@ -239,7 +263,7 @@ public:
 	}
 
 	//接收数据 处理粘包 拆分包
-	int RecvData(ClientSocket* pClient)
+	int RecvData(ClientSocket *pClient)
 	{
 		// 5 接收客户端数据
 		char *szRecv = pClient->msgBuf() + pClient->getLastPos();
@@ -284,7 +308,7 @@ public:
 	//响应网络消息
 	virtual void OnNetMsg(ClientSocket* pClient, DataHeader* header)
 	{
-		_pNetEvent->OnNetMsg(pClient, header);
+		_pNetEvent->OnNetMsg(this, pClient, header);
 		switch (header->cmd)
 		{
 			case CMD_LOGIN:
@@ -293,8 +317,8 @@ public:
 				Login* login = (Login*)header;
 				//printf("收到客户端<Socket=%d>请求：CMD_LOGIN,数据长度：%d,userName=%s PassWord=%s\n", cSock, login->dataLength, login->userName, login->PassWord);
 				//忽略判断用户密码是否正确的过程
-				LoginResult ret;
-				pClient->SendData(&ret);
+				LoginResult *ret = new LoginResult();
+				this->addSendTask(pClient, ret);
 			}
 			break;
 			case CMD_LOGOUT:
@@ -327,11 +351,17 @@ public:
 	void Start()
 	{
 		_thread = std::thread(std::mem_fn(&CellServer::OnRun), this);
+		_taskServer.Start();
 	}
 
 	size_t getClientCount()
 	{
 		return _clients.size() + _clientsBuff.size();
+	}
+	void addSendTask(ClientSocket* pClient, DataHeader* header)
+	{
+		CellSendMsg2ClientTask* task = new CellSendMsg2ClientTask(pClient, header);
+		_taskServer.addTask(task);
 	}
 private:
 	SOCKET _sock;
@@ -344,6 +374,8 @@ private:
 	std::thread _thread;
 	//网络事件对象
 	INetEvent* _pNetEvent;
+
+	CellTaskServer _taskServer;
 };
 
 class EasyTcpServer : public INetEvent
@@ -556,7 +588,7 @@ public:
 	}
 	//cellServer 4 多个线程触发 不安全
 	//如果只开启1个cellServer就是安全的
-	virtual void OnNetMsg(ClientSocket* pClient, DataHeader* header)
+	virtual void OnNetMsg(CellServer* pCellServer, ClientSocket* pClient, DataHeader* header)
 	{
 		_msgCount++;
 	}
