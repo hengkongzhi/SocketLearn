@@ -34,7 +34,53 @@ public:
     }
     ~MemoryAlloc()
     {
-
+        if (_pBuf)
+        {
+            free(_pBuf);
+        }
+    }
+    void* allocMemory(size_t nSize)
+    {
+        if (!_pBuf)
+        {
+            initMemory();
+        }
+        MemoryBlock* pReturn = nullptr;
+        if (nullptr == _pHeader)
+        {
+            pReturn = (MemoryBlock*) malloc(nSize + sizeof(MemoryBlock));
+            pReturn->bPool = false;
+            pReturn->nID = -1;
+            pReturn->nRef = 1;
+            pReturn->pAlloc = this;
+            pReturn->pNext = nullptr;
+        }
+        else
+        {
+            pReturn = _pHeader;
+            _pHeader = _pHeader->pNext;
+            assert(0 == pReturn->nRef);
+            pReturn->nRef = 1;
+        }
+        return ((char*) pReturn + sizeof(MemoryBlock));
+    }
+    void freeMemory(void* pMem)
+    {
+        MemoryBlock* pBlock = (MemoryBlock*) (char* pMem - sizeof(MemoryBlock));
+        assert(1 == pBlock->nRef);
+        if (--pBlock->nRef != 0)
+        {
+            return;
+        }
+        if (pBlock->bPool)
+        {
+            pBlock->pNext = _pHeader;
+            _pHeader = pBlock;
+        }
+        else
+        {
+            free(pBlock);
+        }
     }
     void initMemory()
     {
@@ -59,13 +105,14 @@ public:
             pTemp2->nID = i;
             pTemp2->nRef = 0;
             pTemp2->pAlloc = this;
+            pTemp2->pNext = nullptr;
             pTemp1->pNext = pTemp2;
             pTemp1 = pTemp2;
         }
 
     }
 
-private:
+protected:
     //内存池地址
     char* _pBuf;
     //头部内存单元
@@ -74,6 +121,17 @@ private:
     size_t _nSize;
     //内存单元的数量
     size_t _nBlockSize;
+};
+template<size_t nSize, size_t nBlockSize>
+class MemoryAlloctor : public MemoryAlloc
+{
+public:
+    MemoryAlloctor()
+    {
+        const size_t n = sizeof(void*);
+        _nSize = (nSize / n) * n + (nSize % n) ? n : 0;
+        _nBlockSize = nBlockSize;
+    }
 };
 class MemoryMgr
 {
@@ -102,6 +160,7 @@ public:
         free(p);
     }
 private:
+    MemoryAlloctor<64, 10> _mem64;
 
 };
 
