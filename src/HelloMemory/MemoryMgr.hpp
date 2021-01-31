@@ -1,6 +1,8 @@
 #ifndef _MemoryMgr_hpp_
 #define _MemoryMgr_hpp_
 #include <stdlib.h>
+
+#define MAX_MEMORY_SIZE 64
 class MemoryAlloc;
 class MemoryBlock
 {
@@ -52,7 +54,7 @@ public:
             pReturn->bPool = false;
             pReturn->nID = -1;
             pReturn->nRef = 1;
-            pReturn->pAlloc = this;
+            pReturn->pAlloc = nullptr;
             pReturn->pNext = nullptr;
         }
         else
@@ -144,6 +146,13 @@ private:
     {
 
     }
+    void init(int nBegin, int nEnd, MemoryAlloc* pMemA)
+    {
+        for (int n = nBegin; n <= nEnd; n++)
+        {
+            _szAlloc[n] = pMemA;
+        }
+    }
 public:
 
     static MemoryMgr& Instance()
@@ -153,14 +162,45 @@ public:
     }
     void* allocMem(size_t nSize)
     {
-        return malloc(nSize);
+        if (nSize <= MAX_MEMORY_SIZE)
+        {
+            return _szAlloc[nSize]->allocMemory(nSize);
+        }
+        else
+        {
+            MemoryBlock* pReturn = (MemoryBlock*) malloc(nSize + sizeof(MemoryBlock));
+            pReturn->bPool = false;
+            pReturn->nID = -1;
+            pReturn->nRef = 1;
+            pReturn->pAlloc = nullptr;
+            pReturn->pNext = nullptr;
+            return pReturn;
+        }
     }
-    void freeMem(void* p)
+    void freeMem(void* pMem)
     {
-        free(p);
+        MemoryAlloc* pBlock = (MemoryAlloc*) ((char*)pMem - sizeof(MemoryBlock));
+        if (pBlock->bPool)
+        {
+            pBlock->pAlloc->freeMemory(pMem);
+        }
+        else
+        {
+            if (--pBlock->nRef == 0)
+            {
+                free(pBlock);
+            }
+        }
+        
+    }
+    void addRef(void* pMem)
+    {
+        MemoryAlloc* pBlock = (MemoryAlloc*) ((char*)pMem - sizeof(MemoryBlock));
+        ++pBlock->nRef;
     }
 private:
     MemoryAlloctor<64, 10> _mem64;
+    MemoryAlloc* _szAlloc[MAX_MEMORY_SIZE + 1];
 
 };
 
