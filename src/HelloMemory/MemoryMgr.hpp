@@ -1,6 +1,7 @@
 #ifndef _MemoryMgr_hpp_
 #define _MemoryMgr_hpp_
 #include <stdlib.h>
+#include <assert.h>
 
 #define MAX_MEMORY_SIZE 64
 class MemoryAlloc;
@@ -68,7 +69,7 @@ public:
     }
     void freeMemory(void* pMem)
     {
-        MemoryBlock* pBlock = (MemoryBlock*) (char* pMem - sizeof(MemoryBlock));
+        MemoryBlock* pBlock = (MemoryBlock*) ((char*) pMem - sizeof(MemoryBlock));
         assert(1 == pBlock->nRef);
         if (--pBlock->nRef != 0)
         {
@@ -91,7 +92,7 @@ public:
         {
             return;
         }
-        size_t bufSize = _nSize * _nBlockSize;
+        size_t bufSize = (_nSize + sizeof(MemoryBlock)) * _nBlockSize;
         _pBuf = (char*) malloc(bufSize);
         _pHeader = (MemoryBlock*) _pBuf;
         _pHeader->bPool = true;
@@ -102,7 +103,7 @@ public:
         MemoryBlock* pTemp1 = _pHeader;
         for (size_t i = 1; i < _nBlockSize; i++)
         {
-            MemoryBlock* pTemp2 = (MemoryBlock*) (_pBuf + (i * _nSize));
+            MemoryBlock* pTemp2 = (MemoryBlock*) (_pBuf + i * (_nSize + sizeof(MemoryBlock)));
             pTemp2->bPool = true;
             pTemp2->nID = i;
             pTemp2->nRef = 0;
@@ -131,7 +132,7 @@ public:
     MemoryAlloctor()
     {
         const size_t n = sizeof(void*);
-        _nSize = (nSize / n) * n + (nSize % n) ? n : 0;
+        _nSize = (nSize / n) * n + ((nSize % n) ? n : 0);
         _nBlockSize = nBlockSize;
     }
 };
@@ -140,7 +141,7 @@ class MemoryMgr
 private:
     MemoryMgr()
     {
-
+        init(0, 64, &_mem64);
     }
     ~MemoryMgr()
     {
@@ -174,12 +175,12 @@ public:
             pReturn->nRef = 1;
             pReturn->pAlloc = nullptr;
             pReturn->pNext = nullptr;
-            return pReturn;
+            return (char*) pReturn + sizeof(MemoryBlock);
         }
     }
     void freeMem(void* pMem)
     {
-        MemoryAlloc* pBlock = (MemoryAlloc*) ((char*)pMem - sizeof(MemoryBlock));
+        MemoryBlock* pBlock = (MemoryBlock*) ((char*)pMem - sizeof(MemoryBlock));
         if (pBlock->bPool)
         {
             pBlock->pAlloc->freeMemory(pMem);
@@ -195,7 +196,7 @@ public:
     }
     void addRef(void* pMem)
     {
-        MemoryAlloc* pBlock = (MemoryAlloc*) ((char*)pMem - sizeof(MemoryBlock));
+        MemoryBlock* pBlock = (MemoryBlock*) ((char*)pMem - sizeof(MemoryBlock));
         ++pBlock->nRef;
     }
 private:
