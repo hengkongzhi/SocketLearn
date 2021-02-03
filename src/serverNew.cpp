@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include "Alloctor.h"
 #include "EasyTcpServer.hpp"
 bool g_bRun = true;
 void cmdThread()

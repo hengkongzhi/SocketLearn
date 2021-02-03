@@ -2,7 +2,7 @@ VPATH = ./
 target1 = ./main
 midObj1 = $(addprefix $(VPATH),Alloctor.o)
 midObj2 = $(addprefix $(VPATH),main.o)
-GG = g++ -std=c++11 -g
+GG = g++ -std=c++11 -g -pthread
 
 target : $(target1)
 $(target1): $(midObj1) $(midObj2)
