@@ -8,17 +8,31 @@ using namespace std;
 class classA
 {
 public:
-    classA()
+    classA(int a)
     {
+        num = a;
         printf("classA\n");
     }
     ~classA()
     {
         printf("~classA\n");
     }
+public:
+    int num = 0;
 
 };
-
+shared_ptr<classA> fun(shared_ptr<classA> pA)
+{
+    pA->num++;
+    shared_ptr<classA> pB = pA;
+    return pB;
+}
+classA* fun(classA* pA)
+{
+    pA->num++;
+    classA* pB = pA;
+    return pB;
+}
 
 const int tCount = 8;
 const int mCount = 100000;
@@ -51,15 +65,35 @@ int main()
     //     t[n].join();
     // }
     // cout << tTime.getElapsedTimeInMilliSec() << ", main thread" << endl;
-    int* a = new int;
-    *a = 100;
-    printf("%d\n", *a);
-    delete a;
-    shared_ptr<int> b = make_shared<int>();
-    *b = 100;
-    printf("%d\n", *b);
-    classA* a1 = new classA();
-    delete a1;
-    shared_ptr<classA> b1 = make_shared<classA>();
+    // int* a = new int;
+    // *a = 100;
+    // printf("%d\n", *a);
+    // delete a;
+    // shared_ptr<int> b = make_shared<int>();
+    // *b = 100;
+    // printf("%d\n", *b);
+    // classA* a1 = new classA();
+    // delete a1;
+    {
+        shared_ptr<classA> b = make_shared<classA>(100);
+        CELLTimestamp tTime;
+        for (int i = 0; i < 10000000; i++)
+        {
+            shared_ptr<classA> c = fun(b);
+        }
+        cout << tTime.getElapsedTimeInMilliSec() << endl;
+    }
+
+    {
+        classA* b = new classA(100);
+        CELLTimestamp tTime;
+        for (int i = 0; i < 10000000; i++)
+        {
+            classA* c = fun(b);
+        }
+        cout << tTime.getElapsedTimeInMilliSec() << endl;
+        delete b;
+    }
+
     return 0;
 }
