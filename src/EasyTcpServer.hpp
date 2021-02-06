@@ -360,7 +360,8 @@ public:
 	}
 	void addSendTask(ClientSocket* pClient, DataHeader* header)
 	{
-		CellSendMsg2ClientTask* task = new CellSendMsg2ClientTask(pClient, header);
+		auto task = std::make_shared<CellSendMsg2ClientTask>(pClient, header);
+		// CellSendMsg2ClientTask* task = new CellSendMsg2ClientTask(pClient, header);
 		_taskServer.addTask(task);
 	}
 private:
