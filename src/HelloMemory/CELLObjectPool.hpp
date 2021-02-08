@@ -119,17 +119,17 @@ private:
 };
 
 
-template<class Type>
+template<class Type, size_t nPoolSize>
 class ObjectPoolBase
 {
 public:
     void* operator new(size_t nSize)
     {
-        return malloc(nSize);
+        return objectPool().allocObjMemory(nSize);
     }
     void operator delete(void* p)
     {
-        free(p);
+        objectPool().freeObjMemory(p);
     }
     template<typename ...Args>
     static Type* createObject(Args ...args)
@@ -142,6 +142,12 @@ public:
         delete obj;
     }
 private:
+    typedef CELLObjectPool<Type, nPoolSize> ClassTypePool;
+    static ClassTypePool& objectPool()
+    {
+        static ClassTypePool sPool;
+        return sPool;
+    }
 };
 
 
