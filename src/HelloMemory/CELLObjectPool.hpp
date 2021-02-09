@@ -89,6 +89,7 @@ public:
     void freeObjMemory(void* pMem)
     {
         NodeHeader* pBlock = (NodeHeader*) ((char*) pMem - sizeof(NodeHeader));
+        printf("freeObjMemory: %llx\n", pBlock);
         assert(1 == pBlock->nRef);
         if (pBlock->bPool)
         {

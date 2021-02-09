@@ -71,13 +71,14 @@ public:
             assert(0 == pReturn->nRef);
             pReturn->nRef = 1;
         }
-        //xPrintf("allocMem: %llx, id=%d, size=%d\n", pReturn, pReturn->nID, nSize);
+        xPrintf("allocMem: %llx, id=%d, size=%d\n", pReturn, pReturn->nID, nSize);
         return ((char*) pReturn + sizeof(MemoryBlock));
     }
     void freeMemory(void* pMem)
     {
         MemoryBlock* pBlock = (MemoryBlock*) ((char*) pMem - sizeof(MemoryBlock));
         assert(1 == pBlock->nRef);
+        xPrintf("freeMemory: %llx\n", pBlock);
         if (pBlock->bPool)
         {
             std::lock_guard<std::mutex> lg(_mutex);

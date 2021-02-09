@@ -12,11 +12,11 @@ public:
     classA(int a)
     {
         num = a;
-        // printf("classA\n");
+        printf("classA\n");
     }
     ~classA()
     {
-        // printf("~classA\n");
+        printf("~classA\n");
     }
 public:
     int num = 0;
@@ -73,17 +73,17 @@ void workFun(int index)
 }
 int main()
 {
-    thread t[tCount];
-    for (int n = 0; n < tCount; n++)
-    {
-        t[n] = thread(workFun, n);
-    }
-    CELLTimestamp tTime;
-    for (int n = 0; n < tCount; n++)
-    {
-        t[n].join();
-    }
-    cout << tTime.getElapsedTimeInMilliSec() << ", main thread" << endl;
+    // thread t[tCount];
+    // for (int n = 0; n < tCount; n++)
+    // {
+    //     t[n] = thread(workFun, n);
+    // }
+    // CELLTimestamp tTime;
+    // for (int n = 0; n < tCount; n++)
+    // {
+    //     t[n].join();
+    // }
+    // cout << tTime.getElapsedTimeInMilliSec() << ", main thread" << endl;
     // int* a = new int;
     // *a = 100;
     // printf("%d\n", *a);
@@ -119,5 +119,25 @@ int main()
     // classA::destroyObject(a2);
     // classB* b1 = classB::createObject(5, 6);
     // classB::destroyObject(b1);
+    {
+        shared_ptr<classA> s1 = make_shared<classA>(0);
+    }
+    {
+        shared_ptr<classA> s1(new classA(0));
+    }
+    printf("*************1*************\n");
+    {
+        shared_ptr<classA> s1 = make_shared<classA>(0);
+    }
+    printf("*************2*************\n");
+    {
+        shared_ptr<classA> s1(new classA(0));
+    }
+    printf("*************3*************\n");
+    {
+        classA* s1 = new classA(0);
+        delete s1;
+    }
+    printf("*************4*************\n");
     return 0;
 }
