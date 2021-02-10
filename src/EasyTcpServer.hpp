@@ -21,6 +21,7 @@
 #include"MessageHeader.hpp"
 #include"CELLTimestamp.hpp"
 #include"CELLTask.hpp"
+#include"CELLObjectPool.hpp"
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
@@ -29,7 +30,7 @@
 #endif // !RECV_BUFF_SZIE
 
 //客户端数据类型
-class ClientSocket 
+class ClientSocket : public ObjectPoolBase<ClientSocket, 1000>
 {
 public:
 	ClientSocket(SOCKET sockfd = INVALID_SOCKET)
@@ -485,7 +486,7 @@ public:
 		else
 		{
 			//将新客户端分配给客户数量最少的cellServer
-			auto tmp = std::make_shared<ClientSocket>(cSock);
+			std::shared_ptr<ClientSocket> tmp(new ClientSocket(cSock));
 			addClientToCellServer(tmp /*new ClientSocket(cSock)*/);
 			//获取IP地址 inet_ntoa(clientAddr.sin_addr)
 		}

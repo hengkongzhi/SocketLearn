@@ -7,7 +7,7 @@
 
 #define xPrintf(...) printf(__VA_ARGS__)
 
-#define MAX_MEMORY_SIZE 1024
+#define MAX_MEMORY_SIZE 128
 class MemoryAlloc;
 class MemoryBlock
 {
@@ -37,7 +37,7 @@ public:
         _pHeader = nullptr;
         _nSize = 0;
         _nBlockSize = 0;
-        xPrintf("MemoryAlloc\n");
+        // xPrintf("MemoryAlloc\n");
 
     }
     ~MemoryAlloc()
@@ -99,7 +99,7 @@ public:
     }
     void initMemory()
     {
-        xPrintf("initMemory:_nsize=%d, _nBlockSize=%d\n", _nSize, _nBlockSize);
+        // xPrintf("initMemory:_nsize=%d, _nBlockSize=%d\n", _nSize, _nBlockSize);
         assert(nullptr == _pBuf);
         if (_pBuf)
         {
@@ -157,10 +157,10 @@ private:
     {
         init_szAlloc(0, 64, &_mem64);
         init_szAlloc(65, 128, &_mem128);
-        init_szAlloc(129, 256, &_mem256);
-        init_szAlloc(257, 512, &_mem512);
-        init_szAlloc(513, 1024, &_mem1024);
-        xPrintf("MemoryMgr\n");
+        // init_szAlloc(129, 256, &_mem256);
+        // init_szAlloc(257, 512, &_mem512);
+        // init_szAlloc(513, 1024, &_mem1024);
+        // xPrintf("MemoryMgr\n");
     }
     ~MemoryMgr()
     {
@@ -221,11 +221,11 @@ public:
         ++pBlock->nRef;
     }
 private:
-    MemoryAlloctor<64, 100000> _mem64;
-    MemoryAlloctor<128, 100000> _mem128;
-    MemoryAlloctor<256, 100000> _mem256;
-    MemoryAlloctor<512, 100000> _mem512;
-    MemoryAlloctor<1024, 100000> _mem1024;
+    MemoryAlloctor<64, 1000> _mem64;
+    MemoryAlloctor<128, 1000> _mem128;
+    // MemoryAlloctor<256, 100000> _mem256;
+    // MemoryAlloctor<512, 100000> _mem512;
+    // MemoryAlloctor<1024, 100000> _mem1024;
     MemoryAlloc* _szAlloc[MAX_MEMORY_SIZE + 1];
 
 };
