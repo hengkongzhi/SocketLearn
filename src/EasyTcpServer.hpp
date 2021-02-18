@@ -17,6 +17,7 @@
 #include<thread>
 #include<mutex>
 #include<atomic>
+#include <functional>
 
 #include"MessageHeader.hpp"
 #include"CELLTimestamp.hpp"
@@ -118,24 +119,24 @@ public:
 private:
 
 };
-class CellSendMsg2ClientTask : public CellTask
-{
-private:
-	ClientSocketPtr _pClient;
-	std::shared_ptr<DataHeader> _pHeader;
-public:
-	CellSendMsg2ClientTask(ClientSocketPtr& pClient, std::shared_ptr<DataHeader> pHeader)
-	{
-		_pClient = pClient;
-		_pHeader = pHeader;
-	}
-	void doTask()
-	{
-		_pClient->SendData(_pHeader);
-		// delete _pHeader;
-	}
+// class CellSendMsg2ClientTask : public CellTask
+// {
+// private:
+// 	ClientSocketPtr _pClient;
+// 	std::shared_ptr<DataHeader> _pHeader;
+// public:
+// 	CellSendMsg2ClientTask(ClientSocketPtr& pClient, std::shared_ptr<DataHeader> pHeader)
+// 	{
+// 		_pClient = pClient;
+// 		_pHeader = pHeader;
+// 	}
+// 	void doTask()
+// 	{
+// 		_pClient->SendData(_pHeader);
+// 		// delete _pHeader;
+// 	}
 
-};
+// };
 class CellServer
 {
 public:
@@ -363,9 +364,9 @@ public:
 	}
 	void addSendTask(ClientSocketPtr& pClient, std::shared_ptr<DataHeader> header /*DataHeader* header*/)
 	{
-		auto task = std::make_shared<CellSendMsg2ClientTask>(pClient, header);
+		// auto task = std::make_shared<CellSendMsg2ClientTask>(pClient, header);
 		// CellSendMsg2ClientTask* task = new CellSendMsg2ClientTask(pClient, header);
-		_taskServer.addTask(task);
+		_taskServer.addTask([pClient, header](){pClient->SendData(header);});
 	}
 private:
 	SOCKET _sock;

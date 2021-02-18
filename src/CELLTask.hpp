@@ -3,29 +3,31 @@
 #include <thread>
 #include <list>
 #include <mutex>
-class CellTask
-{
-public:
-    CellTask()
-    {
+#include <functional>
+// class CellTask
+// {
+// public:
+//     CellTask()
+//     {
 
-    }
-    virtual ~CellTask()
-    {
+//     }
+//     virtual ~CellTask()
+//     {
 
-    }
-    virtual void doTask()
-    {
+//     }
+//     virtual void doTask()
+//     {
 
-    }
-private:
+//     }
+// private:
 
-};
+// };
 class CellTaskServer
 {
+    typedef std::function<void()> CellTask;
 private:
-    std::list<std::shared_ptr<CellTask>> _tasks;
-    std::list<std::shared_ptr<CellTask>> _tasksBuf;
+    std::list<CellTask> _tasks;
+    std::list<CellTask> _tasksBuf;
     std::mutex _mutex;
 public:
     CellTaskServer()
@@ -36,7 +38,7 @@ public:
     {
 
     }
-    void addTask(std::shared_ptr<CellTask> task)
+    void addTask(CellTask task)
     {
         std::lock_guard<std::mutex> lock(_mutex);
         _tasksBuf.push_back(task);
@@ -67,7 +69,7 @@ public:
             }
             for (auto pTask : _tasks)
             {
-                pTask->doTask();
+                pTask();
             }
             _tasks.clear();
         }
