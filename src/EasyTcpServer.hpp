@@ -30,6 +30,7 @@
 #define SEND_BUFF_SZIE RECV_BUFF_SZIE
 #endif // !RECV_BUFF_SZIE
 
+#define CLIENT_HEART_DEAD_TIME 5000
 //客户端数据类型
 class ClientSocket : public ObjectPoolBase<ClientSocket, 1000>
 {
@@ -41,6 +42,7 @@ public:
 		_lastPos = 0;
 		memset(_szSendBuf, 0, SEND_BUFF_SZIE);
 		_lastSendPos = 0;
+		resetDTHeart();
 	}
 
 	SOCKET sockfd()
@@ -88,6 +90,20 @@ public:
 		}
 		return ret;
 	}
+	void resetDTHeart()
+	{
+		_dtHeart = 0;
+	}
+	bool checkHeart(time_t dt)
+	{
+		_dtHeart += dt;
+		if (_dtHeart >= CLIENT_HEART_DEAD_TIME)
+		{
+			printf("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
+			return true;
+		}
+		return false;
+	}
 
 private:
 	// socket fd_set  file desc set
@@ -99,6 +115,7 @@ private:
 
 	char _szSendBuf[SEND_BUFF_SZIE];
 	int _lastSendPos;
+	time_t _dtHeart;
 };
 typedef std::shared_ptr<ClientSocket> ClientSocketPtr;
 class CellServer;
@@ -203,6 +220,7 @@ public:
 			//如果没有需要处理的客户端，就跳过
 			if (_clients.empty())
 			{
+				_oldTime = CELLTime::getTimeInMilliSec();
 				std::chrono::milliseconds t(1);
 				std::this_thread::sleep_for(t);
 				continue;
@@ -236,7 +254,8 @@ public:
 
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			int ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, nullptr);
+			timeval t{0, 1};
+			int ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, &t);
 			if (ret < 0)
 			{
 				printf("select任务结束。\n");
@@ -260,6 +279,29 @@ public:
 							_clients.erase(iter);
 						}
 					}
+				}
+			}
+			checkTime();
+		}
+	}
+	time_t _oldTime = CELLTime::getTimeInMilliSec();
+	void checkTime()
+	{
+		time_t nowTime = CELLTime::getTimeInMilliSec();
+		time_t dt = nowTime - _oldTime;
+		_oldTime = nowTime;
+		for (int n = (int)_clients.size() - 1; n >= 0; n--)
+		{
+			if (_clients[n]->checkHeart(dt))
+			{
+				auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
+				if (iter != _clients.end())
+				{
+					_clients_change = true;
+					if(_pNetEvent)
+						_pNetEvent->OnNetLeave(_clients[n]);
+					// delete _clients[n];
+					_clients.erase(iter);
 				}
 			}
 		}
@@ -316,13 +358,14 @@ public:
 		{
 			case CMD_LOGIN:
 			{
-
+				pClient->resetDTHeart();
 				Login* login = (Login*)header;
 				//printf("收到客户端<Socket=%d>请求：CMD_LOGIN,数据长度：%d,userName=%s PassWord=%s\n", cSock, login->dataLength, login->userName, login->PassWord);
 				//忽略判断用户密码是否正确的过程
 				// LoginResult *ret = new LoginResult();
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
-				this->addSendTask(pClient, ret);
+				pClient->SendData(ret);
+				// this->addSendTask(pClient, ret);
 			}
 			break;
 			case CMD_LOGOUT:
@@ -334,6 +377,13 @@ public:
 				//SendData(cSock, &ret);
 			}
 			break;
+			case CMD_C2S_HEART:
+			{
+				pClient->resetDTHeart();
+				std::shared_ptr<s2c_Heart> ret = std::make_shared<s2c_Heart>();
+				pClient->SendData(ret);
+
+			}
 			default:
 			{
 				printf("<socket=%d>收到未定义消息,数据长度：%d\n", pClient->sockfd(), header->dataLength);
@@ -355,7 +405,7 @@ public:
 	void Start()
 	{
 		_thread = std::thread(std::mem_fn(&CellServer::OnRun), this);
-		_taskServer.Start();
+		// _taskServer.Start();
 	}
 
 	size_t getClientCount()

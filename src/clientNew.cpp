@@ -43,7 +43,7 @@ void cmdThread()
         }
     }
 };
-const int cCount = 1000;
+const int cCount = 80;
 const int tCount = 8;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
@@ -65,7 +65,7 @@ void sendThread(int id)
         {
             return;
         }
-        client[i]->Connect("127.0.0.1", 4567);
+        client[i]->Connect("192.168.0.115", 4567);
 
     }
     printf("Thread<%d>, Connect<begin=%d, end=%d>\n", id, begin, end);

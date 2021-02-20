@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Alloctor.h"
 #include "EasyTcpServer.hpp"
-bool g_bRun = true;
+bool g_bRun1 = true;
 void cmdThread()
 {
     while (true)
@@ -12,7 +12,7 @@ void cmdThread()
         scanf("%s", cmdBuf);
         if (0 == strcmp(cmdBuf, "exit"))
         {
-         g_bRun = false;
+         g_bRun1 = false;
          printf("退出cmdThread线程\n");
          break;
         }
@@ -33,7 +33,7 @@ int main()
     std::thread t1(cmdThread);
     t1.detach();
     
-    while (g_bRun)
+    while (g_bRun1)
     {
         server.OnRun();    
     }
