@@ -95,6 +95,10 @@ void sendThread(int id)
             {
                 sendCount++;
             }
+            // else
+            // {
+            //     printf("fuck client\n");
+            // }
 
             client[i]->OnRun();
         }

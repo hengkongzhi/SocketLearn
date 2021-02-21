@@ -30,7 +30,8 @@
 #define SEND_BUFF_SZIE RECV_BUFF_SZIE
 #endif // !RECV_BUFF_SZIE
 
-#define CLIENT_HEART_DEAD_TIME 5000
+#define CLIENT_HEART_DEAD_TIME 60000
+#define CLIENT_SEND_BUFF_TIME 200
 //客户端数据类型
 class ClientSocket : public ObjectPoolBase<ClientSocket, 1000>
 {
@@ -43,6 +44,7 @@ public:
 		memset(_szSendBuf, 0, SEND_BUFF_SZIE);
 		_lastSendPos = 0;
 		resetDTHeart();
+		resetDTSend();
 	}
 
 	SOCKET sockfd()
@@ -63,7 +65,17 @@ public:
 	{
 		_lastPos = pos;
 	}
-
+	int SendDataReal()
+	{
+		int ret = SOCKET_ERROR;
+		if (_lastSendPos > 0 && _sockfd != INVALID_SOCKET)
+		{
+			ret = send(_sockfd, _szSendBuf, _lastSendPos, 0);
+			_lastSendPos = 0;
+			resetDTSend();
+		}
+		return ret;
+	}
 	//发送数据
 	int SendData(std::shared_ptr<DataHeader> header)
 	{
@@ -79,20 +91,30 @@ public:
 				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
 				if (SOCKET_ERROR == ret)
 				{
+					printf("fuck1\n");
 					return ret;
 				}
 				pSendData += nCopyLen;
 				nSendLen -= nCopyLen;
 				_lastSendPos = 0;
+				resetDTSend();
 			}
 			memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
 			_lastSendPos += nSendLen;
+		}
+		else
+		{
+			printf("fuck2\n");
 		}
 		return ret;
 	}
 	void resetDTHeart()
 	{
 		_dtHeart = 0;
+	}
+	void resetDTSend()
+	{
+		_dtSend = 0;
 	}
 	bool checkHeart(time_t dt)
 	{
@@ -103,6 +125,17 @@ public:
 			return true;
 		}
 		return false;
+	}
+	void checkSend(time_t dt)
+	{
+		_dtSend += dt;
+		if (_dtSend >= CLIENT_SEND_BUFF_TIME)
+		{
+			printf("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
+			SendDataReal();
+			resetDTSend();
+			
+		}
 	}
 
 private:
@@ -116,6 +149,7 @@ private:
 	char _szSendBuf[SEND_BUFF_SZIE];
 	int _lastSendPos;
 	time_t _dtHeart;
+	time_t _dtSend;
 };
 typedef std::shared_ptr<ClientSocket> ClientSocketPtr;
 class CellServer;
@@ -292,6 +326,7 @@ public:
 		_oldTime = nowTime;
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
 		{
+			_clients[n]->checkSend(dt);
 			if (_clients[n]->checkHeart(dt))
 			{
 				auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
