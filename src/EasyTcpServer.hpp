@@ -46,6 +46,10 @@ public:
 		resetDTHeart();
 		resetDTSend();
 	}
+	~ClientSocket()
+	{
+		close(_sockfd);
+	}
 
 	SOCKET sockfd()
 	{
@@ -193,14 +197,12 @@ class CellServer
 public:
 	CellServer(SOCKET sock = INVALID_SOCKET)
 	{
-		_sock = sock;
 		_pNetEvent = nullptr;
 	}
 
 	~CellServer()
 	{
 		Close();
-		_sock = INVALID_SOCKET;
 	}
 
 	void setEventObj(INetEvent* event)
@@ -211,33 +213,16 @@ public:
 	//关闭Socket
 	void Close()
 	{
-		if (_sock != INVALID_SOCKET)
-		{
-			for (int n = (int)_clients.size() - 1; n >= 0; n--)
-			{
-				close(_clients[n]->sockfd());
-				// delete _clients[n];
-			}
-			//关闭套节字closesocket
-			close(_sock);
-			_clients.clear();
-		}
-	}
-
-	//是否工作中
-	bool isRun()
-	{
-		return _sock != INVALID_SOCKET;
+		_isRun = false;
+		_clients.clear();
 	}
 
 	//处理网络消息
-	fd_set _fdRead_bak;
-	bool _clients_change;
-	SOCKET _maxSock;
+
 	bool OnRun()
 	{
 		_clients_change = true;	
-		while (isRun())
+		while (_isRun)
 		{
 			if (_clientsBuff.size() > 0)
 			{//从缓冲队列里取出客户数据
@@ -318,7 +303,7 @@ public:
 			checkTime();
 		}
 	}
-	time_t _oldTime = CELLTime::getTimeInMilliSec();
+	
 	void checkTime()
 	{
 		time_t nowTime = CELLTime::getTimeInMilliSec();
@@ -439,7 +424,9 @@ public:
 
 	void Start()
 	{
-		_thread = std::thread(std::mem_fn(&CellServer::OnRun), this);
+		_isRun = true;
+		std::thread t(std::mem_fn(&CellServer::OnRun), this);
+		t.detach();
 		// _taskServer.Start();
 	}
 
@@ -454,18 +441,23 @@ public:
 		_taskServer.addTask([pClient, header](){pClient->SendData(header);});
 	}
 private:
-	SOCKET _sock;
 	//正式客户队列
 	std::vector<ClientSocketPtr> _clients;
 	//缓冲客户队列
 	std::vector<ClientSocketPtr> _clientsBuff;
 	//缓冲队列的锁
 	std::mutex _mutex;
-	std::thread _thread;
+
 	//网络事件对象
 	INetEvent* _pNetEvent;
 
 	CellTaskServer _taskServer;
+
+	fd_set _fdRead_bak;
+	bool _clients_change;
+	SOCKET _maxSock;
+	time_t _oldTime = CELLTime::getTimeInMilliSec();
+	bool _isRun = false;
 };
 
 class EasyTcpServer : public INetEvent
