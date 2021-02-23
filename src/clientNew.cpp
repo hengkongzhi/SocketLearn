@@ -43,8 +43,8 @@ void cmdThread()
         }
     }
 };
-const int cCount = 80;
-const int tCount = 8;
+const int cCount = 4;
+const int tCount = 4;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
 EasyTcpClient* client[cCount];
@@ -127,7 +127,7 @@ int main()
         auto t = tTime.getElapsedSecond();
         if (t >= 1.0)
         {
-            printf("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)(sendCount / t));
+            //printf("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)(sendCount / t));
             tTime.update();
             sendCount = 0;
         }

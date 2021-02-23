@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Alloctor.h"
 #include "EasyTcpServer.hpp"
+#include <signal.h>
+
 bool g_bRun1 = true;
 void cmdThread()
 {
@@ -25,18 +27,28 @@ void cmdThread()
 
 int main()
 {
+    //SIGPIPE ignore
+    struct sigaction act;
+    act.sa_handler = SIG_IGN;
+    if (sigaction(SIGPIPE, &act, NULL) == 0) 
+    {
+    }
     EasyTcpServer server;
     server.InitSocket();
     server.Bind(nullptr, 4567);
     server.Listen(1000);
-    server.Start(8);
+    server.Start(4);
     std::thread t1(cmdThread);
     t1.detach();
     
     while (g_bRun1)
     {
-        server.OnRun();    
+        if (server.OnRun() == false)
+        {
+            printf("listen socket is over\n");
+        }    
     }
+    while (true);
     server.Close();
     printf("已退出。\n");
     return 0;

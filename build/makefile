@@ -6,7 +6,7 @@ midObj2 = $(addprefix $(VPATH),clientNew.o)
 midObj3 = $(addprefix $(VPATH),Alloctor.o)
 cpp1 = serverNew.cpp
 cpp2 = clientNew.cpp
-GG = g++ -std=c++11
+GG = g++ -std=c++11 -g
 
 target : $(target1) $(target2)
 

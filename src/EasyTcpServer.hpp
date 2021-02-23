@@ -83,7 +83,7 @@ public:
 	//发送数据
 	int SendData(std::shared_ptr<DataHeader> header)
 	{
-		int ret = SOCKET_ERROR;
+		int ret = 1;
 		if (header)
 		{
 			int nSendLen = header->dataLength;
@@ -337,7 +337,7 @@ public:
 		//printf("nLen=%d\n", nLen);
 		if (nLen <= 0)
 		{
-			//printf("客户端<Socket=%d>已退出，任务结束。\n", pClient->sockfd());
+			printf("客户端<Socket=%d>已退出，任务结束。\n", pClient->sockfd());
 			return -1;
 		}
 		//将收取到的数据拷贝到消息缓冲区
@@ -356,11 +356,18 @@ public:
 				//消息缓冲区剩余未处理数据的长度
 				int nSize = pClient->getLastPos() - header->dataLength;
 				//处理网络消息
-				OnNetMsg(pClient, header);
+				SOCKET ret = OnNetMsg(pClient, header);
 				//将消息缓冲区剩余未处理数据前移
 				memcpy(pClient->msgBuf(), pClient->msgBuf() + header->dataLength, nSize);
 				//消息缓冲区的数据尾部位置前移
 				pClient->setLastPos(nSize);
+				if (ret == SOCKET_ERROR)
+				{
+					memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
+					pClient->setLastPos(0);
+					printf("already exit\n");
+					break;
+				}
 			}
 			else {
 				//消息缓冲区剩余数据不够一条完整消息
@@ -371,7 +378,7 @@ public:
 	}
 
 	//响应网络消息
-	virtual void OnNetMsg(ClientSocketPtr& pClient, DataHeader* header)
+	SOCKET OnNetMsg(ClientSocketPtr& pClient, DataHeader* header)
 	{
 		_pNetEvent->OnNetMsg(this, pClient, header);
 		switch (header->cmd)
@@ -384,7 +391,14 @@ public:
 				//忽略判断用户密码是否正确的过程
 				// LoginResult *ret = new LoginResult();
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
-				pClient->SendData(ret);
+				SOCKET xre = 100;
+				xre = pClient->SendData(ret);
+				if (xre == SOCKET_ERROR)
+				{
+					printf("SendData\n");
+					printf("pClient->sockfd:%d\n", pClient->sockfd());
+				}
+				return xre;
 				// this->addSendTask(pClient, ret);
 			}
 			break;
@@ -653,7 +667,7 @@ public:
 		auto t1 = _tTime.getElapsedSecond();
 		if (t1 >= 1.0)
 		{
-			printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
+			//printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
 			_recvCount = 0;
 			_msgCount = 0;
 			_tTime.update();
