@@ -48,7 +48,6 @@ int main()
             printf("listen socket is over\n");
         }    
     }
-    while (true);
     server.Close();
     printf("已退出。\n");
     return 0;

@@ -95,7 +95,7 @@ public:
 				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
 				if (SOCKET_ERROR == ret)
 				{
-					printf("fuck1\n");
+					printf("server send failed\n");
 					return ret;
 				}
 				pSendData += nCopyLen;
@@ -108,7 +108,7 @@ public:
 		}
 		else
 		{
-			printf("fuck2\n");
+			printf("server send head is null\n");
 		}
 		return ret;
 	}
@@ -125,7 +125,7 @@ public:
 		_dtHeart += dt;
 		if (_dtHeart >= CLIENT_HEART_DEAD_TIME)
 		{
-			printf("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
+			// printf("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
 			return true;
 		}
 		return false;
@@ -135,7 +135,7 @@ public:
 		_dtSend += dt;
 		if (_dtSend >= CLIENT_SEND_BUFF_TIME)
 		{
-			printf("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
+			// printf("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
 			SendDataReal();
 			resetDTSend();
 			
@@ -309,6 +309,11 @@ public:
 		time_t nowTime = CELLTime::getTimeInMilliSec();
 		time_t dt = nowTime - _oldTime;
 		_oldTime = nowTime;
+		if (dt > 60000)
+		{
+			printf("dt=%d\n", dt);
+		}
+		
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
 		{
 			_clients[n]->checkSend(dt);
@@ -322,6 +327,7 @@ public:
 						_pNetEvent->OnNetLeave(_clients[n]);
 					// delete _clients[n];
 					_clients.erase(iter);
+					printf("sock=%d is close.\n", _clients[n]->sockfd());
 				}
 			}
 		}
@@ -366,7 +372,7 @@ public:
 					memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
 					pClient->setLastPos(0);
 					printf("already exit\n");
-					break;
+					return -1;
 				}
 			}
 			else {
@@ -395,7 +401,6 @@ public:
 				xre = pClient->SendData(ret);
 				if (xre == SOCKET_ERROR)
 				{
-					printf("SendData\n");
 					printf("pClient->sockfd:%d\n", pClient->sockfd());
 				}
 				return xre;
@@ -667,7 +672,7 @@ public:
 		auto t1 = _tTime.getElapsedSecond();
 		if (t1 >= 1.0)
 		{
-			//printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
+			// printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
 			_recvCount = 0;
 			_msgCount = 0;
 			_tTime.update();
