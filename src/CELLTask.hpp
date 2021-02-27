@@ -24,11 +24,16 @@
 // };
 class CellTaskServer
 {
+public:
+    int serverId = -1; 
+    bool _isRun = false;
+private:
     typedef std::function<void()> CellTask;
 private:
     std::list<CellTask> _tasks;
     std::list<CellTask> _tasksBuf;
     std::mutex _mutex;
+    
 public:
     CellTaskServer()
     {
@@ -45,12 +50,18 @@ public:
     }
     void Start()
     {
+        _isRun = true;
         std::thread t(std::mem_fn(&CellTaskServer::OnRun), this);
         t.detach();
     }
+    void Close()
+    {
+        printf("CellTaskServer%d.Close\n", serverId);
+        _isRun = false;
+    }
     void OnRun()
     {
-        while (true)
+        while (_isRun)
         {
             if (!_tasksBuf.empty())
             {
@@ -73,8 +84,7 @@ public:
             }
             _tasks.clear();
         }
-
-
+        printf("CellTaskServer%d.OnRun\n", serverId);
     }
 };
 

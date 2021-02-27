@@ -36,8 +36,13 @@
 class ClientSocket : public ObjectPoolBase<ClientSocket, 1000>
 {
 public:
+	int id = -1;
+	int serverId = -1;
+public:
 	ClientSocket(SOCKET sockfd = INVALID_SOCKET)
 	{
+		static int n = 1;
+		id = n++;
 		_sockfd = sockfd;
 		memset(_szMsgBuf, 0, RECV_BUFF_SZIE);
 		_lastPos = 0;
@@ -48,6 +53,7 @@ public:
 	}
 	~ClientSocket()
 	{
+		printf("s=%d ClientSocket%d.~ClientSocket\n", serverId, id);
 		close(_sockfd);
 	}
 
@@ -95,7 +101,6 @@ public:
 				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
 				if (SOCKET_ERROR == ret)
 				{
-					printf("server send failed\n");
 					return ret;
 				}
 				pSendData += nCopyLen;
@@ -195,9 +200,11 @@ private:
 class CellServer
 {
 public:
-	CellServer(SOCKET sock = INVALID_SOCKET)
+	CellServer(int id)
 	{
+		_id = id;
 		_pNetEvent = nullptr;
+		_taskServer.serverId = id;
 	}
 
 	~CellServer()
@@ -213,8 +220,11 @@ public:
 	//关闭Socket
 	void Close()
 	{
+		_taskServer.Close();
 		_isRun = false;
 		_clients.clear();
+		_clientsBuff.clear();
+		printf("CellServer%d.close.\n", _id);
 	}
 
 	//处理网络消息
@@ -230,6 +240,7 @@ public:
 				for (auto pClient : _clientsBuff)
 				{
 					_clients.push_back(pClient);
+					pClient->serverId = _id;
 				}
 				_clientsBuff.clear();
 				_clients_change = true;
@@ -371,7 +382,6 @@ public:
 				{
 					memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
 					pClient->setLastPos(0);
-					printf("already exit\n");
 					return -1;
 				}
 			}
@@ -399,10 +409,6 @@ public:
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
 				SOCKET xre = 100;
 				xre = pClient->SendData(ret);
-				if (xre == SOCKET_ERROR)
-				{
-					printf("pClient->sockfd:%d\n", pClient->sockfd());
-				}
 				return xre;
 				// this->addSendTask(pClient, ret);
 			}
@@ -444,6 +450,7 @@ public:
 	void Start()
 	{
 		_isRun = true;
+		_taskServer._isRun = true;
 		std::thread t(std::mem_fn(&CellServer::OnRun), this);
 		t.detach();
 		// _taskServer.Start();
@@ -477,6 +484,7 @@ private:
 	SOCKET _maxSock;
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
 	bool _isRun = false;
+	int _id = -1;
 };
 
 class EasyTcpServer : public INetEvent
@@ -609,7 +617,7 @@ public:
 	{
 		for (int n = 0; n < nCellServer; n++)
 		{
-			auto ser = std::make_shared<CellServer>(_sock);
+			auto ser = std::make_shared<CellServer>(n + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);
 			//注册网络事件接受对象
