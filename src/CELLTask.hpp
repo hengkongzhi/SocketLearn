@@ -4,6 +4,7 @@
 #include <list>
 #include <mutex>
 #include <functional>
+#include "CELLSemaphore.hpp"
 // class CellTask
 // {
 // public:
@@ -26,13 +27,13 @@ class CellTaskServer
 {
 public:
     int serverId = -1; 
+private:
     bool _isRun = false;
-private:
     typedef std::function<void()> CellTask;
-private:
     std::list<CellTask> _tasks;
     std::list<CellTask> _tasksBuf;
     std::mutex _mutex;
+    CELLSemaphore _semaphore;
     
 public:
     CellTaskServer()
@@ -58,6 +59,7 @@ public:
     {
         printf("CellTaskServer%d.Close\n", serverId);
         _isRun = false;
+        _semaphore.wait();
     }
     void OnRun()
     {
@@ -85,6 +87,7 @@ public:
             _tasks.clear();
         }
         printf("CellTaskServer%d.OnRun\n", serverId);
+        _semaphore.wakeUp();
     }
 };
 

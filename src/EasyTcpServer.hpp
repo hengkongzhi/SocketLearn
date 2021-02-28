@@ -23,6 +23,7 @@
 #include"CELLTimestamp.hpp"
 #include"CELLTask.hpp"
 #include"CELLObjectPool.hpp"
+#include "CELLSemaphore.hpp"
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
@@ -220,11 +221,16 @@ public:
 	//关闭Socket
 	void Close()
 	{
-		_taskServer.Close();
-		_isRun = false;
-		_clients.clear();
-		_clientsBuff.clear();
+		if (_isRun)
+		{
+			_taskServer.Close();
+			_isRun = false;
+			_semaphore.wait();
+			_clients.clear();
+			_clientsBuff.clear();	
+		}
 		printf("CellServer%d.close.\n", _id);
+
 	}
 
 	//处理网络消息
@@ -313,6 +319,7 @@ public:
 			}
 			checkTime();
 		}
+		_semaphore.wakeUp();
 	}
 	
 	void checkTime()
@@ -373,17 +380,17 @@ public:
 				//消息缓冲区剩余未处理数据的长度
 				int nSize = pClient->getLastPos() - header->dataLength;
 				//处理网络消息
-				SOCKET ret = OnNetMsg(pClient, header);
+				OnNetMsg(pClient, header);
 				//将消息缓冲区剩余未处理数据前移
 				memcpy(pClient->msgBuf(), pClient->msgBuf() + header->dataLength, nSize);
 				//消息缓冲区的数据尾部位置前移
 				pClient->setLastPos(nSize);
-				if (ret == SOCKET_ERROR)
-				{
-					memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
-					pClient->setLastPos(0);
-					return -1;
-				}
+				// if (ret == SOCKET_ERROR)
+				// {
+				// 	memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
+				// 	pClient->setLastPos(0);
+				// 	return -1;
+				// }
 			}
 			else {
 				//消息缓冲区剩余数据不够一条完整消息
@@ -394,7 +401,7 @@ public:
 	}
 
 	//响应网络消息
-	SOCKET OnNetMsg(ClientSocketPtr& pClient, DataHeader* header)
+	void OnNetMsg(ClientSocketPtr& pClient, DataHeader* header)
 	{
 		_pNetEvent->OnNetMsg(this, pClient, header);
 		switch (header->cmd)
@@ -407,10 +414,10 @@ public:
 				//忽略判断用户密码是否正确的过程
 				// LoginResult *ret = new LoginResult();
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
-				SOCKET xre = 100;
-				xre = pClient->SendData(ret);
-				return xre;
-				// this->addSendTask(pClient, ret);
+				// SOCKET xre = 100;
+				// xre = pClient->SendData(ret);
+				// return xre;
+				this->addSendTask(pClient, ret);
 			}
 			break;
 			case CMD_LOGOUT:
@@ -450,10 +457,9 @@ public:
 	void Start()
 	{
 		_isRun = true;
-		_taskServer._isRun = true;
 		std::thread t(std::mem_fn(&CellServer::OnRun), this);
 		t.detach();
-		// _taskServer.Start();
+		_taskServer.Start();
 	}
 
 	size_t getClientCount()
@@ -485,6 +491,7 @@ private:
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
 	bool _isRun = false;
 	int _id = -1;
+	CELLSemaphore _semaphore;
 };
 
 class EasyTcpServer : public INetEvent
