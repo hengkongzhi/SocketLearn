@@ -43,7 +43,7 @@ void cmdThread()
         }
     }
 };
-const int cCount = 80;
+const int cCount = 400;
 const int tCount = 4;
 atomic_int sendCount(0);
 atomic_int readyCount(0);

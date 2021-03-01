@@ -2,33 +2,35 @@
 #define _CELL_SEMAPHORE_HPP_
 #include <chrono>
 #include <thread>
+#include <condition_variable>
 class CELLSemaphore
 {
 public:
     void wait()
     {
-        _isWaitExit = true;
-        while (_isWaitExit)
+        std::unique_lock<std::mutex> lock(_mutex);
+        if (--_wait < 0)
         {
-            std::chrono::milliseconds t(1);
-            std::this_thread::sleep_for(t);
+            _cv.wait(lock, [this]()->bool{return _wakeup > 0;});
+            _wakeup--;
         }
 
     }
     void wakeUp()
     {
-        if (_isWaitExit)
+        std::lock_guard<std::mutex> lock(_mutex);
+        if (++_wait <= 0)
         {
-            _isWaitExit = false;
-        }
-        else
-        {
-            printf("CELLSemaphore wakeUp error\n");
+            _cv.notify_one();
+            _wakeup++;
         }
         
     }
 
 private:
-    bool _isWaitExit = false;
+    std::mutex _mutex;
+    std::condition_variable _cv;
+    int _wait = 0;
+    int _wakeup = 0;
 };
 #endif
