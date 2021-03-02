@@ -24,6 +24,7 @@
 #include"CELLTask.hpp"
 #include"CELLObjectPool.hpp"
 #include "CELLSemaphore.hpp"
+#include "CELLThread.hpp"
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
