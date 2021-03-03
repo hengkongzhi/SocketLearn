@@ -2,6 +2,7 @@
 #define _CELL_THREAD_HPP_
 #include "CELLSemaphore.hpp"
 #include <functional>
+#include <mutex>
 class CELLThread
 {
 private:
@@ -11,7 +12,7 @@ public:
                EventCall onRun = nullptr, 
                EventCall onDestroy = nullptr)
     {
-
+        std::lock_guard<std::mutex> lock(_mutex);
         if (!_isRun)
         {
             if (onCreate)
@@ -34,10 +35,19 @@ public:
     }   
     void Close()
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         if (_isRun)
         {
             _isRun = false;
             _sem.wait();
+        }
+    }
+    void Exit()
+    {
+        std::lock_guard<std::mutex> lock(_mutex);
+        if (_isRun)
+        {
+            _isRun = false;
         }
     }
     bool isRun()
@@ -67,5 +77,6 @@ private:
     EventCall _onDestroy;
     bool _isRun = false;
     CELLSemaphore _sem;
+    std::mutex _mutex;
 };
 #endif

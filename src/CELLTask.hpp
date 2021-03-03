@@ -29,7 +29,6 @@ class CellTaskServer
 public:
     int serverId = -1; 
 private:
-    bool _isRun = false;
     typedef std::function<void()> CellTask;
     std::list<CellTask> _tasks;
     std::list<CellTask> _tasksBuf;

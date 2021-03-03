@@ -24,7 +24,7 @@
 #include"CELLTask.hpp"
 #include"CELLObjectPool.hpp"
 #include "CELLSemaphore.hpp"
-#include "CELLThread.hpp"
+
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
@@ -222,24 +222,18 @@ public:
 	//关闭Socket
 	void Close()
 	{
-		if (_isRun)
-		{
-			_taskServer.Close();
-			_isRun = false;
-			_semaphore.wait();
-			_clients.clear();
-			_clientsBuff.clear();	
-		}
+		_taskServer.Close();
+		_thread.Close();
 		printf("CellServer%d.close.\n", _id);
 
 	}
 
 	//处理网络消息
 
-	bool OnRun()
+	bool OnRun(CELLThread* pThread)
 	{
 		_clients_change = true;	
-		while (_isRun)
+		while (pThread->isRun())
 		{
 			if (_clientsBuff.size() > 0)
 			{//从缓冲队列里取出客户数据
@@ -295,8 +289,8 @@ public:
 			int ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, &t);
 			if (ret < 0)
 			{
-				printf("select任务结束。\n");
-				Close();
+				printf("Cellserver.OnRun select error.\n");
+				pThread->Exit();
 				return false;
 			}
 
@@ -320,7 +314,6 @@ public:
 			}
 			checkTime();
 		}
-		_semaphore.wakeUp();
 	}
 	
 	void checkTime()
@@ -457,9 +450,11 @@ public:
 
 	void Start()
 	{
-		_isRun = true;
-		std::thread t(std::mem_fn(&CellServer::OnRun), this);
-		t.detach();
+		_thread.Start(nullptr, [this](CELLThread* pThread){
+            OnRun(pThread);}, [this](CELLThread* pThread){
+				_clients.clear();
+				_clientsBuff.clear();	
+			});
 		_taskServer.Start();
 	}
 
@@ -490,9 +485,8 @@ private:
 	bool _clients_change;
 	SOCKET _maxSock;
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
-	bool _isRun = false;
 	int _id = -1;
-	CELLSemaphore _semaphore;
+	CELLThread _thread;
 };
 
 class EasyTcpServer : public INetEvent
@@ -503,6 +497,7 @@ private:
 	std::vector<std::shared_ptr<CellServer>> _cellServers;
 	//每秒消息计时
 	CELLTimestamp _tTime;
+	CELLThread _thread;
 protected:
 	//收到消息计数
 	std::atomic_int _recvCount;
@@ -527,7 +522,7 @@ public:
 		if (INVALID_SOCKET != _sock)
 		{
 			printf("<socket=%d>关闭旧连接...\n", (int)_sock);
-			Close();
+			close(_sock);
 		}
 		_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == _sock)
@@ -633,54 +628,20 @@ public:
 			//启动消息处理线程
 			ser->Start();
 		}
+		_thread.Start(nullptr, [this](CELLThread* pThread){
+        OnRun(pThread);});
 	}
 	//关闭Socket
 	void Close()
 	{
+		_thread.Close();
 		if (_sock != INVALID_SOCKET)
 		{
 			//关闭套节字closesocket
 			close(_sock);
 		}
 	}
-	//处理网络消息
-	bool OnRun()
-	{
-		if (isRun())
-		{
-			time4msg();
-			//伯克利套接字 BSD socket
-			fd_set fdRead;//描述符（socket） 集合
-			//清理集合
-			FD_ZERO(&fdRead);
-			//将描述符（socket）加入集合
-			FD_SET(_sock, &fdRead);
-			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
-			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			timeval t = { 0,0};
-			int ret = select(_sock + 1, &fdRead, 0, 0, &t); //
-			if (ret < 0)
-			{
-				printf("Accept Select任务结束。\n");
-				Close();
-				return false;
-			}
-			//判断描述符（socket）是否在集合中
-			if (FD_ISSET(_sock, &fdRead))
-			{
-				FD_CLR(_sock, &fdRead);
-				Accept();
-				return true;
-			}
-			return true;
-		}
-		return false;
-	}
-	//是否工作中
-	bool isRun()
-	{
-		return _sock != INVALID_SOCKET;
-	}
+
 
 	//计算并输出每秒收到的网络消息
 	void time4msg()
@@ -715,7 +676,37 @@ public:
 	{
 		_recvCount++;
 	}
-	
+private:
+	//处理网络消息
+	void OnRun(CELLThread* pThread)
+	{
+		while (pThread->isRun())
+		{
+			time4msg();
+			//伯克利套接字 BSD socket
+			fd_set fdRead;//描述符（socket） 集合
+			//清理集合
+			FD_ZERO(&fdRead);
+			//将描述符（socket）加入集合
+			FD_SET(_sock, &fdRead);
+			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
+			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
+			timeval t = { 0,1};
+			int ret = select(_sock + 1, &fdRead, 0, 0, &t); //
+			if (ret < 0)
+			{
+				printf("EasyTcpServer.onRun Select任务结束。\n");
+				pThread->Exit();
+				break;
+			}
+			//判断描述符（socket）是否在集合中
+			if (FD_ISSET(_sock, &fdRead))
+			{
+				FD_CLR(_sock, &fdRead);
+				Accept();
+			}
+		}
+	}
 };
 
 #endif // !_EasyTcpServer_hpp_
