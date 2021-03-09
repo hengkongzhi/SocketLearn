@@ -43,8 +43,8 @@ void cmdThread()
         }
     }
 };
-const int cCount = 400;
-const int tCount = 4;
+const int cCount = 100;
+const int tCount = 1;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
 EasyTcpClient* client[cCount];

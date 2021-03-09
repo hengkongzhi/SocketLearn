@@ -52,6 +52,7 @@ public:
 		_lastSendPos = 0;
 		resetDTHeart();
 		resetDTSend();
+		_isFull = false;
 	}
 	~ClientSocket()
 	{
@@ -79,7 +80,7 @@ public:
 	}
 	int SendDataReal()
 	{
-		int ret = SOCKET_ERROR;
+		int ret = -1;
 		if (_lastSendPos > 0 && _sockfd != INVALID_SOCKET)
 		{
 			ret = send(_sockfd, _szSendBuf, _lastSendPos, 0);
@@ -91,33 +92,51 @@ public:
 	//发送数据
 	int SendData(std::shared_ptr<DataHeader> header)
 	{
-		int ret = 1;
+		// int ret = 1;
+		// if (header)
+		// {
+		// 	int nSendLen = header->dataLength;
+		// 	const char * pSendData = (const char*)header.get();
+		// 	while (_lastSendPos + nSendLen >= SEND_BUFF_SZIE)
+		// 	{
+		// 		int nCopyLen = SEND_BUFF_SZIE - _lastSendPos;
+		// 		memcpy(_szSendBuf + _lastSendPos, pSendData, nCopyLen);
+		// 		ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
+		// 		if (SOCKET_ERROR == ret)
+		// 		{
+		// 			return ret;
+		// 		}
+		// 		pSendData += nCopyLen;
+		// 		nSendLen -= nCopyLen;
+		// 		_lastSendPos = 0;
+		// 		resetDTSend();
+		// 	}
+		// 	memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
+		// 	_lastSendPos += nSendLen;
+		// }
+		// else
+		// {
+		// 	printf("server send head is null\n");
+		// }
+		// return ret;
+		int ret = SOCKET_ERROR;
 		if (header)
 		{
 			int nSendLen = header->dataLength;
 			const char * pSendData = (const char*)header.get();
-			while (_lastSendPos + nSendLen >= SEND_BUFF_SZIE)
+			if (_lastSendPos + nSendLen <= SEND_BUFF_SZIE)
 			{
-				int nCopyLen = SEND_BUFF_SZIE - _lastSendPos;
-				memcpy(_szSendBuf + _lastSendPos, pSendData, nCopyLen);
-				ret = send(_sockfd, _szSendBuf, SEND_BUFF_SZIE, 0);
-				if (SOCKET_ERROR == ret)
-				{
-					return ret;
-				}
-				pSendData += nCopyLen;
-				nSendLen -= nCopyLen;
-				_lastSendPos = 0;
-				resetDTSend();
+				memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
+				_lastSendPos += nSendLen;
+				ret = nSendLen;
 			}
-			memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
-			_lastSendPos += nSendLen;
-		}
-		else
-		{
-			printf("server send head is null\n");
+			else
+			{
+				_isFull = true;
+			}
 		}
 		return ret;
+		
 	}
 	void resetDTHeart()
 	{
@@ -161,6 +180,7 @@ private:
 	int _lastSendPos;
 	time_t _dtHeart;
 	time_t _dtSend;
+	bool _isFull;
 };
 typedef std::shared_ptr<ClientSocket> ClientSocketPtr;
 class CellServer;
@@ -229,7 +249,6 @@ public:
 	}
 
 	//处理网络消息
-
 	bool OnRun(CELLThread* pThread)
 	{
 		_clients_change = true;	
@@ -259,8 +278,12 @@ public:
 
 			//伯克利套接字 BSD socket
 			fd_set fdRead;//描述符（socket） 集合
+			fd_set fdWrite;
+			fd_set fdExp;
 			//清理集合
 			FD_ZERO(&fdRead);
+			FD_ZERO(&fdWrite);
+			FD_ZERO(&fdExp);
 			//将描述符（socket）加入集合
 			
 			if (_clients_change)
@@ -281,12 +304,14 @@ public:
 			{
 				memcpy(&fdRead, &_fdRead_bak, sizeof(fd_set));
 			}
+			memcpy(&fdWrite, &_fdRead_bak, sizeof(fd_set));
+			memcpy(&fdExp, &_fdRead_bak, sizeof(fd_set));
 			
 
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
 			timeval t{0, 1};
-			int ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, &t);
+			int ret = select(_maxSock + 1, &fdRead, &fdWrite, &fdExp, &t);
 			if (ret < 0)
 			{
 				printf("Cellserver.OnRun select error.\n");
@@ -294,25 +319,52 @@ public:
 				return false;
 			}
 
-			for (int n = (int)_clients.size() - 1; n >= 0; n--)
+			clientRead(fdRead);
+			clientWrite(fdWrite);
+			clientWrite(fdExp);
+			checkTime();
+		}
+	}
+	void clientWrite(fd_set& fdWrite)
+	{
+		for (int n = (int)_clients.size() - 1; n >= 0; n--)
+		{
+			if (FD_ISSET(_clients[n]->sockfd(), &fdWrite))
 			{
-				if (FD_ISSET(_clients[n]->sockfd(), &fdRead))
+				if (-1 == _clients[n]->SendDataReal())
 				{
-					if (-1 == RecvData(_clients[n]))
+					auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
+					if (iter != _clients.end())
 					{
-						auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
-						if (iter != _clients.end())
-						{
-							_clients_change = true;
-							if(_pNetEvent)
-								_pNetEvent->OnNetLeave(_clients[n]);
-							// delete _clients[n];
-							_clients.erase(iter);
-						}
+						_clients_change = true;
+						if(_pNetEvent)
+							_pNetEvent->OnNetLeave(_clients[n]);
+						// delete _clients[n];
+						_clients.erase(iter);
 					}
 				}
 			}
-			checkTime();
+		}
+	}
+	void clientRead(fd_set& fdRead)
+	{
+		for (int n = (int)_clients.size() - 1; n >= 0; n--)
+		{
+			if (FD_ISSET(_clients[n]->sockfd(), &fdRead))
+			{
+				if (-1 == RecvData(_clients[n]))
+				{
+					auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
+					if (iter != _clients.end())
+					{
+						_clients_change = true;
+						if(_pNetEvent)
+							_pNetEvent->OnNetLeave(_clients[n]);
+						// delete _clients[n];
+						_clients.erase(iter);
+					}
+				}
+			}
 		}
 	}
 	
@@ -328,7 +380,7 @@ public:
 		
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
 		{
-			_clients[n]->checkSend(dt);
+			// _clients[n]->checkSend(dt);
 			if (_clients[n]->checkHeart(dt))
 			{
 				auto iter = _clients.begin() + n;//std::vector<SOCKET>::iterator
@@ -409,9 +461,13 @@ public:
 				// LoginResult *ret = new LoginResult();
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
 				// SOCKET xre = 100;
-				// xre = pClient->SendData(ret);
+				// xre = 
+				if (pClient->SendData(ret) == SOCKET_ERROR)
+				{
+					printf("Sendbuffer is full\n");
+				}
 				// return xre;
-				this->addSendTask(pClient, ret);
+				// this->addSendTask(pClient, ret);
 			}
 			break;
 			case CMD_LOGOUT:
@@ -455,7 +511,7 @@ public:
 				_clients.clear();
 				_clientsBuff.clear();	
 			});
-		_taskServer.Start();
+		// _taskServer.Start();
 	}
 
 	size_t getClientCount()
