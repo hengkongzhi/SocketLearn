@@ -123,10 +123,10 @@ public:
 	}
 	//缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
-#define RECV_BUFF_SZIE 10240
+#define RECV_BUFF_SZIE 10240 * 3
 #endif // !RECV_BUFF_SZIE
 	//第二缓冲区 消息缓冲区
-	char _szMsgBuf[RECV_BUFF_SZIE * 5] = {};
+	char _szMsgBuf[RECV_BUFF_SZIE] = {};
 	//消息缓冲区的数据尾部位置
 	int _lastPos = 0;
 
@@ -135,7 +135,7 @@ public:
 	{
 		// 5 接收数据
 		char* szRecv = _szMsgBuf + _lastPos;
-		int nLen = (int)recv(cSock, szRecv, RECV_BUFF_SZIE * 5 - _lastPos, 0);
+		int nLen = (int)recv(cSock, szRecv, RECV_BUFF_SZIE - _lastPos, 0);
 		//printf("nLen=%d\n", nLen);
 		if (nLen < 0)
 		{

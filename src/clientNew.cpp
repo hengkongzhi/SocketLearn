@@ -43,8 +43,8 @@ void cmdThread()
         }
     }
 };
-const int cCount = 100;
-const int tCount = 1;
+const int cCount = 10000;
+const int tCount = 8;
 atomic_int sendCount(0);
 atomic_int readyCount(0);
 EasyTcpClient* client[cCount];
@@ -78,8 +78,8 @@ void sendThread(int id)
     }
     
 
-    Login login[10];
-    for (int i = 0; i < 10; i++)
+    Login login[1];
+    for (int i = 0; i < 1; i++)
     {
         strcpy(login[i].userName, "yc");
         strcpy(login[i].PassWord, "yc123");
@@ -101,6 +101,8 @@ void sendThread(int id)
             // }
 
             client[i]->OnRun();
+            // std::chrono::microseconds t(1);
+            // std::this_thread::sleep_for(t);
         }
        
     }

@@ -28,14 +28,14 @@
 
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
-#define RECV_BUFF_SZIE 10240 * 5
-#define SEND_BUFF_SZIE RECV_BUFF_SZIE
+#define RECV_BUFF_SZIE 1024 * 1
+#define SEND_BUFF_SZIE 1024 * 18
 #endif // !RECV_BUFF_SZIE
 
 #define CLIENT_HEART_DEAD_TIME 60000
 #define CLIENT_SEND_BUFF_TIME 200
 //客户端数据类型
-class ClientSocket : public ObjectPoolBase<ClientSocket, 1000>
+class ClientSocket : public ObjectPoolBase<ClientSocket, 10000>
 {
 public:
 	int id = -1;
@@ -80,7 +80,7 @@ public:
 	}
 	int SendDataReal()
 	{
-		int ret = -1;
+		int ret = 0;
 		if (_lastSendPos > 0 && _sockfd != INVALID_SOCKET)
 		{
 			ret = send(_sockfd, _szSendBuf, _lastSendPos, 0);
@@ -310,7 +310,7 @@ public:
 
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			timeval t{0, 1};
+			timeval t{0, 0};
 			int ret = select(_maxSock + 1, &fdRead, &fdWrite, &fdExp, &t);
 			if (ret < 0)
 			{
