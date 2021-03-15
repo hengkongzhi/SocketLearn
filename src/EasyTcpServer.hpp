@@ -24,6 +24,7 @@
 #include"CELLTask.hpp"
 #include"CELLObjectPool.hpp"
 #include "CELLSemaphore.hpp"
+#include "CELLBuffer.hpp"
 
 
 //缓冲区最小单元大小
@@ -41,15 +42,13 @@ public:
 	int id = -1;
 	int serverId = -1;
 public:
-	ClientSocket(SOCKET sockfd = INVALID_SOCKET)
+	ClientSocket(SOCKET sockfd = INVALID_SOCKET) : _sendBuff(SEND_BUFF_SZIE), _recvBuff(RECV_BUFF_SZIE)
 	{
 		static int n = 1;
 		id = n++;
 		_sockfd = sockfd;
 		memset(_szMsgBuf, 0, RECV_BUFF_SZIE);
 		_lastPos = 0;
-		memset(_szSendBuf, 0, SEND_BUFF_SZIE);
-		_lastSendPos = 0;
 		resetDTHeart();
 		resetDTSend();
 		_isFull = false;
@@ -64,30 +63,30 @@ public:
 	{
 		return _sockfd;
 	}
-
-	char* msgBuf()
+	int RecvData()
 	{
-		return _szMsgBuf;
+		return _recvBuff.read4socket(_sockfd);
+	}
+	bool hasMsg()
+	{
+		return _recvBuff.hasMsg();
+	}
+	DataHeader* frontMsg()
+	{
+		return (DataHeader*)_recvBuff.data();
+	}
+	void popFrontMsg()
+	{
+		if (hasMsg())
+		{
+			_recvBuff.pop(frontMsg()->dataLength);
+		}
 	}
 
-	int getLastPos()
-	{
-		return _lastPos;
-	}
-	void setLastPos(int pos)
-	{
-		_lastPos = pos;
-	}
 	int SendDataReal()
 	{
-		int ret = 0;
-		if (_lastSendPos > 0 && _sockfd != INVALID_SOCKET)
-		{
-			ret = send(_sockfd, _szSendBuf, _lastSendPos, 0);
-			_lastSendPos = 0;
-			resetDTSend();
-		}
-		return ret;
+		resetDTSend();
+		return _sendBuff.write2socket(_sockfd);
 	}
 	//发送数据
 	int SendData(std::shared_ptr<DataHeader> header)
@@ -120,20 +119,9 @@ public:
 		// }
 		// return ret;
 		int ret = SOCKET_ERROR;
-		if (header)
+		if (_sendBuff.push((const char*)header.get(), header->dataLength))
 		{
-			int nSendLen = header->dataLength;
-			const char * pSendData = (const char*)header.get();
-			if (_lastSendPos + nSendLen <= SEND_BUFF_SZIE)
-			{
-				memcpy(_szSendBuf + _lastSendPos, pSendData, nSendLen);
-				_lastSendPos += nSendLen;
-				ret = nSendLen;
-			}
-			else
-			{
-				_isFull = true;
-			}
+			ret = header->dataLength;
 		}
 		return ret;
 		
@@ -175,9 +163,8 @@ private:
 	char _szMsgBuf[RECV_BUFF_SZIE];
 	//消息缓冲区的数据尾部位置
 	int _lastPos;
-
-	char _szSendBuf[SEND_BUFF_SZIE];
-	int _lastSendPos;
+	CELLBuffer _recvBuff;
+	CELLBuffer _sendBuff;
 	time_t _dtHeart;
 	time_t _dtSend;
 	bool _isFull;
@@ -401,8 +388,7 @@ public:
 	int RecvData(ClientSocketPtr& pClient)
 	{
 		// 5 接收客户端数据
-		char *szRecv = pClient->msgBuf() + pClient->getLastPos();
-		int nLen = (int)recv(pClient->sockfd(), szRecv, RECV_BUFF_SZIE - pClient->getLastPos(), 0);
+		int nLen = pClient->RecvData();
 		_pNetEvent->OnNetRecv(pClient);
 		//printf("nLen=%d\n", nLen);
 		if (nLen <= 0)
@@ -410,38 +396,10 @@ public:
 			printf("客户端<Socket=%d>已退出，任务结束。\n", pClient->sockfd());
 			return -1;
 		}
-		//将收取到的数据拷贝到消息缓冲区
-		//memcpy(pClient->msgBuf() + pClient->getLastPos(), _szRecv, nLen);
-		//消息缓冲区的数据尾部位置后移
-		pClient->setLastPos(pClient->getLastPos() + nLen);
-
-		//判断消息缓冲区的数据长度大于消息头DataHeader长度
-		while (pClient->getLastPos() >= sizeof(DataHeader))
+		while (pClient->hasMsg())
 		{
-			//这时就可以知道当前消息的长度
-			DataHeader* header = (DataHeader*)pClient->msgBuf();
-			//判断消息缓冲区的数据长度大于消息长度
-			if (pClient->getLastPos() >= header->dataLength)
-			{
-				//消息缓冲区剩余未处理数据的长度
-				int nSize = pClient->getLastPos() - header->dataLength;
-				//处理网络消息
-				OnNetMsg(pClient, header);
-				//将消息缓冲区剩余未处理数据前移
-				memcpy(pClient->msgBuf(), pClient->msgBuf() + header->dataLength, nSize);
-				//消息缓冲区的数据尾部位置前移
-				pClient->setLastPos(nSize);
-				// if (ret == SOCKET_ERROR)
-				// {
-				// 	memset(pClient->msgBuf(), 0, SEND_BUFF_SZIE);
-				// 	pClient->setLastPos(0);
-				// 	return -1;
-				// }
-			}
-			else {
-				//消息缓冲区剩余数据不够一条完整消息
-				break;
-			}
+			OnNetMsg(pClient, pClient->frontMsg());
+			pClient->popFrontMsg();
 		}
 		return 0;
 	}
