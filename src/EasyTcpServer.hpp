@@ -30,7 +30,7 @@
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
 #define RECV_BUFF_SZIE 1024 * 1
-#define SEND_BUFF_SZIE 1024 * 18
+#define SEND_BUFF_SZIE 1024 * 1
 #endif // !RECV_BUFF_SZIE
 
 #define CLIENT_HEART_DEAD_TIME 60000

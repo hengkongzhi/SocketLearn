@@ -22,6 +22,19 @@ public:
     }
     bool push(const char* pData, int nLen)
     {
+        if (_nLast + nLen >_nSize)
+        {
+            int n = _nLast + nLen - _nSize;
+            if (n < 1024)
+            {
+                n = 1024;
+            }
+            char* buff = new char[_nSize + n];
+            memcpy(buff, _pBuff, _nLast);
+            delete[] _pBuff;
+            _pBuff = buff;
+            _nSize = _nSize + n;
+        }
         if (_nLast + nLen <=_nSize)
         {
             memcpy(_pBuff + _nLast, pData, nLen);
