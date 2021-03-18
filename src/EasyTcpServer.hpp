@@ -25,6 +25,7 @@
 #include"CELLObjectPool.hpp"
 #include "CELLSemaphore.hpp"
 #include "CELLBuffer.hpp"
+#include "CELLLog.hpp"
 
 
 //缓冲区最小单元大小
@@ -55,7 +56,7 @@ public:
 	}
 	~ClientSocket()
 	{
-		printf("s=%d ClientSocket%d.~ClientSocket\n", serverId, id);
+		CELLLog::Info("s=%d ClientSocket%d.~ClientSocket\n", serverId, id);
 		close(_sockfd);
 	}
 
@@ -115,7 +116,7 @@ public:
 		// }
 		// else
 		// {
-		// 	printf("server send head is null\n");
+		// 	CELLLog::Info("server send head is null\n");
 		// }
 		// return ret;
 		int ret = SOCKET_ERROR;
@@ -139,7 +140,7 @@ public:
 		_dtHeart += dt;
 		if (_dtHeart >= CLIENT_HEART_DEAD_TIME)
 		{
-			// printf("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
+			// CELLLog::Info("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
 			return true;
 		}
 		return false;
@@ -149,7 +150,7 @@ public:
 		_dtSend += dt;
 		if (_dtSend >= CLIENT_SEND_BUFF_TIME)
 		{
-			// printf("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
+			// CELLLog::Info("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
 			SendDataReal();
 			resetDTSend();
 			
@@ -231,7 +232,7 @@ public:
 	{
 		_taskServer.Close();
 		_thread.Close();
-		printf("CellServer%d.close.\n", _id);
+		CELLLog::Info("CellServer%d.close.\n", _id);
 
 	}
 
@@ -301,7 +302,7 @@ public:
 			int ret = select(_maxSock + 1, &fdRead, &fdWrite, &fdExp, &t);
 			if (ret < 0)
 			{
-				printf("Cellserver.OnRun select error.\n");
+				CELLLog::Info("Cellserver.OnRun select error.\n");
 				pThread->Exit();
 				return false;
 			}
@@ -362,7 +363,7 @@ public:
 		_oldTime = nowTime;
 		if (dt > 60000)
 		{
-			printf("dt=%d\n", dt);
+			CELLLog::Info("dt=%d\n", dt);
 		}
 		
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
@@ -378,7 +379,7 @@ public:
 						_pNetEvent->OnNetLeave(_clients[n]);
 					// delete _clients[n];
 					_clients.erase(iter);
-					printf("sock=%d is close.\n", _clients[n]->sockfd());
+					CELLLog::Info("sock=%d is close.\n", _clients[n]->sockfd());
 				}
 			}
 		}
@@ -390,10 +391,10 @@ public:
 		// 5 接收客户端数据
 		int nLen = pClient->RecvData();
 		_pNetEvent->OnNetRecv(pClient);
-		//printf("nLen=%d\n", nLen);
+		//CELLLog::Info("nLen=%d\n", nLen);
 		if (nLen <= 0)
 		{
-			printf("客户端<Socket=%d>已退出，任务结束。\n", pClient->sockfd());
+			CELLLog::Info("客户端<Socket=%d>已退出，任务结束。\n", pClient->sockfd());
 			return -1;
 		}
 		while (pClient->hasMsg())
@@ -414,7 +415,7 @@ public:
 			{
 				pClient->resetDTHeart();
 				Login* login = (Login*)header;
-				//printf("收到客户端<Socket=%d>请求：CMD_LOGIN,数据长度：%d,userName=%s PassWord=%s\n", cSock, login->dataLength, login->userName, login->PassWord);
+				//CELLLog::Info("收到客户端<Socket=%d>请求：CMD_LOGIN,数据长度：%d,userName=%s PassWord=%s\n", cSock, login->dataLength, login->userName, login->PassWord);
 				//忽略判断用户密码是否正确的过程
 				// LoginResult *ret = new LoginResult();
 				std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
@@ -422,7 +423,7 @@ public:
 				// xre = 
 				if (pClient->SendData(ret) == SOCKET_ERROR)
 				{
-					printf("Sendbuffer is full\n");
+					CELLLog::Info("Sendbuffer is full\n");
 				}
 				// return xre;
 				// this->addSendTask(pClient, ret);
@@ -431,7 +432,7 @@ public:
 			case CMD_LOGOUT:
 			{
 				Logout* logout = (Logout*)header;
-				//printf("收到客户端<Socket=%d>请求：CMD_LOGOUT,数据长度：%d,userName=%s \n", cSock, logout->dataLength, logout->userName);
+				//CELLLog::Info("收到客户端<Socket=%d>请求：CMD_LOGOUT,数据长度：%d,userName=%s \n", cSock, logout->dataLength, logout->userName);
 				//忽略判断用户密码是否正确的过程
 				//LogoutResult ret;
 				//SendData(cSock, &ret);
@@ -446,7 +447,7 @@ public:
 			}
 			default:
 			{
-				printf("<socket=%d>收到未定义消息,数据长度：%d\n", pClient->sockfd(), header->dataLength);
+				CELLLog::Info("<socket=%d>收到未定义消息,数据长度：%d\n", pClient->sockfd(), header->dataLength);
 				//DataHeader ret;
 				//SendData(cSock, &ret);
 			}
@@ -535,16 +536,16 @@ public:
 	{
 		if (INVALID_SOCKET != _sock)
 		{
-			printf("<socket=%d>关闭旧连接...\n", (int)_sock);
+			CELLLog::Info("<socket=%d>关闭旧连接...\n", (int)_sock);
 			close(_sock);
 		}
 		_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == _sock)
 		{
-			printf("错误，建立socket失败...\n");
+			CELLLog::Info("错误，建立socket失败...\n");
 		}
 		else {
-			printf("建立socket=<%d>成功...\n", (int)_sock);
+			CELLLog::Info("建立socket=<%d>成功...\n", (int)_sock);
 		}
 		return _sock;
 	}
@@ -570,10 +571,10 @@ public:
 		int ret = bind(_sock, (sockaddr*)&_sin, sizeof(_sin));
 		if (SOCKET_ERROR == ret)
 		{
-			printf("错误,绑定网络端口<%d>失败...\n", port);
+			CELLLog::Info("错误,绑定网络端口<%d>失败...\n", port);
 		}
 		else {
-			printf("绑定网络端口<%d>成功...\n", port);
+			CELLLog::Info("绑定网络端口<%d>成功...\n", port);
 		}
 		return ret;
 	}
@@ -585,10 +586,10 @@ public:
 		int ret = listen(_sock, n);
 		if (SOCKET_ERROR == ret)
 		{
-			printf("socket=<%d>错误,监听网络端口失败...\n",_sock);
+			CELLLog::Info("socket=<%d>错误,监听网络端口失败...\n",_sock);
 		}
 		else {
-			printf("socket=<%d>监听网络端口成功...\n", _sock);
+			CELLLog::Info("socket=<%d>监听网络端口成功...\n", _sock);
 		}
 		return ret;
 	}
@@ -603,7 +604,7 @@ public:
 		cSock = accept(_sock, (sockaddr*)&clientAddr, (socklen_t *)&nAddrLen);
 		if (INVALID_SOCKET == cSock)
 		{
-			printf("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
+			CELLLog::Info("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
 		}
 		else
 		{
@@ -663,7 +664,7 @@ public:
 		auto t1 = _tTime.getElapsedSecond();
 		if (t1 >= 1.0)
 		{
-			printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
+			CELLLog::Info("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
 			_recvCount = 0;
 			_msgCount = 0;
 			_tTime.update();
@@ -709,7 +710,7 @@ private:
 			int ret = select(_sock + 1, &fdRead, 0, 0, &t); //
 			if (ret < 0)
 			{
-				printf("EasyTcpServer.onRun Select任务结束。\n");
+				CELLLog::Info("EasyTcpServer.onRun Select任务结束。\n");
 				pThread->Exit();
 				break;
 			}

@@ -1,0 +1,63 @@
+CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Thread<2>,start.
+Thread<4>,start.
+Thread<3>,start.
+Thread<1>,start.
+Thread<5>,start.
+Thread<6>,start.
+Thread<7>,start.
+Thread<8>,start.
+Thread<2>, Connect<begin=1250, end=2500>
+Thread<6>, Connect<begin=6250, end=7500>
+Thread<1>, Connect<begin=0, end=1250>
+thread<8>,clients<10000>,time<1.008167>,send<0>
+Thread<5>, Connect<begin=5000, end=6250>
+Thread<4>, Connect<begin=3750, end=5000>
+Thread<7>, Connect<begin=7500, end=8750>
+Thread<3>, Connect<begin=2500, end=3750>
+Thread<8>, Connect<begin=8750, end=10000>
+thread<8>,clients<10000>,time<1.009312>,send<18474>
+thread<8>,clients<10000>,time<1.005681>,send<165619>
+thread<8>,clients<10000>,time<1.006802>,send<256419>
+thread<8>,clients<10000>,time<1.006939>,send<245368>
+thread<8>,clients<10000>,time<1.006582>,send<235792>
+thread<8>,clients<10000>,time<1.004790>,send<235371>
+thread<8>,clients<10000>,time<1.004826>,send<219806>
+thread<8>,clients<10000>,time<1.010180>,send<276315>
+thread<8>,clients<10000>,time<1.010854>,send<223236>
+thread<8>,clients<10000>,time<1.005756>,send<232648>
+thread<8>,clients<10000>,time<1.000042>,send<257152>
+thread<8>,clients<10000>,time<1.000678>,send<232940>
+thread<8>,clients<10000>,time<1.006688>,send<231902>
+thread<8>,clients<10000>,time<1.000477>,send<209435>
+thread<8>,clients<10000>,time<1.000416>,send<230941>
+thread<8>,clients<10000>,time<1.008829>,send<223415>
+thread<8>,clients<10000>,time<1.008441>,send<230746>
+thread<8>,clients<10000>,time<1.010880>,send<265473>
+thread<8>,clients<10000>,time<1.009607>,send<251303>
+thread<8>,clients<10000>,time<1.008145>,send<278003>
+thread<8>,clients<10000>,time<1.003275>,send<283057>
+thread<8>,clients<10000>,time<1.007698>,send<164844>
+thread<8>,clients<10000>,time<1.000263>,send<195197>
+thread<8>,clients<10000>,time<1.000522>,send<227857>
+thread<8>,clients<10000>,time<1.010641>,send<226399>
+thread<8>,clients<10000>,time<1.008099>,send<194055>
+thread<8>,clients<10000>,time<1.004887>,send<210430>
+thread<8>,clients<10000>,time<1.000255>,send<221089>
+thread<8>,clients<10000>,time<1.000340>,send<238976>
+thread<8>,clients<10000>,time<1.000486>,send<221210>
+thread<8>,clients<10000>,time<1.003838>,send<170139>
+thread<8>,clients<10000>,time<1.000410>,send<152732>
+thread<8>,clients<10000>,time<1.000200>,send<142672>
+thread<8>,clients<10000>,time<1.000122>,send<144269>
+thread<8>,clients<10000>,time<1.000194>,send<185475>
+退出cmdThread线程
+Thread<2>,exit.
+Thread<5>,exit.
+Thread<8>,exit.
+Thread<7>,exit.
+Thread<6>,exit.
+Thread<4>,exit.
+Thread<1>,exit.
+Thread<3>,exit.
+CELLLog fclose(_logFile)

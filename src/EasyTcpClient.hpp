@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include "MessageHeader.hpp"
+#include "CELLLog.hpp"
 
 class EasyTcpClient
 {
