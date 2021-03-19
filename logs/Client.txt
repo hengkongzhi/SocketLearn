@@ -1,63 +1,69 @@
-CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Thread<2>,start.
-Thread<4>,start.
-Thread<3>,start.
-Thread<1>,start.
-Thread<5>,start.
-Thread<6>,start.
-Thread<7>,start.
-Thread<8>,start.
-Thread<2>, Connect<begin=1250, end=2500>
-Thread<6>, Connect<begin=6250, end=7500>
-Thread<1>, Connect<begin=0, end=1250>
-thread<8>,clients<10000>,time<1.008167>,send<0>
-Thread<5>, Connect<begin=5000, end=6250>
-Thread<4>, Connect<begin=3750, end=5000>
-Thread<7>, Connect<begin=7500, end=8750>
-Thread<3>, Connect<begin=2500, end=3750>
-Thread<8>, Connect<begin=8750, end=10000>
-thread<8>,clients<10000>,time<1.009312>,send<18474>
-thread<8>,clients<10000>,time<1.005681>,send<165619>
-thread<8>,clients<10000>,time<1.006802>,send<256419>
-thread<8>,clients<10000>,time<1.006939>,send<245368>
-thread<8>,clients<10000>,time<1.006582>,send<235792>
-thread<8>,clients<10000>,time<1.004790>,send<235371>
-thread<8>,clients<10000>,time<1.004826>,send<219806>
-thread<8>,clients<10000>,time<1.010180>,send<276315>
-thread<8>,clients<10000>,time<1.010854>,send<223236>
-thread<8>,clients<10000>,time<1.005756>,send<232648>
-thread<8>,clients<10000>,time<1.000042>,send<257152>
-thread<8>,clients<10000>,time<1.000678>,send<232940>
-thread<8>,clients<10000>,time<1.006688>,send<231902>
-thread<8>,clients<10000>,time<1.000477>,send<209435>
-thread<8>,clients<10000>,time<1.000416>,send<230941>
-thread<8>,clients<10000>,time<1.008829>,send<223415>
-thread<8>,clients<10000>,time<1.008441>,send<230746>
-thread<8>,clients<10000>,time<1.010880>,send<265473>
-thread<8>,clients<10000>,time<1.009607>,send<251303>
-thread<8>,clients<10000>,time<1.008145>,send<278003>
-thread<8>,clients<10000>,time<1.003275>,send<283057>
-thread<8>,clients<10000>,time<1.007698>,send<164844>
-thread<8>,clients<10000>,time<1.000263>,send<195197>
-thread<8>,clients<10000>,time<1.000522>,send<227857>
-thread<8>,clients<10000>,time<1.010641>,send<226399>
-thread<8>,clients<10000>,time<1.008099>,send<194055>
-thread<8>,clients<10000>,time<1.004887>,send<210430>
-thread<8>,clients<10000>,time<1.000255>,send<221089>
-thread<8>,clients<10000>,time<1.000340>,send<238976>
-thread<8>,clients<10000>,time<1.000486>,send<221210>
-thread<8>,clients<10000>,time<1.003838>,send<170139>
-thread<8>,clients<10000>,time<1.000410>,send<152732>
-thread<8>,clients<10000>,time<1.000200>,send<142672>
-thread<8>,clients<10000>,time<1.000122>,send<144269>
-thread<8>,clients<10000>,time<1.000194>,send<185475>
-退出cmdThread线程
-Thread<2>,exit.
-Thread<5>,exit.
-Thread<8>,exit.
-Thread<7>,exit.
-Thread<6>,exit.
-Thread<4>,exit.
-Thread<1>,exit.
-Thread<3>,exit.
-CELLLog fclose(_logFile)
+2021-3-19 14:55:51CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+2021-3-19 14:55:51Thread<2>,start.
+2021-3-19 14:55:51Thread<1>,start.
+2021-3-19 14:55:51Thread<3>,start.
+2021-3-19 14:55:51Thread<4>,start.
+2021-3-19 14:55:51Thread<5>,start.
+2021-3-19 14:55:51Thread<6>,start.
+2021-3-19 14:55:51Thread<7>,start.
+2021-3-19 14:55:51Thread<8>,start.
+2021-3-19 14:55:52thread<8>,clients<10000>,time<1.007184>,send<0>
+2021-3-19 14:55:53Thread<3>, Connect<begin=2500, end=3750>
+2021-3-19 14:55:53Thread<7>, Connect<begin=7500, end=8750>
+2021-3-19 14:55:53thread<8>,clients<10000>,time<1.000347>,send<0>
+2021-3-19 14:55:54Thread<4>, Connect<begin=3750, end=5000>
+2021-3-19 14:55:54Thread<8>, Connect<begin=8750, end=10000>
+2021-3-19 14:55:54thread<8>,clients<10000>,time<1.005608>,send<0>
+2021-3-19 14:55:55Thread<6>, Connect<begin=6250, end=7500>
+2021-3-19 14:55:55Thread<5>, Connect<begin=5000, end=6250>
+2021-3-19 14:55:55Thread<1>, Connect<begin=0, end=1250>
+2021-3-19 14:55:55Thread<2>, Connect<begin=1250, end=2500>
+2021-3-19 14:55:55thread<8>,clients<10000>,time<1.000546>,send<21264>
+2021-3-19 14:55:56thread<8>,clients<10000>,time<1.000457>,send<185750>
+2021-3-19 14:55:57thread<8>,clients<10000>,time<1.002358>,send<195112>
+2021-3-19 14:55:58thread<8>,clients<10000>,time<1.009204>,send<204799>
+2021-3-19 14:55:59thread<8>,clients<10000>,time<1.003754>,send<214032>
+2021-3-19 14:56:0thread<8>,clients<10000>,time<1.000392>,send<203285>
+2021-3-19 14:56:1thread<8>,clients<10000>,time<1.008501>,send<213201>
+2021-3-19 14:56:2thread<8>,clients<10000>,time<1.008244>,send<235549>
+2021-3-19 14:56:3thread<8>,clients<10000>,time<1.003103>,send<234154>
+2021-3-19 14:56:4thread<8>,clients<10000>,time<1.005892>,send<242777>
+2021-3-19 14:56:5thread<8>,clients<10000>,time<1.000369>,send<228710>
+2021-3-19 14:56:6thread<8>,clients<10000>,time<1.009273>,send<221591>
+2021-3-19 14:56:7thread<8>,clients<10000>,time<1.000090>,send<211240>
+2021-3-19 14:56:8thread<8>,clients<10000>,time<1.004707>,send<189513>
+2021-3-19 14:56:9thread<8>,clients<10000>,time<1.009687>,send<204397>
+2021-3-19 14:56:10thread<8>,clients<10000>,time<1.005269>,send<268570>
+2021-3-19 14:56:11thread<8>,clients<10000>,time<1.009845>,send<213017>
+2021-3-19 14:56:12thread<8>,clients<10000>,time<1.006393>,send<312930>
+2021-3-19 14:56:13thread<8>,clients<10000>,time<1.004854>,send<280660>
+2021-3-19 14:56:14thread<8>,clients<10000>,time<1.007814>,send<240692>
+2021-3-19 14:56:15thread<8>,clients<10000>,time<1.007846>,send<232313>
+2021-3-19 14:56:16thread<8>,clients<10000>,time<1.007585>,send<184880>
+2021-3-19 14:56:17thread<8>,clients<10000>,time<1.008378>,send<193169>
+2021-3-19 14:56:18thread<8>,clients<10000>,time<1.004898>,send<169374>
+2021-3-19 14:56:19thread<8>,clients<10000>,time<1.000497>,send<215960>
+2021-3-19 14:56:20thread<8>,clients<10000>,time<1.006493>,send<187659>
+2021-3-19 14:56:21thread<8>,clients<10000>,time<1.010897>,send<226100>
+2021-3-19 14:56:22thread<8>,clients<10000>,time<1.007080>,send<180455>
+2021-3-19 14:56:23thread<8>,clients<10000>,time<1.004048>,send<189366>
+2021-3-19 14:56:24thread<8>,clients<10000>,time<1.008645>,send<185871>
+2021-3-19 14:56:25thread<8>,clients<10000>,time<1.000264>,send<158331>
+2021-3-19 14:56:26thread<8>,clients<10000>,time<1.008251>,send<171566>
+2021-3-19 14:56:27thread<8>,clients<10000>,time<1.009439>,send<222332>
+2021-3-19 14:56:28thread<8>,clients<10000>,time<1.004327>,send<248479>
+2021-3-19 14:56:29thread<8>,clients<10000>,time<1.000475>,send<166516>
+2021-3-19 14:56:30thread<8>,clients<10000>,time<1.000102>,send<136639>
+2021-3-19 14:56:31thread<8>,clients<10000>,time<1.009865>,send<160645>
+2021-3-19 14:56:32thread<8>,clients<10000>,time<1.004862>,send<169738>
+2021-3-19 14:56:33thread<8>,clients<10000>,time<1.004031>,send<170131>
+2021-3-19 14:56:34退出cmdThread线程
+2021-3-19 14:56:34Thread<1>,exit.
+2021-3-19 14:56:34Thread<5>,exit.
+2021-3-19 14:56:34Thread<4>,exit.
+2021-3-19 14:56:34Thread<7>,exit.
+2021-3-19 14:56:34Thread<2>,exit.
+2021-3-19 14:56:34Thread<6>,exit.
+2021-3-19 14:56:34Thread<8>,exit.
+2021-3-19 14:56:34Thread<3>,exit.
+2021-3-19 14:56:34CELLLog fclose(_logFile)
