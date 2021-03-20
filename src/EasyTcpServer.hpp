@@ -230,7 +230,7 @@ public:
 	//关闭Socket
 	void Close()
 	{
-		_taskServer.Close();
+		// _taskServer.Close();
 		_thread.Close();
 		CELLLog::Info("CellServer%d.close.\n", _id);
 

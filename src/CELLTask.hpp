@@ -85,6 +85,11 @@ public:
             }
             _tasks.clear();
         }
+        for (auto pTask : _tasksBuf)
+        {
+            pTask();
+        }
+        _tasksBuf.clear();
         printf("CellTaskServer%d.OnRun\n", serverId);
     }
 };

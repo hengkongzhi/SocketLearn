@@ -4,6 +4,7 @@
 #include <chrono>
 #include <ctime>
 #include <time.h>
+#define TIME_AREA 8
 class CELLLog
 {
 private:
@@ -36,8 +37,8 @@ public:
             auto t = std::chrono::system_clock::now();
             auto tNow = std::chrono::system_clock::to_time_t(t);
             std::tm* now = std::gmtime(&tNow);
-            fprintf(pLog->_logFile, "[%d-%d-%d %d:%d:%d]", now->tm_year + 1900, now->tm_mon + 1, 
-                    now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
+            fprintf(pLog->_logFile, "[%04d-%02d-%02d %02d:%02d:%02d]", now->tm_year + 1900, now->tm_mon + 1, 
+                    now->tm_mday, now->tm_hour + TIME_AREA, now->tm_min, now->tm_sec);
             fprintf(pLog->_logFile, "%s", pStr);
             fflush(pLog->_logFile);
         }
@@ -55,8 +56,9 @@ public:
             auto t = std::chrono::system_clock::now();
             auto tNow = std::chrono::system_clock::to_time_t(t);
             std::tm* now = std::gmtime(&tNow);
-            fprintf(pLog->_logFile, "[%d-%d-%d %d:%d:%d]", now->tm_year + 1900, now->tm_mon + 1, 
-                    now->tm_mday, now->tm_hour, now->tm_min, now->tm_sec);
+            fprintf(pLog->_logFile, "%s", "[INFO]");
+            fprintf(pLog->_logFile, "[%04d-%02d-%02d %02d:%02d:%02d]", now->tm_year + 1900, now->tm_mon + 1, 
+                    now->tm_mday, now->tm_hour + TIME_AREA, now->tm_min, now->tm_sec);
             fprintf(pLog->_logFile, pFormat, args...);
             fflush(pLog->_logFile);
         }
