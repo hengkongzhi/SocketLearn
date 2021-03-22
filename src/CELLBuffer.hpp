@@ -1,5 +1,6 @@
 #ifndef _CELL_BUFFER_HPP_
 #define _CELL_BUFFER_HPP_
+#include "CELLBuffer.hpp"
 class CELLBuffer
 {
 public:
