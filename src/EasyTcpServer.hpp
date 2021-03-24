@@ -16,7 +16,6 @@
 #include"MessageHeader.hpp"
 #include"CELLTimestamp.hpp"
 #include"CELLTask.hpp"
-#include"CELLObjectPool.hpp"
 #include "CELLSemaphore.hpp"
 #include "CELLLog.hpp"
 #include "CELL.hpp"

@@ -91,14 +91,21 @@ public:
 
 			fd_set fdRead;
 			fd_set fdWrite;
+			fd_set* pfdW;
 			FD_ZERO(&fdRead);
 			FD_ZERO(&fdWrite);
 			FD_SET(_sock, &fdRead);
-			FD_SET(_sock, &fdWrite);
-
-			
+			if (_pClient->NeedWrite())
+			{
+				FD_SET(_sock, &fdWrite);
+				pfdW = &fdWrite;
+			}
+			else
+			{
+				pfdW = nullptr;
+			}
 			timeval t = { 0,0 };
-			int ret = select(_sock + 1, &fdRead, 0, 0, &t); 
+			int ret = select(_sock + 1, &fdRead, pfdW, 0, &t); 
 			if (ret < 0)
 			{
 				CELLLog::Info("<socket=%d>select任务结束1\n", _sock);
@@ -107,13 +114,24 @@ public:
 			}
 			if (FD_ISSET(_sock, &fdRead))
 			{
-				FD_CLR(_sock, &fdRead);
 
 				if (-1 == RecvData(_sock))
 				{
 					CELLLog::Info("<socket=%d>select任务结束2\n", _sock);
 					Close();
 					return false;
+				}
+			}
+			if (pfdW != nullptr)
+			{
+				if (FD_ISSET(_sock, &fdWrite))
+				{
+					if (-1 == _pClient->SendDataReal())
+					{
+						CELLLog::Info("<socket=%d>select任务结束2\n", _sock);
+						Close();
+						return false;
+					}
 				}
 			}
 			return true;

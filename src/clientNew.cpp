@@ -78,20 +78,22 @@ void sendThread(int id)
     }
     
 
-    Login login[1];
-    for (int i = 0; i < 1; i++)
-    {
-        strcpy(login[i].userName, "yc");
-        strcpy(login[i].PassWord, "yc123");
-    }
-    //strcpy(login.userName, "yc");
-    //strcpy(login.PassWord, "yc123");
-    const int nLen = sizeof(login); 
+    // Login login[1];
+    // shared_ptr<Login> login(new Login);
+    shared_ptr<Login> login = make_shared<Login>();
+    // for (int i = 0; i < 1; i++)
+    // {
+    //     strcpy(login[i].userName, "yc");
+    //     strcpy(login[i].PassWord, "yc123");
+    // }
+    strcpy(login->userName, "yc");
+    strcpy(login->PassWord, "yc123");
+    // const int nLen = sizeof(login); 
     while(g_bRun)
     {
         for (int i = begin; i < end; i++)
         {
-            if (SOCKET_ERROR != client[i]->SendData(login, nLen))
+            if (SOCKET_ERROR != client[i]->SendData(login))
             {
                 sendCount++;
             }

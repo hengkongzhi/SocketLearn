@@ -2,6 +2,7 @@
 #define _CELL_CLIENT_HPP_
 #include "CELLBuffer.hpp"
 #include "CELL.hpp"
+#include"CELLObjectPool.hpp"
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
 #define RECV_BUFF_SZIE 1024 * 1
@@ -22,8 +23,6 @@ public:
 		static int n = 1;
 		id = n++;
 		_sockfd = sockfd;
-		memset(_szMsgBuf, 0, RECV_BUFF_SZIE);
-		_lastPos = 0;
 		resetDTHeart();
 		resetDTSend();
 		_isFull = false;
@@ -56,6 +55,10 @@ public:
 		{
 			_recvBuff.pop(frontMsg()->dataLength);
 		}
+	}
+	bool NeedWrite()
+	{
+		return _sendBuff.NeedWrite();
 	}
 
 	int SendDataReal()
@@ -134,10 +137,6 @@ public:
 private:
 	// socket fd_set  file desc set
 	SOCKET _sockfd;
-	//第二缓冲区 消息缓冲区
-	char _szMsgBuf[RECV_BUFF_SZIE];
-	//消息缓冲区的数据尾部位置
-	int _lastPos;
 	CELLBuffer _recvBuff;
 	CELLBuffer _sendBuff;
 	time_t _dtHeart;
