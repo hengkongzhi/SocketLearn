@@ -22,14 +22,95 @@ public:
             _pBuff = nullptr;
         }
     }
+public:
+    inline bool canRead(int n)
+    {
+        return _nSize - _nReadPos >= n;
+    }
+    inline bool canWrite(int n)
+    {
+        return _nSize - _nWritePos >= n;
+    }
+    inline void push(int n)
+    {
+        _nWritePos += n;
+    }
+    inline void pop(int n)
+    {
+        _nReadPos += n;
+    }
+    template<typename T>
+    uint32_t ReadArray(T* pArr, uint32_t len)
+    {
+        uint32_t len1 = 0;
+        Read(len1, false);
+        if (len1 < len)
+        {
+            auto tSize = len1 * sizeof(T);
+            if (canRead(tSize + sizeof(uint32_t)))
+            {
+                pop(sizeof(uint32_t));
+                memcpy(pArr, _pBuff + _nReadPos, tSize);
+                pop(tSize);
+                return len1;
+            }
+        }
+        return 0;
+    }
+    template<typename T>
+    bool onlyRead(T& n)
+    {
+        return Read(n, false);
+    }
+    int8_t ReadInt8(int8_t n = 0)
+    {
+        Read(n);
+        return n;
+    }
+    int16_t ReadInt16(int16_t n = 0)
+    {
+        Read(n);
+        return n;
+    }
+    int32_t ReadInt32(int32_t n = 0)
+    {
+        Read(n);
+        return n;
+    }
+    float ReadFloat(float n = 0)
+    {
+        Read(n);
+        return n;
+    }
+    double ReadDouble(double n = 0)
+    {
+        Read(n);
+        return n;
+    }
+    template<typename T>
+    bool Read(T& n, bool bOffset = true)
+    {
+        auto nLen = sizeof(T);
+        if (canRead(nLen))
+        {
+            memcpy(&n, _pBuff + _nReadPos, nLen);
+            if (bOffset)
+            {
+                pop(nLen);
+            }
+            return true;
+        }
+        return false;
+    }
+
     template<typename T>
     bool Write(T n)
     {
         size_t nLen = sizeof(T);
-        if (_nWritePos + nLen <= _nSize)
+        if (canWrite(nLen))
         {
             memcpy(_pBuff + _nWritePos, &n, nLen);
-            _nWritePos += nLen;
+            push(nLen);
             return true;
         }
         return false;
@@ -38,11 +119,11 @@ public:
     bool WriteArray(T* pData, uint32_t len)
     {
         auto nLen = sizeof(T) * len;
-        if (_nWritePos + nLen + sizeof(uint32_t) <= _nSize)
+        if (canWrite(nLen + sizeof(uint32_t)))
         {
             WriteInt32(len);
             memcpy(_pBuff + _nWritePos, pData, nLen);
-            _nWritePos += nLen;
+            push(nLen);
             return true;
         }
         return false;
