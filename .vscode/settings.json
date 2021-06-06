@@ -42,6 +42,7 @@
         "utility": "cpp",
         "typeinfo": "cpp",
         "list": "cpp",
-        "condition_variable": "cpp"
+        "condition_variable": "cpp",
+        "string_view": "cpp"
     }
 }

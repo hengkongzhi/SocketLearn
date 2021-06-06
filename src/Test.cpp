@@ -1,6 +1,6 @@
 #include "EasyTcpClient.hpp"
 #include "CELLThread.hpp"
-#include "CELLStream.hpp"
+#include "CELLMsgStream.hpp"
 class MyClient : public EasyTcpClient
 {
 

@@ -14,7 +14,7 @@ public:
         _nSize = nSize;
         _pBuff = new char[_nSize];
     }
-    ~CELLStream()
+    virtual ~CELLStream()
     {
         if (_pBuff && _bDel)
         {
@@ -38,6 +38,14 @@ public:
     inline void pop(int n)
     {
         _nReadPos += n;
+    }
+    inline void setWritePos(int n)
+    {
+        _nWritePos = n;
+    }
+    inline int getWritePos()
+    {
+        return _nWritePos;
     }
     template<typename T>
     uint32_t ReadArray(T* pArr, uint32_t len)
