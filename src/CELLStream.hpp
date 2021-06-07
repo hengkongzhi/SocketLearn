@@ -23,6 +23,14 @@ public:
         }
     }
 public:
+    inline char* data()
+    {
+        return _pBuff;
+    }
+    inline int length()
+    {
+        return _nWritePos;
+    }
     inline bool canRead(int n)
     {
         return _nSize - _nReadPos >= n;

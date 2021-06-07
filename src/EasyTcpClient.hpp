@@ -257,6 +257,10 @@ public:
 		// }
 		return _pClient->SendData(header);
 	}
+	int SendData(const char* pData, int len)
+	{
+		return _pClient->SendData(pData, len);
+	}
 private:
 	ClientSocket* _pClient;
 	bool _isConnect;

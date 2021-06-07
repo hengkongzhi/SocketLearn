@@ -96,13 +96,15 @@ public:
 		// 	CELLLog::Info("server send head is null\n");
 		// }
 		// return ret;
-		int ret = SOCKET_ERROR;
-		if (_sendBuff.push((const char*)header.get(), header->dataLength))
+		return SendData((const char*)header.get(), header->dataLength);
+	}
+	int SendData(const char* pData, int len)
+	{
+		if (_sendBuff.push(pData, len))
 		{
-			ret = header->dataLength;
+			return len;
 		}
-		return ret;
-		
+		return SOCKET_ERROR;
 	}
 	void resetDTHeart()
 	{

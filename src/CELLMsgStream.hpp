@@ -10,7 +10,12 @@ public:
     {
         pop(header->dataLength);
     }
-public:
+    uint16_t getNetCmd()
+    {
+        uint16_t cmd = CMD_ERROR;
+        Read<uint16_t>(cmd);
+        return cmd;
+    }
 };
 class CELLSendMsgStream : public CELLStream
 {
@@ -24,6 +29,10 @@ public:
         :CELLStream(nSize)
     {
         Write<uint16_t>(0);
+    }
+    void setNetCmd(uint16_t cmd)
+    {
+        Write<uint16_t>(cmd);
     }
     void finsh()
     {
