@@ -8,7 +8,9 @@ public:
     CELLRecvMsgStream(DataHeader* header)
         :CELLStream((char*)header, header->dataLength)
     {
-        pop(header->dataLength);
+        push(header->dataLength);
+        ReadInt16();
+        getNetCmd();
     }
     uint16_t getNetCmd()
     {

@@ -17,6 +17,7 @@ public:
 	EasyTcpClient()
 	{
 		_isConnect = false;
+		_pClient = nullptr;
 	}
 	
 	virtual ~EasyTcpClient()

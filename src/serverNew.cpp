@@ -38,7 +38,7 @@ int main()
     server.InitSocket();
     server.Bind(nullptr, 4567);
     server.Listen(1000);
-    server.Start(8);
+    server.Start(1);
     
     while (true)
     {

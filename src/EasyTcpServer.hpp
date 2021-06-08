@@ -20,6 +20,7 @@
 #include "CELLLog.hpp"
 #include "CELL.hpp"
 #include "CELLClient.hpp"
+#include "CELLMsgStream.hpp"
 
 
 
@@ -284,7 +285,36 @@ public:
 			break;
 			case CMD_LOGOUT:
 			{
-				Logout* logout = (Logout*)header;
+				CELLRecvMsgStream r(header);
+                auto n1 = r.ReadInt8();
+                auto n2 = r.ReadInt16();
+                auto n3 = r.ReadInt32();
+                auto n4 = r.ReadFloat();
+                auto n5 = r.ReadDouble();
+                uint32_t n = 0;
+                r.onlyRead(n);
+                char name[32] = {0};
+                r.ReadArray(name, 32);
+                char pwd[32] = {0};
+                r.ReadArray(pwd, 32);
+                int data[10] = {0};
+                r.ReadArray(data, 10);
+
+				CELLSendMsgStream s;
+    			s.setNetCmd(CMD_LOGOUT_RESULT);
+    			s.WriteInt8(5);
+    			s.WriteInt16(5);
+    			s.WriteInt32(5.0f);
+    			s.WriteFloat(5.0f);
+    			s.WriteDouble(5.0f);
+    			const char* str = "helloworld";
+    			s.WriteArray(str, strlen(str));
+    			char a[] = "asdsa";
+    			s.WriteArray(a, strlen(a));
+    			int b[] = {1, 2, 3, 4, 5};
+    			s.WriteArray(b, 5);
+    			s.finsh();
+				pClient->SendData(s.data(), s.length());
 				//CELLLog::Info("收到客户端<Socket=%d>请求：CMD_LOGOUT,数据长度：%d,userName=%s \n", cSock, logout->dataLength, logout->userName);
 				//忽略判断用户密码是否正确的过程
 				//LogoutResult ret;
