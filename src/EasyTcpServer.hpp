@@ -428,6 +428,7 @@ public:
 			CELLLog::Info("错误，建立socket失败...\n");
 		}
 		else {
+			printf("建立socket=<%d>成功...\n", (int)_sock);
 			CELLLog::Info("建立socket=<%d>成功...\n", (int)_sock);
 		}
 		return _sock;
@@ -487,10 +488,12 @@ public:
 		cSock = accept(_sock, (sockaddr*)&clientAddr, (socklen_t *)&nAddrLen);
 		if (INVALID_SOCKET == cSock)
 		{
+			printf("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
 			CELLLog::Info("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
 		}
 		else
 		{
+			printf("接受到客户端cSocket=<%d>...\n", (int)cSock);
 			//将新客户端分配给客户数量最少的cellServer
 			std::shared_ptr<ClientSocket> tmp(new ClientSocket(cSock));
 			addClientToCellServer(tmp /*new ClientSocket(cSock)*/);
