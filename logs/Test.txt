@@ -1,0 +1,3 @@
+[INFO][2021-06-10 22:12:02]CELLLog::SetLogPath success, </root/LearnSocket/logs/Test.txt,w>
+[INFO][2021-06-10 22:12:27]<socket=4>select任务结束2
+[INFO][2021-06-10 22:12:27]s=-1 ClientSocket1.~ClientSocket

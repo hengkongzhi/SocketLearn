@@ -36,15 +36,15 @@ public:
 };
 int main()
 {
-    CELLSendMsgStream s;
+    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Test.txt", "w");
+    CELLSendMsgStream s(128);
     s.setNetCmd(CMD_LOGOUT);
     s.WriteInt8(5);
     s.WriteInt16(5);
     s.WriteInt32(5.0f);
     s.WriteFloat(5.0f);
     s.WriteDouble(5.0f);
-    const char* str = "helloworld";
-    s.WriteArray(str, strlen(str));
+    s.WriteString("helloworld");
     char a[] = "asdsa";
     s.WriteArray(a, strlen(a));
     int b[] = {1, 2, 3, 4, 5};
@@ -53,10 +53,10 @@ int main()
 
     MyClient client;
     client.Connect("192.168.0.115", 4567);
-    client.SendData(s.data(), s.length());
     while (client.isRun())
     {
         client.OnRun();
+        client.SendData(s.data(), s.length());
         CELLThread::Sleep(10);
     }
     return 0;

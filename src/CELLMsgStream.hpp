@@ -36,6 +36,18 @@ public:
     {
         Write<uint16_t>(cmd);
     }
+    bool WriteString(const char* str, int len)
+    {
+        return WriteArray(str, len);
+    }
+    bool WriteString(const char* str)
+    {
+        return WriteArray(str, strlen(str));
+    }
+    bool WriteString(std::string& str)
+    {
+        return WriteArray(str.c_str(), str.length());
+    }
     void finsh()
     {
         int pos = getWritePos();

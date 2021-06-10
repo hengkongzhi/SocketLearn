@@ -1,5 +1,7 @@
 #ifndef _CELL_STREAM_H
 #define _CELL_STREAM_H
+#include "CELLLog.hpp"
+
 class CELLStream
 {
 public:
@@ -71,6 +73,7 @@ public:
                 return len1;
             }
         }
+        CELLLog::Info("error, CELLStream::ReadArray failed.");
         return 0;
     }
     template<typename T>
@@ -116,6 +119,7 @@ public:
             }
             return true;
         }
+        CELLLog::Info("error, CELLStream::Read failed.");
         return false;
     }
 
@@ -129,6 +133,7 @@ public:
             push(nLen);
             return true;
         }
+        CELLLog::Info("error, CELLStream::Write failed.");
         return false;
     }
     template<typename T>
@@ -142,6 +147,7 @@ public:
             push(nLen);
             return true;
         }
+        CELLLog::Info("error, CELLStream::WriteArray failed.");
         return false;
     }
 

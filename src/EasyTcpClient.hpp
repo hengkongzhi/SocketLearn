@@ -194,18 +194,21 @@ public:
 		// }
 		// return 0;
 
-
-		int nLen = _pClient->RecvData();
-		//CELLLog::Info("nLen=%d\n", nLen);
-		if (nLen > 0)
+		if (isRun())
 		{
-			while (_pClient->hasMsg())
+			int nLen = _pClient->RecvData();
+			//CELLLog::Info("nLen=%d\n", nLen);
+			if (nLen > 0)
 			{
-				OnNetMsg(_pClient->frontMsg());
-				_pClient->popFrontMsg();
+				while (_pClient->hasMsg())
+				{
+					OnNetMsg(_pClient->frontMsg());
+					_pClient->popFrontMsg();
+				}
 			}
+			return nLen;
 		}
-		return nLen;
+		return 0;
 	}
 
 	//响应网络消息
@@ -256,11 +259,19 @@ public:
 		// 		Close();
 		// 	}
 		// }
-		return _pClient->SendData(header);
+		if (isRun())
+		{
+			return _pClient->SendData(header);
+		}
+		return 0;
 	}
 	int SendData(const char* pData, int len)
 	{
-		return _pClient->SendData(pData, len);
+		if (isRun())
+		{
+			return _pClient->SendData(pData, len);
+		}
+		return 0;
 	}
 private:
 	ClientSocket* _pClient;
