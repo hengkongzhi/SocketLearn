@@ -118,14 +118,15 @@ public:
 				continue;
 			}
 
+			checkTime();
 			//伯克利套接字 BSD socket
 			fd_set fdRead;//描述符（socket） 集合
 			fd_set fdWrite;
-			fd_set fdExp;
+			// fd_set fdExp;
 			//清理集合
 			FD_ZERO(&fdRead);
 			FD_ZERO(&fdWrite);
-			FD_ZERO(&fdExp);
+			// FD_ZERO(&fdExp);
 			//将描述符（socket）加入集合
 			
 			if (_clients_change)
@@ -146,25 +147,45 @@ public:
 			{
 				memcpy(&fdRead, &_fdRead_bak, sizeof(fd_set));
 			}
-			memcpy(&fdWrite, &_fdRead_bak, sizeof(fd_set));
-			memcpy(&fdExp, &_fdRead_bak, sizeof(fd_set));
+
+			bool bNeedWrite = false;
+			for (auto pClient : _clients)
+			{
+				if (pClient->NeedWrite())
+				{
+					bNeedWrite = true;
+					FD_SET(pClient->sockfd(), &fdWrite);
+				}
+			}
+			// memcpy(&fdWrite, &_fdRead_bak, sizeof(fd_set));
+			// memcpy(&fdExp, &_fdRead_bak, sizeof(fd_set));
 			
 
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			timeval t{0, 0};
-			int ret = select(_maxSock + 1, &fdRead, &fdWrite, &fdExp, &t);
+			timeval t{0, 1};
+			int ret = 0;
+			if (bNeedWrite)
+			{
+				ret = select(_maxSock + 1, &fdRead, &fdWrite, nullptr, &t);
+			}
+			else
+			{
+				ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, &t);
+			}
 			if (ret < 0)
 			{
 				CELLLog::Info("Cellserver.OnRun select error.\n");
 				pThread->Exit();
 				return false;
 			}
+			else if (ret == 0)
+			{
+				continue;
+			}
 
 			clientRead(fdRead);
 			clientWrite(fdWrite);
-			clientWrite(fdExp);
-			checkTime();
 		}
 	}
 	void clientWrite(fd_set& fdWrite)

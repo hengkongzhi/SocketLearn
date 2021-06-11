@@ -1,39 +1,192 @@
-[INFO][2021-06-10 22:11:55]CELLLog::SetLogPath success, </root/LearnSocket/logs/Server.txt,w>
-[INFO][2021-06-10 22:11:55]建立socket=<4>成功...
-[INFO][2021-06-10 22:11:55]绑定网络端口<4567>成功...
-[INFO][2021-06-10 22:11:55]socket=<4>监听网络端口成功...
-[INFO][2021-06-10 22:11:56]thread<1>,time<1.000579>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:11:57]thread<1>,time<1.000116>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:11:58]thread<1>,time<1.000118>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:11:59]thread<1>,time<1.000356>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:12:00]thread<1>,time<1.000267>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:12:01]thread<1>,time<1.000439>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:12:02]thread<1>,time<1.000319>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
-[INFO][2021-06-10 22:12:03]thread<1>,time<1.000468>,socket<4>,clients<1>,msgCount<68>,recvCount<69>
-[INFO][2021-06-10 22:12:04]thread<1>,time<1.000395>,socket<4>,clients<1>,msgCount<96>,recvCount<97>
-[INFO][2021-06-10 22:12:05]thread<1>,time<1.000411>,socket<4>,clients<1>,msgCount<96>,recvCount<97>
-[INFO][2021-06-10 22:12:06]thread<1>,time<1.000417>,socket<4>,clients<1>,msgCount<96>,recvCount<97>
-[INFO][2021-06-10 22:12:07]thread<1>,time<1.000352>,socket<4>,clients<1>,msgCount<96>,recvCount<97>
-[INFO][2021-06-10 22:12:08]thread<1>,time<1.000392>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:09]thread<1>,time<1.000418>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:10]thread<1>,time<1.000018>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:11]thread<1>,time<1.000465>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:12]thread<1>,time<1.000039>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:13]thread<1>,time<1.000441>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:14]thread<1>,time<1.000457>,socket<4>,clients<1>,msgCount<96>,recvCount<97>
-[INFO][2021-06-10 22:12:15]thread<1>,time<1.000477>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:16]thread<1>,time<1.000501>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:17]thread<1>,time<1.000425>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:18]thread<1>,time<1.000404>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:19]thread<1>,time<1.000383>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:20]thread<1>,time<1.000445>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:21]thread<1>,time<1.000399>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:22]thread<1>,time<1.000170>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:23]thread<1>,time<1.000192>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:24]thread<1>,time<1.000421>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:25]thread<1>,time<1.000437>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[INFO][2021-06-10 22:12:26]thread<1>,time<1.000432>,socket<4>,clients<1>,msgCount<95>,recvCount<96>
-[2021-06-10 22:12:27]退出程序
-[2021-06-10 22:12:27]已退出。
-[INFO][2021-06-10 22:12:27]s=1 ClientSocket1.~ClientSocket
-[INFO][2021-06-10 22:12:27]CellServer1.close.
+[INFO][2021-06-11 23:28:38]CELLLog::SetLogPath success, </root/LearnSocket/logs/Server.txt,w>
+[INFO][2021-06-11 23:28:38]建立socket=<4>成功...
+[INFO][2021-06-11 23:28:38]绑定网络端口<4567>成功...
+[INFO][2021-06-11 23:28:38]socket=<4>监听网络端口成功...
+[INFO][2021-06-11 23:28:39]thread<8>,time<1.000798>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
+[INFO][2021-06-11 23:28:40]thread<8>,time<1.000694>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
+[INFO][2021-06-11 23:28:41]thread<8>,time<1.000168>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
+[INFO][2021-06-11 23:28:42]thread<8>,time<1.000048>,socket<4>,clients<0>,msgCount<0>,recvCount<0>
+[INFO][2021-06-11 23:28:43]thread<8>,time<1.000698>,socket<4>,clients<120>,msgCount<119>,recvCount<120>
+[INFO][2021-06-11 23:28:44]thread<8>,time<1.000146>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:45]thread<8>,time<1.000036>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:46]thread<8>,time<1.000428>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:47]thread<8>,time<1.000107>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:48]thread<8>,time<1.000011>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:49]thread<8>,time<1.000182>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:50]thread<8>,time<1.000180>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:51]thread<8>,time<1.000310>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:52]thread<8>,time<1.000032>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:53]thread<8>,time<1.000467>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:54]thread<8>,time<1.000085>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:55]thread<8>,time<1.000194>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:56]thread<8>,time<1.000636>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:57]thread<8>,time<1.000019>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:58]thread<8>,time<1.000079>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:28:59]thread<8>,time<1.000285>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:00]thread<8>,time<1.000583>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:01]thread<8>,time<1.000094>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:02]thread<8>,time<1.000125>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:03]thread<8>,time<1.000403>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:04]thread<8>,time<1.000526>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:05]thread<8>,time<1.000384>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:06]thread<8>,time<1.000515>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:07]thread<8>,time<1.000018>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:08]thread<8>,time<1.000537>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:09]thread<8>,time<1.000272>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:10]thread<8>,time<1.000519>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:11]thread<8>,time<1.000055>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:12]thread<8>,time<1.000357>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:13]thread<8>,time<1.000081>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:14]thread<8>,time<1.000415>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:15]thread<8>,time<1.000147>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:16]thread<8>,time<1.000618>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:18]thread<8>,time<1.000551>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:19]thread<8>,time<1.000102>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:20]thread<8>,time<1.000112>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:21]thread<8>,time<1.000394>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:22]thread<8>,time<1.000393>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:23]thread<8>,time<1.000634>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:24]thread<8>,time<1.000061>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:25]thread<8>,time<1.000600>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:26]thread<8>,time<1.000264>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:27]thread<8>,time<1.000249>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:28]thread<8>,time<1.000089>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:29]thread<8>,time<1.000311>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:30]thread<8>,time<1.000046>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:31]thread<8>,time<1.000048>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:32]thread<8>,time<1.000404>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:33]thread<8>,time<1.000716>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:34]thread<8>,time<1.000016>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:35]thread<8>,time<1.000144>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:36]thread<8>,time<1.000468>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[INFO][2021-06-11 23:29:37]thread<8>,time<1.000075>,socket<4>,clients<120>,msgCount<239>,recvCount<240>
+[2021-06-11 23:29:37]退出程序
+[2021-06-11 23:29:37]已退出。
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket1.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket9.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket17.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket25.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket33.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket41.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket49.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket57.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket65.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket73.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket81.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket89.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket97.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket105.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=1 ClientSocket113.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer1.close.
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket2.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket10.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket18.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket26.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket34.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket42.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket50.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket58.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket66.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket74.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket82.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket90.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket98.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket106.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=2 ClientSocket114.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer2.close.
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket3.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket11.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket19.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket27.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket35.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket43.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket51.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket59.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket67.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket75.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket83.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket91.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket99.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket107.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=3 ClientSocket115.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer3.close.
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket4.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket12.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket20.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket28.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket36.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket44.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket52.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket60.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket68.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket76.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket84.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket92.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket100.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket108.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=4 ClientSocket116.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer4.close.
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket5.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket13.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket21.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket29.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket37.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket45.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket53.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket61.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket69.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket77.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket85.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket93.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket101.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket109.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=5 ClientSocket117.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer5.close.
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket6.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket14.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket22.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket30.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket38.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket46.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket54.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket62.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket70.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket78.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket86.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket94.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket102.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket110.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=6 ClientSocket118.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer6.close.
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket7.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket15.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket23.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket31.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket39.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket47.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket55.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket63.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket71.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket79.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket87.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket95.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket103.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket111.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=7 ClientSocket119.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer7.close.
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket8.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket16.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket24.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket32.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket40.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket48.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket56.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket64.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket72.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket80.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket88.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket96.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket104.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket112.~ClientSocket
+[INFO][2021-06-11 23:29:37]s=8 ClientSocket120.~ClientSocket
+[INFO][2021-06-11 23:29:37]CellServer8.close.

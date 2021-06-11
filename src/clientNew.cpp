@@ -106,6 +106,8 @@ void sendThread(int id)
             // std::chrono::microseconds t(1);
             // std::this_thread::sleep_for(t);
         }
+        std::chrono::milliseconds t(500);
+        std::this_thread::sleep_for(t);
        
     }
     for (int i = begin; i < end; i++)
