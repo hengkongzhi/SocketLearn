@@ -79,6 +79,7 @@ public:
             int nLen = (int)recv(sockfd, szRecv, _nSize - _nLast, 0);
             if (nLen <= 0)
             {
+                CELLLOG_Info("read4socket, nLen=%d\n", nLen);
                 return -1;
             }
             _nLast += nLen;

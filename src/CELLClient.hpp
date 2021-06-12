@@ -29,7 +29,7 @@ public:
 	}
 	~ClientSocket()
 	{
-		CELLLog::Info("s=%d ClientSocket%d.~ClientSocket\n", serverId, id);
+		CELLLOG_Debug("s=%d ClientSocket%d.~ClientSocket\n", serverId, id);
 		close(_sockfd);
 	}
 
