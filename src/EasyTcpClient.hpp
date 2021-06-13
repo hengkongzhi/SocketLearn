@@ -29,17 +29,17 @@ public:
 	{
 		if (_pClient)
 		{
-			CELLLog::Info("<socket=%d>关闭旧连接...\n", _pClient->sockfd());
+			CELLLOG_Info("<socket=%d>关闭旧连接...\n", _pClient->sockfd());
 			Close();
 		}
 		SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == sock)
 		{
-			CELLLog::Info("错误，建立Socket失败...\n");
+			CELLLOG_Info("错误，建立Socket失败...\n");
 		}
 		else {
 			_pClient = new ClientSocket(sock);
-			//CELLLog::Info("建立Socket=<%d>成功...\n", _sock);
+			//CELLLOG_Info("建立Socket=<%d>成功...\n", _sock);
 		}
 	}
 
@@ -57,15 +57,15 @@ public:
 
 		_sin.sin_addr.s_addr = inet_addr(ip);
 
-		//CELLLog::Info("<socket=%d>正在连接服务器<%s:%d>...\n", _sock, ip, port);
+		//CELLLOG_Info("<socket=%d>正在连接服务器<%s:%d>...\n", _sock, ip, port);
 		int ret = connect(_pClient->sockfd(), (sockaddr*)&_sin, sizeof(sockaddr_in));
 		if (SOCKET_ERROR == ret)
 		{
-			CELLLog::Info("<socket=%d>错误，连接服务器<%s:%d>失败...\n", _pClient->sockfd(), ip, port);
+			CELLLOG_Info("<socket=%d>错误，连接服务器<%s:%d>失败...\n", _pClient->sockfd(), ip, port);
 		}
 		else {
 			_isConnect = true;
-			//CELLLog::Info("<socket=%d>连接服务器<%s:%d>成功...\n",_sock, ip, port);
+			//CELLLOG_Info("<socket=%d>连接服务器<%s:%d>成功...\n",_sock, ip, port);
 		}
 		return ret;
 	}
@@ -109,7 +109,7 @@ public:
 			int ret = select(_sock + 1, &fdRead, pfdW, 0, &t); 
 			if (ret < 0)
 			{
-				CELLLog::Info("<socket=%d>select任务结束1\n", _sock);
+				CELLLOG_Info("<socket=%d>select任务结束1\n", _sock);
 				Close();
 				return false;
 			}
@@ -118,7 +118,7 @@ public:
 
 				if (-1 == RecvData(_sock))
 				{
-					CELLLog::Info("<socket=%d>select任务结束2\n", _sock);
+					CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
 					Close();
 					return false;
 				}
@@ -129,7 +129,7 @@ public:
 				{
 					if (-1 == _pClient->SendDataReal())
 					{
-						CELLLog::Info("<socket=%d>select任务结束2\n", _sock);
+						CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
 						Close();
 						return false;
 					}
@@ -160,10 +160,10 @@ public:
 		// // 5 接收数据
 		// char* szRecv = _szMsgBuf + _lastPos;
 		// int nLen = (int)recv(cSock, szRecv, RECV_BUFF_SZIE - _lastPos, 0);
-		// //CELLLog::Info("nLen=%d\n", nLen);
+		// //CELLLOG_Info("nLen=%d\n", nLen);
 		// if (nLen < 0)
 		// {
-		// 	CELLLog::Info("<socket=%d>与服务器断开连接，任务结束。\n", cSock);
+		// 	CELLLOG_Info("<socket=%d>与服务器断开连接，任务结束。\n", cSock);
 		// 	return -1;
 		// }
 		// //将收取到的数据拷贝到消息缓冲区
@@ -197,7 +197,7 @@ public:
 		if (isRun())
 		{
 			int nLen = _pClient->RecvData();
-			//CELLLog::Info("nLen=%d\n", nLen);
+			//CELLLOG_Info("nLen=%d\n", nLen);
 			if (nLen > 0)
 			{
 				while (_pClient->hasMsg())
@@ -220,29 +220,29 @@ public:
 			{
 			
 				LoginResult* login = (LoginResult*)header;
-				//CELLLog::Info("<socket=%d>收到服务端消息：CMD_LOGIN_RESULT,数据长度：%d\n", _sock, login->dataLength);
+				//CELLLOG_Info("<socket=%d>收到服务端消息：CMD_LOGIN_RESULT,数据长度：%d\n", _sock, login->dataLength);
 			}
 			break;
 			case CMD_LOGOUT_RESULT:
 			{
 				LogoutResult* logout = (LogoutResult*)header;
-				//CELLLog::Info("<socket=%d>收到服务端消息：CMD_LOGOUT_RESULT,数据长度：%d\n", _sock, logout->dataLength);
+				//CELLLOG_Info("<socket=%d>收到服务端消息：CMD_LOGOUT_RESULT,数据长度：%d\n", _sock, logout->dataLength);
 			}
 			break;
 			case CMD_NEW_USER_JOIN:
 			{
 				NewUserJoin* userJoin = (NewUserJoin*)header;
-				//CELLLog::Info("<socket=%d>收到服务端消息：CMD_NEW_USER_JOIN,数据长度：%d\n", _sock, userJoin->dataLength);
+				//CELLLOG_Info("<socket=%d>收到服务端消息：CMD_NEW_USER_JOIN,数据长度：%d\n", _sock, userJoin->dataLength);
 			}
 			break;
 			case CMD_ERROR:
 			{
-				CELLLog::Info("<socket=%d>收到服务端消息：CMD_ERROR,数据长度：%d\n", _pClient->sockfd(), header->dataLength);
+				CELLLOG_Info("<socket=%d>收到服务端消息：CMD_ERROR,数据长度：%d\n", _pClient->sockfd(), header->dataLength);
 			}
 			break;
 			default:
 			{
-				CELLLog::Info("<socket=%d>收到未定义消息,数据长度：%d\n", _pClient->sockfd(), header->dataLength);
+				CELLLOG_Info("<socket=%d>收到未定义消息,数据长度：%d\n", _pClient->sockfd(), header->dataLength);
 			}
 		}
 	}

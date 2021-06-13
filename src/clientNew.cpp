@@ -20,7 +20,7 @@ void cmdThread()
         {
 //         client->Close();
          g_bRun = false;
-         CELLLog::Info("退出cmdThread线程\n");
+         CELLLOG_Info("退出cmdThread线程\n");
          break;
         }
 //        else if (0 == strcmp(cmdBuf, "login"))
@@ -39,7 +39,7 @@ void cmdThread()
 //        }
         else
         {
-         CELLLog::Info("不支持的命令。\n");
+         CELLLOG_Info("不支持的命令。\n");
         }
     }
 };
@@ -51,7 +51,7 @@ EasyTcpClient* client[cCount];
 
 void sendThread(int id)
 {
-    CELLLog::Info("Thread<%d>,start.\n", id);
+    CELLLOG_Info("Thread<%d>,start.\n", id);
     int c = cCount / tCount;
     int begin = (id - 1) * c;
     int end = id * c;
@@ -68,7 +68,7 @@ void sendThread(int id)
         client[i]->Connect("192.168.0.115", 4567);
 
     }
-    CELLLog::Info("Thread<%d>, Connect<begin=%d, end=%d>\n", id, begin, end);
+    CELLLOG_Info("Thread<%d>, Connect<begin=%d, end=%d>\n", id, begin, end);
     
     readyCount++;
     while (readyCount < tCount)
@@ -99,7 +99,7 @@ void sendThread(int id)
             }
             // else
             // {
-            //     CELLLog::Info("fuck client\n");
+            //     CELLLOG_Info("fuck client\n");
             // }
 
             client[i]->OnRun();
@@ -115,12 +115,12 @@ void sendThread(int id)
         client[i]->Close();
         delete client[i];
     }
-    CELLLog::Info("Thread<%d>,exit.\n", id);
+    CELLLOG_Info("Thread<%d>,exit.\n", id);
 };
 
 int main()
 {
-    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Client.txt", "w");
+    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Client", "w");
     std::thread t1(cmdThread);
     t1.detach();
     for (int n = 0; n < tCount; n++)
@@ -134,7 +134,7 @@ int main()
         auto t = tTime.getElapsedSecond();
         if (t >= 1.0)
         {
-            CELLLog::Info("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)(sendCount / t));
+            CELLLOG_Info("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)(sendCount / t));
             tTime.update();
             sendCount = 0;
         }

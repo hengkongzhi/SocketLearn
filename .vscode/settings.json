@@ -43,6 +43,12 @@
         "typeinfo": "cpp",
         "list": "cpp",
         "condition_variable": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cstddef": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "random": "cpp",
+        "string": "cpp"
     }
 }

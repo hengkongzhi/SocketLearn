@@ -24,7 +24,7 @@ public:
                 r.ReadArray(pwd, 32);
                 int data[10] = {0};
                 r.ReadArray(data, 10);
-				//CELLLog::Info("<socket=%d>收到服务端消息：CMD_LOGIN_RESULT,数据长度：%d\n", _sock, login->dataLength);
+				//CELLLOG_Info("<socket=%d>收到服务端消息：CMD_LOGIN_RESULT,数据长度：%d\n", _sock, login->dataLength);
 			}
 			break;
 			default:
@@ -36,7 +36,7 @@ public:
 };
 int main()
 {
-    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Test.txt", "w");
+    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Test", "w");
     CELLSendMsgStream s(128);
     s.setNetCmd(CMD_LOGOUT);
     s.WriteInt8(5);

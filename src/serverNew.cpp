@@ -15,19 +15,19 @@
 //         if (0 == strcmp(cmdBuf, "exit"))
 //         {
 //          g_bRun1 = false;
-//          CELLLog::Info("退出cmdThread线程\n");
+//          CELLLOG_Info("退出cmdThread线程\n");
 //          break;
 //         }
 //         else
 //         {
-//          CELLLog::Info("不支持的命令。\n");
+//          CELLLOG_Info("不支持的命令。\n");
 //         }
 //     }
 // }
 
 int main()
 {
-    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Server.txt", "w");
+    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Server", "w");
     //SIGPIPE ignore
     struct sigaction act;
     act.sa_handler = SIG_IGN;
@@ -47,14 +47,14 @@ int main()
         if (0 == strcmp(cmdBuf, "exit"))
         {
             server.Close();
-            CELLLog::Info("退出程序\n");
+            CELLLOG_Info("退出程序\n");
             break;
         }
         else
         {
-            CELLLog::Info("不支持的命令。\n");
+            CELLLOG_Info("不支持的命令。\n");
         }   
     }
-    CELLLog::Info("已退出。\n");
+    CELLLOG_Info("已退出。\n");
     return 0;
 }

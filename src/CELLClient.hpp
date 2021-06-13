@@ -93,7 +93,7 @@ public:
 		// }
 		// else
 		// {
-		// 	CELLLog::Info("server send head is null\n");
+		// 	CELLLOG_Info("server send head is null\n");
 		// }
 		// return ret;
 		return SendData((const char*)header.get(), header->dataLength);
@@ -119,7 +119,7 @@ public:
 		_dtHeart += dt;
 		if (_dtHeart >= CLIENT_HEART_DEAD_TIME)
 		{
-			// CELLLog::Info("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
+			// CELLLOG_Info("checkHeart dead:s=%d,time=%d\n", _sockfd, _dtHeart);
 			return true;
 		}
 		return false;
@@ -129,7 +129,7 @@ public:
 		_dtSend += dt;
 		if (_dtSend >= CLIENT_SEND_BUFF_TIME)
 		{
-			// CELLLog::Info("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
+			// CELLLOG_Info("checkSend:s=%d,time=%d\n", _sockfd, _dtSend);
 			SendDataReal();
 			resetDTSend();
 			
