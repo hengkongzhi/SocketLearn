@@ -15,12 +15,12 @@
 //         if (0 == strcmp(cmdBuf, "exit"))
 //         {
 //          g_bRun1 = false;
-//          CELLLOG_Info("退出cmdThread线程\n");
+//          CELLLOG_Info("退出cmdThread线程");
 //          break;
 //         }
 //         else
 //         {
-//          CELLLOG_Info("不支持的命令。\n");
+//          CELLLOG_Info("不支持的命令。");
 //         }
 //     }
 // }
@@ -70,9 +70,9 @@ int main(int argc, char* args[])
     }
     EasyTcpServer server;
     server.InitSocket();
-    server.Bind(strIP, 4567);
+    server.Bind(strIP, nPort);
     server.Listen(1000);
-    server.Start(8);
+    server.Start(nThread);
     
     while (true)
     {
@@ -81,14 +81,14 @@ int main(int argc, char* args[])
         if (0 == strcmp(cmdBuf, "exit"))
         {
             server.Close();
-            CELLLOG_Info("退出程序\n");
+            CELLLOG_Info("退出程序");
             break;
         }
         else
         {
-            CELLLOG_Info("不支持的命令。\n");
+            CELLLOG_Info("不支持的命令。");
         }   
     }
-    CELLLOG_Info("已退出。\n");
+    CELLLOG_Info("已退出。");
     return 0;
 }

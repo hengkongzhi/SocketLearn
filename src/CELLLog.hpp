@@ -29,7 +29,7 @@ private:
         _taskServer.Close();
         if (_logFile)
         {
-            Info("CELLLog fclose(_logFile)\n");
+            Info("CELLLog fclose(_logFile)");
             fclose(_logFile);
             _logFile = nullptr;
         }
@@ -91,15 +91,19 @@ public:
             fprintf(pLog->_logFile, "[%04d-%02d-%02d %02d:%02d:%02d]", now->tm_year + 1900, now->tm_mon + 1, 
                     now->tm_mday, now->tm_hour + TIME_AREA, now->tm_min, now->tm_sec);
             fprintf(pLog->_logFile, pFormat, args...);
+            fprintf(pLog->_logFile, "\n");
             fflush(pLog->_logFile);
         }
+        printf("%s", type);
+        printf(pFormat, args...);
+        printf("\n");
         });
     }
     void SetLogPath(const char* logName, const char* mode)
     {
         if (_logFile)
         {
-            Info("CELLLog::SetLogPath _logFile != nullptr\n");
+            Info("CELLLog::SetLogPath _logFile != nullptr");
             fclose(_logFile);
             _logFile = nullptr;
         }
@@ -113,11 +117,11 @@ public:
         _logFile = fopen(logPath, mode);
         if (_logFile)
         {
-            Info("CELLLog::SetLogPath success, <%s,%s>\n", logPath, mode);
+            Info("CELLLog::SetLogPath success, <%s,%s>", logPath, mode);
         }
         else
         {
-            Info("CELLLog::SetLogPath failed, <%s,%s>\n", logPath, mode);
+            Info("CELLLog::SetLogPath failed, <%s,%s>", logPath, mode);
         }
     }
 private:
