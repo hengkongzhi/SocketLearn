@@ -46,6 +46,39 @@ public:
         }
 
     }
+    const char* getStr(const char* argName, const char* def)
+    {
+        auto itr = _kv.find(argName);
+        if (itr == _kv.end())
+        {
+            CELLLOG_Error("CELLConfig::getStr no find argName=%s", argName);
+        }
+        else
+        {
+            def = itr->second.c_str();
+        }
+        CELLLOG_Info("CELLConfig::getStr %s=%s", argName, def);
+        return def;
+    }
+    int getInt(const char* argName, int def)
+    {
+        auto itr = _kv.find(argName);
+        if (itr == _kv.end())
+        {
+            CELLLOG_Error("CELLConfig::getInt no find argName=%s", argName);
+        }
+        else
+        {
+            def = atoi(itr->second.c_str());
+        }
+        CELLLOG_Info("CELLConfig::getInt %s=%d", argName, def);
+        return def;
+    }
+    bool hasKey(const char* key)
+    {
+        auto itr = _kv.find(key);
+        return itr != _kv.end();
+    }
 private:
     //当前程序的路径
     std::string _exePath;

@@ -4,6 +4,7 @@
 #include "Alloctor.h"
 #include "EasyTcpServer.hpp"
 #include <signal.h>
+#include "CELLConfig.hpp"
 
 // bool g_bRun1 = true;
 // void cmdThread()
@@ -53,10 +54,19 @@ int argToInt(int argc, char* args[], int index, int def, const char* argName)
 int main(int argc, char* args[])
 {
     CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Server", "w");
-    const char* strIP = argToStr(argc, args, 1, "any", "strIP");
-    uint16_t nPort = argToInt(argc, args, 2, 4567, "nPort");
-    int nThread = argToInt(argc, args, 3, 1, "nThread");
-    int nClient = argToInt(argc, args, 4, 1, "nClient");
+    CELLConfig::Instance().Init(argc, args);
+    const char* strIP = CELLConfig::Instance().getStr("strIP", "any");
+    uint16_t nPort = CELLConfig::Instance().getInt("nPort", 4567);
+    int nThread = CELLConfig::Instance().getInt("nThread", 1);
+    int nClient = CELLConfig::Instance().getInt("nClient", 1);
+    if (CELLConfig::Instance().hasKey("-p"))
+    {
+        CELLLOG_Info("hasKey -p");
+    }
+    // const char* strIP = argToStr(argc, args, 1, "any", "strIP");
+    // uint16_t nPort = argToInt(argc, args, 2, 4567, "nPort");
+    // int nThread = argToInt(argc, args, 3, 1, "nThread");
+    // int nClient = argToInt(argc, args, 4, 1, "nClient");
 
     if (strcmp(strIP, "any") == 0)
     {
