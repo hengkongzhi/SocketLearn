@@ -14,4 +14,4 @@ cmd="$cmd nThread=1"
 cmd="$cmd nClient=2"
 cmd="$cmd -p"
 ./serverNew ${cmd}
-read -p "..press any key to exit.." var
+read -p "Press any key to exit.." var
