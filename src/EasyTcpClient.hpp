@@ -25,7 +25,7 @@ public:
 		Close();
 	}
 	//初始化socket
-	void InitSocket()
+	SOCKET InitSocket()
 	{
 		if (_pClient)
 		{
@@ -41,6 +41,7 @@ public:
 			_pClient = new ClientSocket(sock);
 			//CELLLOG_Info("建立Socket=<%d>成功...\n", _sock);
 		}
+		return sock;
 	}
 
 	//连接服务器

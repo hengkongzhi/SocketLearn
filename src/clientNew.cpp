@@ -20,7 +20,7 @@ void cmdThread()
         {
 //         client->Close();
          g_bRun = false;
-         CELLLOG_Info("退出cmdThread线程\n");
+         CELLLOG_Info("退出cmdThread线程");
          break;
         }
 //        else if (0 == strcmp(cmdBuf, "login"))
@@ -39,7 +39,7 @@ void cmdThread()
 //        }
         else
         {
-         CELLLOG_Info("不支持的命令。\n");
+         CELLLOG_Info("不支持的命令。");
         }
     }
 };
@@ -51,7 +51,7 @@ EasyTcpClient* client[cCount];
 
 void sendThread(int id)
 {
-    CELLLOG_Info("Thread<%d>,start.\n", id);
+    CELLLOG_Info("Thread<%d>,start.", id);
     int c = cCount / tCount;
     int begin = (id - 1) * c;
     int end = id * c;
@@ -68,7 +68,7 @@ void sendThread(int id)
         client[i]->Connect("192.168.0.115", 4567);
 
     }
-    CELLLOG_Info("Thread<%d>, Connect<begin=%d, end=%d>\n", id, begin, end);
+    CELLLOG_Info("Thread<%d>, Connect<begin=%d, end=%d>", id, begin, end);
     
     readyCount++;
     while (readyCount < tCount)
@@ -99,7 +99,7 @@ void sendThread(int id)
             }
             // else
             // {
-            //     CELLLOG_Info("fuck client\n");
+            //     CELLLOG_Info("fuck client");
             // }
 
             client[i]->OnRun();
@@ -115,7 +115,7 @@ void sendThread(int id)
         client[i]->Close();
         delete client[i];
     }
-    CELLLOG_Info("Thread<%d>,exit.\n", id);
+    CELLLOG_Info("Thread<%d>,exit.", id);
 };
 
 int main()
@@ -134,7 +134,7 @@ int main()
         auto t = tTime.getElapsedSecond();
         if (t >= 1.0)
         {
-            CELLLOG_Info("thread<%d>,clients<%d>,time<%lf>,send<%d>\n", tCount, cCount, t, (int)(sendCount / t));
+            CELLLOG_Info("thread<%d>,clients<%d>,time<%lf>,send<%d>", tCount, cCount, t, (int)sendCount);
             tTime.update();
             sendCount = 0;
         }
