@@ -8,6 +8,7 @@
 #include <chrono>
 #include <atomic>
 #include "CELLTimestamp.hpp"
+#include "CELLConfig.hpp"
 using namespace std;
 bool g_bRun = true;
 void cmdThread()
@@ -118,9 +119,20 @@ void sendThread(int id)
     CELLLOG_Info("Thread<%d>,exit.", id);
 };
 
-int main()
+int main(int argc, char* args[])
 {
-    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Client", "w");
+    CELLLog::Instance().SetLogPath("/root/LearnSocket/logs/Client", "w", false);
+    CELLConfig::Instance().Init(argc, args);
+    const char* strIP = CELLConfig::Instance().getStr("strIP", "127.0.0.1");
+    uint16_t nPort = CELLConfig::Instance().getInt("nPort", 4567);
+    int nThread = CELLConfig::Instance().getInt("nThread", 1);
+    int nClient = CELLConfig::Instance().getInt("nClient", 10000);
+    int nMsg = CELLConfig::Instance().getInt("nMsg", 10);
+    int nSendSleep = CELLConfig::Instance().getInt("nSendSleep", 100);
+    int nSendBuffSize = CELLConfig::Instance().getInt("nSendBuffSize", SEND_BUFF_SZIE);
+    int nRecvBuffSize = CELLConfig::Instance().getInt("nRecvBuffSize", RECV_BUFF_SZIE);
+
+
     std::thread t1(cmdThread);
     t1.detach();
     for (int n = 0; n < tCount; n++)

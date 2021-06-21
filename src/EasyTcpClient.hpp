@@ -84,7 +84,7 @@ public:
 	}
 
 	//处理网络消息
-	bool OnRun()
+	bool OnRun(int microseconds = 1)
 	{
 
 		if (isRun())
@@ -106,7 +106,7 @@ public:
 			{
 				pfdW = nullptr;
 			}
-			timeval t = { 0,0 };
+			timeval t = {0, microseconds};
 			int ret = select(_sock + 1, &fdRead, pfdW, 0, &t); 
 			if (ret < 0)
 			{
