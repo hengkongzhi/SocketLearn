@@ -9,6 +9,7 @@
 #include <atomic>
 #include "CELLTimestamp.hpp"
 #include "CELLConfig.hpp"
+#include "CELLThread.hpp"
 using namespace std;
 bool g_bRun = true;
 void cmdThread()
@@ -24,20 +25,6 @@ void cmdThread()
          CELLLOG_Info("退出cmdThread线程");
          break;
         }
-//        else if (0 == strcmp(cmdBuf, "login"))
-//        {
-//         Login login;
-//         strcpy(login.userName,"yc");
-//         strcpy(login.PassWord,"123");
-//         client->SendData(&login);
-//        }
-//        else if (0 == strcmp(cmdBuf, "logout"))
-//        {
-//         Logout logout;
-//         strcpy(logout.userName,"yc");
-//         client->SendData(&logout);
-//        
-//        }
         else
         {
          CELLLOG_Info("不支持的命令。");
@@ -131,6 +118,24 @@ int main(int argc, char* args[])
     int nSendSleep = CELLConfig::Instance().getInt("nSendSleep", 100);
     int nSendBuffSize = CELLConfig::Instance().getInt("nSendBuffSize", SEND_BUFF_SZIE);
     int nRecvBuffSize = CELLConfig::Instance().getInt("nRecvBuffSize", RECV_BUFF_SZIE);
+
+    CELLThread tCmd;
+    tCmd.Start(nullptr, [](CELLThread* pThread){
+        while (pThread->isRun())
+        {
+            char cmdBuf[256] = {};
+            scanf("%s", cmdBuf);
+            if (0 == strcmp(cmdBuf, "exit"))
+            {
+                CELLLOG_Info("退出cmdThread线程");
+                pThread->Exit();
+            }
+            else
+            {
+                CELLLOG_Info("不支持的命令。");
+            }
+        }
+    });
 
 
     std::thread t1(cmdThread);
