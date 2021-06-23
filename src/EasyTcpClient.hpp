@@ -25,7 +25,7 @@ public:
 		Close();
 	}
 	//初始化socket
-	SOCKET InitSocket()
+	SOCKET InitSocket(int nSendBuffSize, int nRecvBuffSize)
 	{
 		if (_pClient)
 		{
