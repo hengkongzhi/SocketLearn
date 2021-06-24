@@ -25,7 +25,7 @@ public:
 		Close();
 	}
 	//初始化socket
-	SOCKET InitSocket(int nSendBuffSize, int nRecvBuffSize)
+	SOCKET InitSocket(int nSendBuffSize = SEND_BUFF_SZIE, int nRecvBuffSize = RECV_BUFF_SZIE)
 	{
 		if (_pClient)
 		{
@@ -49,7 +49,10 @@ public:
 	{
 		if (!_pClient)
 		{
-			InitSocket();
+			if (INVALID_SOCKET == InitSocket())
+			{
+				return SOCKET_ERROR;
+			}
 		}
 		// 2 连接服务器 connect
 		sockaddr_in _sin = {};

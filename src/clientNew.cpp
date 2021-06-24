@@ -28,11 +28,50 @@ atomic_int sendCount(0);
 atomic_int readyCount(0);
 atomic_int nConnect(0);
 // EasyTcpClient* client[nClient];
+class MyClient : public EasyTcpClient
+{
+public:
+    MyClient()
+    {
+        _bCheckMsgID = CELLConfig::Instance().hasKey("-checkMsgID");
+    }
+    int SendTest(Login* login)
+    {
+        int ret = 0;
+        if (_nSendCount > 0)
+        {
+            login->msgID = _nSendMsgID;
+            ret = SendData(login);
+            if (SOCKET_ERROR != ret)
+            {
+                ++_nSendMsgID;
+                --_nSendCount;
+            }
+        }
+        return ret;
+    }
+    bool checkSend(time_t dt)
+    {
+        _tRestTime += dt;
+        if (_tRestTime >= nSendSleep)
+        {
+            _tRestTime -= nSendSleep;
+            _nSendCount = nMsg;
+        }
+        return _nSendCount > 0;
+    }
+private:
+    bool _bCheckMsgID;
+    int _nSendCount;
+    int _nSendMsgID;
+    time_t _tRestTime;
 
+
+};
 void workThread(CELLThread* pThread, int id)
 {
     CELLLOG_Info("Thread<%d>,start.", id);
-    vector<EasyTcpClient*> client(nClient);
+    vector<MyClient*> client(nClient);
     int begin = 0;
     int end = nClient;
     for (int i = begin; i < end; i++)
@@ -41,7 +80,7 @@ void workThread(CELLThread* pThread, int id)
         {
             return;
         }
-        client[i] = new EasyTcpClient();
+        client[i] = new MyClient();
         CELLThread::Sleep(0);
     }
     for (int i = begin; i < end; i++)
@@ -72,20 +111,47 @@ void workThread(CELLThread* pThread, int id)
     shared_ptr<Login> login = make_shared<Login>();
     strcpy(login->userName, "yc");
     strcpy(login->PassWord, "yc123");
+
+    auto t2 = CELLTime::getTimeInMilliSec();
+    auto t0 = t2;
+    auto dt = t0;
+    CELLTimestamp tTime;
     while (pThread->isRun())
     {
+        t0 = CELLTime::getTimeInMilliSec();
+        dt = t0 - t2;
+        t2 = t0;
+
+        int count = 0;
+        for (int m = 0; m < nMsg; m++)
+        {
+            for (int i = begin; i < end; i++)
+            {
+                if (client[i]->isRun())
+                {
+                    if (client[i]->SendTest(login.get()) > 0)
+                    {
+                        sendCount++;
+                    }
+                }
+                // std::chrono::microseconds t(1);
+                // std::this_thread::sleep_for(t);
+            }
+        }
         for (int i = begin; i < end; i++)
         {
-            if (SOCKET_ERROR != client[i]->SendData(login))
+            if (client[i]->isRun())
             {
-                sendCount++;
+                if (!client[i]->OnRun(0))
+                {
+                    nConnect--;
+                    continue;
+                }
+                client[i]->checkSend(dt);
             }
-            client[i]->OnRun();
-            // std::chrono::microseconds t(1);
-            // std::this_thread::sleep_for(t);
         }
-        std::chrono::milliseconds t(500);
-        std::this_thread::sleep_for(t);
+
+        CELLThread::Sleep(1);
        
     }
     for (int i = begin; i < end; i++)
