@@ -21,6 +21,7 @@ int nMsg = 1;
 int nSendSleep = 1;
 int nSendBuffSize = SEND_BUFF_SZIE;
 int nRecvBuffSize = RECV_BUFF_SZIE;
+int nWorkSleep = 1;
 
 // const int cCount = 10000;
 // const int tCount = 8;
@@ -34,6 +35,26 @@ public:
     MyClient()
     {
         _bCheckMsgID = CELLConfig::Instance().hasKey("-checkMsgID");
+    }
+    virtual void OnNetMsg(DataHeader* header)
+	{
+		switch (header->cmd)
+		{
+			case CMD_LOGIN_RESULT:
+			{
+			
+				LoginResult* login = (LoginResult*)header;
+                if (_bCheckMsgID)
+                {
+                    if (login->msgID != _nRecvMsgID)
+                    {
+                        CELLLOG_Error("OnNetMsg socked<%d> msgID<%d> _nRecvMsgID<%d> %d\n", _pClient->sockfd(), login->msgID);
+                    }
+                    _nRecvMsgID++;
+                }
+			}
+			break;
+        }
     }
     int SendTest(Login* login)
     {
@@ -61,10 +82,11 @@ public:
         return _nSendCount > 0;
     }
 private:
-    bool _bCheckMsgID;
-    int _nSendCount;
-    int _nSendMsgID;
-    time_t _tRestTime;
+    int _nRecvMsgID = 1;
+    bool _bCheckMsgID = false;
+    int _nSendCount = 0;
+    int _nSendMsgID = 1;
+    time_t _tRestTime = 0;
 
 
 };
@@ -115,14 +137,13 @@ void workThread(CELLThread* pThread, int id)
     auto t2 = CELLTime::getTimeInMilliSec();
     auto t0 = t2;
     auto dt = t0;
-    CELLTimestamp tTime;
+
     while (pThread->isRun())
     {
         t0 = CELLTime::getTimeInMilliSec();
         dt = t0 - t2;
         t2 = t0;
 
-        int count = 0;
         for (int m = 0; m < nMsg; m++)
         {
             for (int i = begin; i < end; i++)
@@ -134,8 +155,6 @@ void workThread(CELLThread* pThread, int id)
                         sendCount++;
                     }
                 }
-                // std::chrono::microseconds t(1);
-                // std::this_thread::sleep_for(t);
             }
         }
         for (int i = begin; i < end; i++)
@@ -150,9 +169,7 @@ void workThread(CELLThread* pThread, int id)
                 client[i]->checkSend(dt);
             }
         }
-
-        CELLThread::Sleep(1);
-       
+        CELLThread::Sleep(nWorkSleep);
     }
     for (int i = begin; i < end; i++)
     {
@@ -160,6 +177,7 @@ void workThread(CELLThread* pThread, int id)
         delete client[i];
     }
     CELLLOG_Info("Thread<%d>,exit.", id);
+    readyCount--;
 };
 
 int main(int argc, char* args[])

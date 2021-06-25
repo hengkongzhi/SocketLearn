@@ -277,7 +277,7 @@ public:
 		}
 		return 0;
 	}
-private:
+protected:
 	ClientSocket* _pClient;
 	bool _isConnect;
 };
