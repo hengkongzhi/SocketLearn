@@ -56,7 +56,7 @@ public:
 			break;
         }
     }
-    int SendTest(Login* login)
+    int SendTest(shared_ptr<Login> login)
     {
         int ret = 0;
         if (_nSendCount > 0)
@@ -150,7 +150,7 @@ void workThread(CELLThread* pThread, int id)
             {
                 if (client[i]->isRun())
                 {
-                    if (client[i]->SendTest(login.get()) > 0)
+                    if (client[i]->SendTest(login) > 0)
                     {
                         sendCount++;
                     }

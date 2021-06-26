@@ -5,26 +5,106 @@
 #include "EasyTcpServer.hpp"
 #include <signal.h>
 #include "CELLConfig.hpp"
+class MyServer : public EasyTcpServer
+{
+public:
+    MyServer()
+    {
+        _bSendBack = CELLConfig::Instance().hasKey("-sendback");
+        _bSendFull = CELLConfig::Instance().hasKey("-sendfull");
+        _bCheckMsgID = CELLConfig::Instance().hasKey("-checkMsgID");
+    }
+    virtual void OnNetMsg(CellServer* pCellServer, ClientSocketPtr& pClient, DataHeader* header)
+	{
+        switch (header->cmd)
+		{
+			case CMD_LOGIN:
+			{
+				pClient->resetDTHeart();
+				Login* login = (Login*)header;
 
-// bool g_bRun1 = true;
-// void cmdThread()
-// {
-//     while (true)
-//     {
-//         char cmdBuf[256] = {};
-//         scanf("%s", cmdBuf);
-//         if (0 == strcmp(cmdBuf, "exit"))
-//         {
-//          g_bRun1 = false;
-//          CELLLOG_Info("退出cmdThread线程");
-//          break;
-//         }
-//         else
-//         {
-//          CELLLOG_Info("不支持的命令。");
-//         }
-//     }
-// }
+                if (_bCheckMsgID)
+                {
+                    if (login->msgID != pClient->nRecvMsgID)
+                    {
+                        CELLLOG_Error("OnNetMsg socked<%d> msgID<%d> _nRecvMsgID<%d> %d", pClient->sockfd(), login->msgID, pClient->nRecvMsgID);
+                    }
+                    ++pClient->nRecvMsgID;
+                }
+                if (_bSendBack)
+                {
+                    std::shared_ptr<LoginResult> ret = std::make_shared<LoginResult>();
+                    ret->msgID = pClient->nSendMsgID;
+                    if (pClient->SendData(ret) == SOCKET_ERROR)
+				    {
+                        if (_bSendFull)
+                        {
+                            CELLLOG_Warring("socked<%d> Send full", pClient->sockfd());
+                        }
+				    }
+                    else
+                    {
+                        ++pClient->nSendMsgID;
+                    }
+                }
+
+			}
+			break;
+			case CMD_LOGOUT:
+			{
+				CELLRecvMsgStream r(header);
+                auto n1 = r.ReadInt8();
+                auto n2 = r.ReadInt16();
+                auto n3 = r.ReadInt32();
+                auto n4 = r.ReadFloat();
+                auto n5 = r.ReadDouble();
+                uint32_t n = 0;
+                r.onlyRead(n);
+                char name[32] = {0};
+                r.ReadArray(name, 32);
+                char pwd[32] = {0};
+                r.ReadArray(pwd, 32);
+                int data[10] = {0};
+                r.ReadArray(data, 10);
+
+				CELLSendMsgStream s;
+    			s.setNetCmd(CMD_LOGOUT_RESULT);
+    			s.WriteInt8(5);
+    			s.WriteInt16(5);
+    			s.WriteInt32(5.0f);
+    			s.WriteFloat(5.0f);
+    			s.WriteDouble(5.0f);
+    			const char* str = "helloworld";
+    			s.WriteArray(str, strlen(str));
+    			char a[] = "asdsa";
+    			s.WriteArray(a, strlen(a));
+    			int b[] = {1, 2, 3, 4, 5};
+    			s.WriteArray(b, 5);
+    			s.finsh();
+				pClient->SendData(s.data(), s.length());
+			}
+			break;
+			case CMD_C2S_HEART:
+			{
+				pClient->resetDTHeart();
+				std::shared_ptr<s2c_Heart> ret = std::make_shared<s2c_Heart>();
+				pClient->SendData(ret);
+
+			}
+			default:
+			{
+				CELLLOG_Info("<socket=%d>收到未定义消息,数据长度：%d", pClient->sockfd(), header->dataLength);
+			}
+			break;
+		}
+		_msgCount++;
+	}
+private:
+    bool _bSendBack = false;
+    bool _bSendFull = false;
+    bool _bCheckMsgID = false;
+};
+
 const char* argToStr(int argc, char* args[], int index, const char* def, const char* argName)
 {
     if (argc <= index)
@@ -78,7 +158,7 @@ int main(int argc, char* args[])
     if (sigaction(SIGPIPE, &act, NULL) == 0) 
     {
     }
-    EasyTcpServer server;
+    MyServer server;
     server.InitSocket();
     server.Bind(strIP, nPort);
     server.Listen(1000);

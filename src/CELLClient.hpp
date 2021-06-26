@@ -17,11 +17,15 @@ class ClientSocket /*: public ObjectPoolBase<ClientSocket, 10000>*/
 public:
 	int id = -1;
 	int serverId = -1;
+	int nRecvMsgID;
+	int nSendMsgID;
 public:
 	ClientSocket(SOCKET sockfd = INVALID_SOCKET) : _sendBuff(SEND_BUFF_SZIE), _recvBuff(RECV_BUFF_SZIE)
 	{
 		static int n = 1;
 		id = n++;
+		nRecvMsgID = 1;
+		nSendMsgID = 1;
 		_sockfd = sockfd;
 		resetDTHeart();
 		resetDTSend();
