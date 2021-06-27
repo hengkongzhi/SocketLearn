@@ -66,7 +66,19 @@ public:
         if (_nLast > 0 && sockfd != INVALID_SOCKET)
         {
             ret = send(sockfd, _pBuff, _nLast, 0);
-            _nLast = 0;
+            if (ret < 0)
+            {
+                return SOCKET_ERROR;
+            }
+            if (ret == _nLast)
+            {
+                _nLast = 0;
+            }
+            else
+            {
+                _nLast -= ret;
+                memcpy(_pBuff, _pBuff + ret, _nLast);
+            }
             _BuffFullCount = 0;
         }
         return ret;
@@ -79,7 +91,7 @@ public:
             int nLen = (int)recv(sockfd, szRecv, _nSize - _nLast, 0);
             if (nLen <= 0)
             {
-                CELLLOG_Info("read4socket, nLen=%d\n", nLen);
+                CELLLOG_Info("read4socket, nLen=%d", nLen);
                 return -1;
             }
             _nLast += nLen;

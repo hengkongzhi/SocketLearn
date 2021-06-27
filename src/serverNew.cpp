@@ -27,7 +27,8 @@ public:
                 {
                     if (login->msgID != pClient->nRecvMsgID)
                     {
-                        CELLLOG_Error("OnNetMsg socked<%d> msgID<%d> _nRecvMsgID<%d> %d", pClient->sockfd(), login->msgID, pClient->nRecvMsgID);
+                        CELLLOG_Error("OnNetMsg socked<%d> msgID<%d> _nRecvMsgID<%d> %d", pClient->sockfd(), login->msgID,
+                        pClient->nRecvMsgID, login->msgID - pClient->nRecvMsgID);
                     }
                     ++pClient->nRecvMsgID;
                 }

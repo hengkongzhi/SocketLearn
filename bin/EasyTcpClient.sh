@@ -8,12 +8,14 @@ cd `dirname $0`
 # nThread=1
 # #客户端连接上限
 # nClient=2
-cmd="strIP=any"
+cmd="strIP=127.0.0.1"
 cmd="$cmd nPort=4567"
-cmd="$cmd nThread=8"
-cmd="$cmd nClient=2"
-cmd="$cmd -sendback"
-cmd="$cmd -sendfull"
+cmd="$cmd nThread=1"
+cmd="$cmd nClient=100"
+cmd="$cmd nMsg=100"
+cmd="$cmd nSendSleep=1000"
+cmd="$cmd nSendBuffSize=81920"
+cmd="$cmd nRecvBuffSize=81920"
 cmd="$cmd -checkMsgID"
-./serverNew ${cmd}
+./clientNew ${cmd}
 read -p "Press any key to exit.." var

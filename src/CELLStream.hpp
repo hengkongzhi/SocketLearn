@@ -73,7 +73,7 @@ public:
                 return len1;
             }
         }
-        CELLLog::Info("error, CELLStream::ReadArray failed.");
+        CELLLog_Error("CELLStream::ReadArray failed.");
         return 0;
     }
     template<typename T>
@@ -119,7 +119,7 @@ public:
             }
             return true;
         }
-        CELLLog::Info("error, CELLStream::Read failed.");
+        CELLLog_Error("CELLStream::Read failed.");
         return false;
     }
 
@@ -133,7 +133,7 @@ public:
             push(nLen);
             return true;
         }
-        CELLLog::Info("error, CELLStream::Write failed.");
+        CELLLog_Error("CELLStream::Write failed.");
         return false;
     }
     template<typename T>
@@ -147,7 +147,7 @@ public:
             push(nLen);
             return true;
         }
-        CELLLog::Info("error, CELLStream::WriteArray failed.");
+        CELLLog_Error("CELLStream::WriteArray failed.");
         return false;
     }
 
