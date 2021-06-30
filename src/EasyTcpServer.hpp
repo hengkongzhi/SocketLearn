@@ -21,6 +21,7 @@
 #include "CELL.hpp"
 #include "CELLClient.hpp"
 #include "CELLMsgStream.hpp"
+#include "CELLConfig.hpp"
 
 
 
@@ -344,6 +345,9 @@ private:
 	//每秒消息计时
 	CELLTimestamp _tTime;
 	CELLThread _thread;
+	int _nSendBuffSize;
+	int _nRecvBuffSize;
+	int _nMaxClient;
 protected:
 	//收到消息计数
 	std::atomic_int _recvCount;
@@ -357,6 +361,9 @@ public:
 		_recvCount = 0;
 		_clientCount = 0;
 		_msgCount = 0;
+		_nSendBuffSize = CELLConfig::Instance().getInt("nSendBuffSize", SEND_BUFF_SZIE);
+		_nRecvBuffSize = CELLConfig::Instance().getInt("nRecvBuffSize", RECV_BUFF_SZIE);
+		_nMaxClient = CELLConfig::Instance().getInt("nMaxClient", 10240);
 	}
 	virtual ~EasyTcpServer()
 	{
@@ -443,8 +450,17 @@ public:
 		{
 			//printf("接受到客户端cSocket=<%d>...\n", (int)cSock);
 			//将新客户端分配给客户数量最少的cellServer
-			std::shared_ptr<ClientSocket> tmp(new ClientSocket(cSock));
-			addClientToCellServer(tmp /*new ClientSocket(cSock)*/);
+			if (_clientCount < _nMaxClient)
+			{
+				std::shared_ptr<ClientSocket> tmp(new ClientSocket(cSock, _nSendBuffSize, _nRecvBuffSize));
+				addClientToCellServer(tmp /*new ClientSocket(cSock)*/);
+			}
+			else
+			{
+				close(cSock);
+				CELLLOG_Warring("Accept to nMaxClient");
+			}
+
 			//获取IP地址 inet_ntoa(clientAddr.sin_addr)
 		}
 		return cSock;
@@ -499,7 +515,7 @@ public:
 		if (t1 >= 1.0)
 		{
 			//printf("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>\n", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
-			CELLLOG_Info("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount/ t1), (int)_recvCount);
+			CELLLOG_Info("thread<%d>,time<%lf>,socket<%d>,clients<%d>,msgCount<%d>,recvCount<%d>", _cellServers.size(), t1, _sock,(int)_clientCount, (int)(_msgCount), (int)_recvCount);
 			_recvCount = 0;
 			_msgCount = 0;
 			_tTime.update();

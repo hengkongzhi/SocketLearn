@@ -62,7 +62,7 @@ public:
     {
         uint32_t len1 = 0;
         Read(len1, false);
-        if (len1 < len)
+        if (len1 <= len)
         {
             auto tSize = len1 * sizeof(T);
             if (canRead(tSize + sizeof(uint32_t)))
@@ -73,7 +73,7 @@ public:
                 return len1;
             }
         }
-        CELLLog_Error("CELLStream::ReadArray failed.");
+        CELLLOG_Error("CELLStream::ReadArray failed.");
         return 0;
     }
     template<typename T>
@@ -119,7 +119,7 @@ public:
             }
             return true;
         }
-        CELLLog_Error("CELLStream::Read failed.");
+        CELLLOG_Error("CELLStream::Read failed.");
         return false;
     }
 
@@ -133,7 +133,7 @@ public:
             push(nLen);
             return true;
         }
-        CELLLog_Error("CELLStream::Write failed.");
+        CELLLOG_Error("CELLStream::Write failed.");
         return false;
     }
     template<typename T>
@@ -147,7 +147,7 @@ public:
             push(nLen);
             return true;
         }
-        CELLLog_Error("CELLStream::WriteArray failed.");
+        CELLLOG_Error("CELLStream::WriteArray failed.");
         return false;
     }
 

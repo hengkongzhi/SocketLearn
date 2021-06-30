@@ -20,7 +20,7 @@ public:
 	int nRecvMsgID;
 	int nSendMsgID;
 public:
-	ClientSocket(SOCKET sockfd = INVALID_SOCKET) : _sendBuff(SEND_BUFF_SZIE), _recvBuff(RECV_BUFF_SZIE)
+	ClientSocket(SOCKET sockfd = INVALID_SOCKET, int sendBuff = SEND_BUFF_SZIE, int recvBuff = RECV_BUFF_SZIE) : _sendBuff(SEND_BUFF_SZIE), _recvBuff(RECV_BUFF_SZIE)
 	{
 		static int n = 1;
 		id = n++;
