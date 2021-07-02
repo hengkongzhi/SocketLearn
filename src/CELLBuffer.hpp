@@ -66,7 +66,7 @@ public:
         if (_nLast > 0 && sockfd != INVALID_SOCKET)
         {
             ret = send(sockfd, _pBuff, _nLast, 0);
-            if (ret < 0)
+            if (ret <= 0)
             {
                 return SOCKET_ERROR;
             }
@@ -92,7 +92,7 @@ public:
             if (nLen <= 0)
             {
                 CELLLOG_Info("read4socket, nLen=%d", nLen);
-                return -1;
+                return SOCKET_ERROR;
             }
             _nLast += nLen;
             return nLen;

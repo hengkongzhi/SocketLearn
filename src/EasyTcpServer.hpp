@@ -192,6 +192,7 @@ public:
 		}
 		clientRead(fdRead);
 		clientWrite(fdWrite);
+		return true;
 	}
 
 	void clientWrite(fd_set& fdWrite)
@@ -282,13 +283,7 @@ public:
 		// 5 接收客户端数据
 		int nLen = pClient->RecvData();
 		_pNetEvent->OnNetRecv(pClient);
-		//CELLLOG_Info("nLen=%d", nLen);
-		if (nLen <= 0)
-		{
-			CELLLOG_Info("客户端<Socket=%d>已退出，任务结束。", pClient->sockfd());
-			return -1;
-		}
-		return 0;
+		return nLen;
 	}
 
 	//响应网络消息
