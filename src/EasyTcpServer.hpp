@@ -449,7 +449,7 @@ public:
 		if (INVALID_SOCKET == cSock)
 		{
 			//printf("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
-			CELLLOG_Info("socket=<%d>错误,接受到无效客户端SOCKET...", (int)_sock);
+			CELLLOG_Error("socket=<%d>错误,接受到无效客户端SOCKET...errno<%d>errMsg<%s>", (int)_sock, errno, strerror(errno));
 		}
 		else
 		{
