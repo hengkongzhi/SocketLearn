@@ -23,21 +23,29 @@ public:
             _pfdSet = nullptr;
         }
     }
-    void add(SOCKET s)
+    inline void add(SOCKET s)
     {
         FD_SET(s, _pfdSet);
     }
-    void del(SOCKET s)
+    inline void del(SOCKET s)
     {
         FD_CLR(s, _pfdSet);
     }
-    void zero()
+    inline void zero()
     {
         memset(_pfdSet, 0, _nfdSize);
     }
-    void has(SOCKET s)
+    inline bool has(SOCKET s)
     {
-        FD_ISSET(s, _pfdSet);
+        return FD_ISSET(s, _pfdSet);
+    }
+    inline fd_set* fdset()
+    {
+        return _pfdSet;
+    }
+    inline void copy(CELLFDSet& set)
+    {
+        memcpy(_pfdSet, set.fdset(), _nfdSize);
     }
 private:
     fd_set* _pfdSet = nullptr;

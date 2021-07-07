@@ -22,6 +22,7 @@
 #include "CELLClient.hpp"
 #include "CELLMsgStream.hpp"
 #include "CELLConfig.hpp"
+#include "CELLFDSet.hpp"
 
 
 
@@ -130,12 +131,13 @@ public:
 	bool DoSelect()
 	{
 		//伯克利套接字 BSD socket
-		fd_set fdRead;//描述符（socket） 集合
-		fd_set fdWrite;
+
 		// fd_set fdExp;
 		//清理集合
-		FD_ZERO(&fdRead);
-		FD_ZERO(&fdWrite);
+		_fdRead.zero();
+		_fdWrite.zero();
+		// FD_ZERO(&fdRead);
+		// FD_ZERO(&fdWrite);
 		// FD_ZERO(&fdExp);
 		//将描述符（socket）加入集合
 		
@@ -145,17 +147,18 @@ public:
 			_maxSock = _clients[0]->sockfd();
 			for (int n = (int)_clients.size() - 1; n >= 0; n--)
 			{
-				FD_SET(_clients[n]->sockfd(), &fdRead);
+				_fdRead.add(_clients[n]->sockfd());
+				// FD_SET(_clients[n]->sockfd(), &fdRead);
 				if (_maxSock < _clients[n]->sockfd())
 				{
 					_maxSock = _clients[n]->sockfd();
 				}
 			}
-			memcpy(&_fdRead_bak, &fdRead, sizeof(fd_set));
+			_fdRead_bak.copy(_fdRead);
 		}
 		else
 		{
-			memcpy(&fdRead, &_fdRead_bak, sizeof(fd_set));
+			_fdRead.copy(_fdRead_bak);
 		}
 		bool bNeedWrite = false;
 		for (auto pClient : _clients)
@@ -163,7 +166,8 @@ public:
 			if (pClient->NeedWrite())
 			{
 				bNeedWrite = true;
-				FD_SET(pClient->sockfd(), &fdWrite);
+				_fdWrite.add(pClient->sockfd());
+				// FD_SET(pClient->sockfd(), &fdWrite);
 			}
 		}
 		// memcpy(&fdWrite, &_fdRead_bak, sizeof(fd_set));
@@ -175,11 +179,11 @@ public:
 		int ret = 0;
 		if (bNeedWrite)
 		{
-			ret = select(_maxSock + 1, &fdRead, &fdWrite, nullptr, &t);
+			ret = select(_maxSock + 1, _fdRead.fdset(), _fdWrite.fdset(), nullptr, &t);
 		}
 		else
 		{
-			ret = select(_maxSock + 1, &fdRead, nullptr, nullptr, &t);
+			ret = select(_maxSock + 1, _fdRead.fdset(), nullptr, nullptr, &t);
 		}
 		if (ret < 0)
 		{
@@ -190,16 +194,16 @@ public:
 		{
 			return true;
 		}
-		clientRead(fdRead);
-		clientWrite(fdWrite);
+		clientRead();
+		clientWrite();
 		return true;
 	}
 
-	void clientWrite(fd_set& fdWrite)
+	void clientWrite()
 	{
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
 		{
-			if (FD_ISSET(_clients[n]->sockfd(), &fdWrite))
+			if (_fdWrite.has(_clients[n]->sockfd()))
 			{
 				if (-1 == _clients[n]->SendDataReal())
 				{
@@ -216,11 +220,11 @@ public:
 			}
 		}
 	}
-	void clientRead(fd_set& fdRead)
+	void clientRead()
 	{
 		for (int n = (int)_clients.size() - 1; n >= 0; n--)
 		{
-			if (FD_ISSET(_clients[n]->sockfd(), &fdRead))
+			if (_fdRead.has(_clients[n]->sockfd()))
 			{
 				if (-1 == RecvData(_clients[n]))
 				{
@@ -332,8 +336,9 @@ private:
 	INetEvent* _pNetEvent;
 
 	CellTaskServer _taskServer;
-
-	fd_set _fdRead_bak;
+	CELLFDSet _fdRead;//描述符（socket） 集合
+	CELLFDSet _fdWrite;
+	CELLFDSet _fdRead_bak;
 	bool _clients_change;
 	SOCKET _maxSock;
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
@@ -551,19 +556,23 @@ private:
 	//处理网络消息
 	void OnRun(CELLThread* pThread)
 	{
+		CELLFDSet fdRead;
+		// fd_set fdRead;//描述符（socket） 集合
 		while (pThread->isRun())
 		{
 			time4msg();
 			//伯克利套接字 BSD socket
-			fd_set fdRead;//描述符（socket） 集合
+			
 			//清理集合
-			FD_ZERO(&fdRead);
+			fdRead.zero();
+			// FD_ZERO(&fdRead);
 			//将描述符（socket）加入集合
-			FD_SET(_sock, &fdRead);
+			fdRead.add(_sock);
+			// FD_SET(_sock, &fdRead);
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
 			timeval t = { 0,1};
-			int ret = select(_sock + 1, &fdRead, 0, 0, &t); //
+			int ret = select(_sock + 1, fdRead.fdset(), 0, 0, &t); //
 			if (ret < 0)
 			{
 				CELLLOG_Info("EasyTcpServer.onRun Select任务结束。");
@@ -571,9 +580,10 @@ private:
 				break;
 			}
 			//判断描述符（socket）是否在集合中
-			if (FD_ISSET(_sock, &fdRead))
+			if (fdRead.has(_sock))
 			{
-				FD_CLR(_sock, &fdRead);
+				fdRead.del(_sock);
+				// FD_CLR(_sock, &fdRead);
 				Accept();
 			}
 		}
