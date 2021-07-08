@@ -1,80 +1,79 @@
-Info [2021-07-02 23:01:23]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Info [2021-07-02 23:01:23]CELLConfig::getStr strIP=127.0.0.1
-Info [2021-07-02 23:01:23]CELLConfig::getInt nPort=4567
-Info [2021-07-02 23:01:23]CELLConfig::getInt nThread=8
-Info [2021-07-02 23:01:23]CELLConfig::getInt nClient=125
-Info [2021-07-02 23:01:23]CELLConfig::getInt nMsg=1
-Info [2021-07-02 23:01:23]CELLConfig::getInt nSendSleep=1000
-Info [2021-07-02 23:01:23]CELLConfig::getInt nSendBuffSize=81920
-Info [2021-07-02 23:01:23]CELLConfig::getInt nRecvBuffSize=81920
-Info [2021-07-02 23:01:23]Thread<1>,start.
-Info [2021-07-02 23:01:23]Thread<2>,start.
-Info [2021-07-02 23:01:23]Thread<3>,start.
-Info [2021-07-02 23:01:23]Thread<4>,start.
-Info [2021-07-02 23:01:23]Thread<5>,start.
-Info [2021-07-02 23:01:23]Thread<6>,start.
-Info [2021-07-02 23:01:23]Thread<7>,start.
-Info [2021-07-02 23:01:23]Thread<8>,start.
-Info [2021-07-02 23:01:23]Thread<5>, Connect<begin=0, end=125, nConnect=515>
-Info [2021-07-02 23:01:23]Thread<1>, Connect<begin=0, end=125, nConnect=639>
-Info [2021-07-02 23:01:23]Thread<2>, Connect<begin=0, end=125, nConnect=721>
-Info [2021-07-02 23:01:23]Thread<6>, Connect<begin=0, end=125, nConnect=743>
-Info [2021-07-02 23:01:23]Thread<4>, Connect<begin=0, end=125, nConnect=965>
-Info [2021-07-02 23:01:23]Thread<3>, Connect<begin=0, end=125, nConnect=972>
-Info [2021-07-02 23:01:23]Thread<7>, Connect<begin=0, end=125, nConnect=974>
-Info [2021-07-02 23:01:23]Thread<8>, Connect<begin=0, end=125, nConnect=1000>
-Info [2021-07-02 23:01:24]thread<8>,clients<125>,connect<1000>,time<1.000459>,send<0>
-Info [2021-07-02 23:01:25]thread<8>,clients<125>,connect<1000>,time<1.000224>,send<1000>
-Info [2021-07-02 23:01:26]thread<8>,clients<125>,connect<1000>,time<1.000728>,send<1000>
-Info [2021-07-02 23:01:27]thread<8>,clients<125>,connect<1000>,time<1.000422>,send<1000>
-Info [2021-07-02 23:01:28]thread<8>,clients<125>,connect<1000>,time<1.001215>,send<1000>
-Info [2021-07-02 23:01:29]thread<8>,clients<125>,connect<1000>,time<1.000915>,send<1000>
-Info [2021-07-02 23:01:30]thread<8>,clients<125>,connect<1000>,time<1.000270>,send<1000>
-Info [2021-07-02 23:01:31]thread<8>,clients<125>,connect<1000>,time<1.000646>,send<1000>
-Info [2021-07-02 23:01:32]thread<8>,clients<125>,connect<1000>,time<1.000072>,send<1000>
-Info [2021-07-02 23:01:33]thread<8>,clients<125>,connect<1000>,time<1.000683>,send<1000>
-Info [2021-07-02 23:01:34]thread<8>,clients<125>,connect<1000>,time<1.000505>,send<1000>
-Info [2021-07-02 23:01:35]thread<8>,clients<125>,connect<1000>,time<1.000867>,send<1000>
-Info [2021-07-02 23:01:36]thread<8>,clients<125>,connect<1000>,time<1.000992>,send<1000>
-Info [2021-07-02 23:01:37]thread<8>,clients<125>,connect<1000>,time<1.000462>,send<1000>
-Info [2021-07-02 23:01:38]thread<8>,clients<125>,connect<1000>,time<1.023604>,send<1000>
-Info [2021-07-02 23:01:39]thread<8>,clients<125>,connect<1000>,time<1.001107>,send<1000>
-Info [2021-07-02 23:01:40]thread<8>,clients<125>,connect<1000>,time<1.001147>,send<1000>
-Info [2021-07-02 23:01:41]thread<8>,clients<125>,connect<1000>,time<1.000313>,send<1000>
-Info [2021-07-02 23:01:42]thread<8>,clients<125>,connect<1000>,time<1.001159>,send<1000>
-Info [2021-07-02 23:01:43]thread<8>,clients<125>,connect<1000>,time<1.000673>,send<1000>
-Info [2021-07-02 23:01:44]thread<8>,clients<125>,connect<1000>,time<1.000821>,send<1000>
-Info [2021-07-02 23:01:45]thread<8>,clients<125>,connect<1000>,time<1.001019>,send<1000>
-Info [2021-07-02 23:01:46]thread<8>,clients<125>,connect<1000>,time<1.000197>,send<1000>
-Info [2021-07-02 23:01:47]thread<8>,clients<125>,connect<1000>,time<1.000974>,send<1000>
-Info [2021-07-02 23:01:48]thread<8>,clients<125>,connect<1000>,time<1.001187>,send<1000>
-Info [2021-07-02 23:01:49]thread<8>,clients<125>,connect<1000>,time<1.001084>,send<1000>
-Info [2021-07-02 23:01:50]thread<8>,clients<125>,connect<1000>,time<1.000479>,send<1000>
-Info [2021-07-02 23:01:51]thread<8>,clients<125>,connect<1000>,time<1.001058>,send<1000>
-Info [2021-07-02 23:01:52]thread<8>,clients<125>,connect<1000>,time<1.000233>,send<1000>
-Info [2021-07-02 23:01:53]thread<8>,clients<125>,connect<1000>,time<1.000664>,send<1000>
-Info [2021-07-02 23:01:54]thread<8>,clients<125>,connect<1000>,time<1.000011>,send<1000>
-Info [2021-07-02 23:01:55]thread<8>,clients<125>,connect<1000>,time<1.000519>,send<1000>
-Info [2021-07-02 23:01:56]thread<8>,clients<125>,connect<1000>,time<1.001248>,send<1000>
-Info [2021-07-02 23:01:57]thread<8>,clients<125>,connect<1000>,time<1.001299>,send<1000>
-Info [2021-07-02 23:01:58]thread<8>,clients<125>,connect<1000>,time<1.000310>,send<1000>
-Info [2021-07-02 23:01:59]thread<8>,clients<125>,connect<1000>,time<1.000671>,send<1000>
-Info [2021-07-02 23:02:00]thread<8>,clients<125>,connect<1000>,time<1.001202>,send<1000>
-Info [2021-07-02 23:02:01]thread<8>,clients<125>,connect<1000>,time<1.000239>,send<1000>
-Info [2021-07-02 23:02:02]thread<8>,clients<125>,connect<1000>,time<1.000011>,send<1000>
-Info [2021-07-02 23:02:03]thread<8>,clients<125>,connect<1000>,time<1.000387>,send<1000>
-Info [2021-07-02 23:02:04]thread<8>,clients<125>,connect<1000>,time<1.000668>,send<1000>
-Info [2021-07-02 23:02:05]thread<8>,clients<125>,connect<1000>,time<1.000789>,send<1000>
-Info [2021-07-02 23:02:06]不支持的命令。
-Info [2021-07-02 23:02:06]thread<8>,clients<125>,connect<1000>,time<1.000856>,send<1000>
-Info [2021-07-02 23:02:07]thread<8>,clients<125>,connect<1000>,time<1.000054>,send<1000>
-Info [2021-07-02 23:02:08]退出cmdThread线程
-Info [2021-07-02 23:02:08]Thread<1>,exit.
-Info [2021-07-02 23:02:08]Thread<2>,exit.
-Info [2021-07-02 23:02:08]Thread<3>,exit.
-Info [2021-07-02 23:02:08]Thread<4>,exit.
-Info [2021-07-02 23:02:08]Thread<5>,exit.
-Info [2021-07-02 23:02:08]Thread<6>,exit.
-Info [2021-07-02 23:02:08]Thread<7>,exit.
-Info [2021-07-02 23:02:08]Thread<8>,exit.
-Info [2021-07-02 23:02:08]..已退出..
+Info [2021-07-08 22:26:02]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Info [2021-07-08 22:26:02]CELLConfig::getStr strIP=127.0.0.1
+Info [2021-07-08 22:26:02]CELLConfig::getInt nPort=4567
+Info [2021-07-08 22:26:02]CELLConfig::getInt nThread=8
+Info [2021-07-08 22:26:02]CELLConfig::getInt nClient=150
+Info [2021-07-08 22:26:02]CELLConfig::getInt nMsg=1
+Info [2021-07-08 22:26:02]CELLConfig::getInt nSendSleep=1000
+Info [2021-07-08 22:26:02]CELLConfig::getInt nSendBuffSize=81920
+Info [2021-07-08 22:26:02]CELLConfig::getInt nRecvBuffSize=81920
+Info [2021-07-08 22:26:02]Thread<1>,start.
+Info [2021-07-08 22:26:02]Thread<3>,start.
+Info [2021-07-08 22:26:02]Thread<2>,start.
+Info [2021-07-08 22:26:02]Thread<4>,start.
+Info [2021-07-08 22:26:02]Thread<5>,start.
+Info [2021-07-08 22:26:02]Thread<6>,start.
+Info [2021-07-08 22:26:02]Thread<7>,start.
+Info [2021-07-08 22:26:02]Thread<8>,start.
+Info [2021-07-08 22:26:03]Thread<2>, Connect<begin=0, end=150, nConnect=686>
+Info [2021-07-08 22:26:03]Thread<3>, Connect<begin=0, end=150, nConnect=799>
+Info [2021-07-08 22:26:03]Thread<7>, Connect<begin=0, end=150, nConnect=826>
+Info [2021-07-08 22:26:03]Thread<4>, Connect<begin=0, end=150, nConnect=985>
+Info [2021-07-08 22:26:03]Thread<6>, Connect<begin=0, end=150, nConnect=992>
+Info [2021-07-08 22:26:03]Thread<8>, Connect<begin=0, end=150, nConnect=1136>
+Info [2021-07-08 22:26:03]Thread<5>, Connect<begin=0, end=150, nConnect=1155>
+Info [2021-07-08 22:26:03]Thread<1>, Connect<begin=0, end=150, nConnect=1200>
+Info [2021-07-08 22:26:03]thread<8>,clients<150>,connect<1200>,time<1.000083>,send<0>
+Info [2021-07-08 22:26:04]thread<8>,clients<150>,connect<1200>,time<1.000489>,send<1200>
+Info [2021-07-08 22:26:05]thread<8>,clients<150>,connect<1200>,time<1.010018>,send<1200>
+Info [2021-07-08 22:26:06]thread<8>,clients<150>,connect<1200>,time<1.001236>,send<1200>
+Info [2021-07-08 22:26:07]thread<8>,clients<150>,connect<1200>,time<1.001202>,send<1200>
+Info [2021-07-08 22:26:08]thread<8>,clients<150>,connect<1200>,time<1.000132>,send<1200>
+Info [2021-07-08 22:26:09]thread<8>,clients<150>,connect<1200>,time<1.001146>,send<1200>
+Info [2021-07-08 22:26:10]thread<8>,clients<150>,connect<1200>,time<1.000576>,send<1200>
+Info [2021-07-08 22:26:11]thread<8>,clients<150>,connect<1200>,time<1.000647>,send<1200>
+Info [2021-07-08 22:26:12]thread<8>,clients<150>,connect<1200>,time<1.001060>,send<1200>
+Info [2021-07-08 22:26:13]thread<8>,clients<150>,connect<1200>,time<1.000890>,send<1200>
+Info [2021-07-08 22:26:14]thread<8>,clients<150>,connect<1200>,time<1.000027>,send<1200>
+Info [2021-07-08 22:26:15]thread<8>,clients<150>,connect<1200>,time<1.001024>,send<1200>
+Info [2021-07-08 22:26:16]thread<8>,clients<150>,connect<1200>,time<1.000689>,send<1200>
+Info [2021-07-08 22:26:17]thread<8>,clients<150>,connect<1200>,time<1.000146>,send<1200>
+Info [2021-07-08 22:26:18]thread<8>,clients<150>,connect<1200>,time<1.001031>,send<1200>
+Info [2021-07-08 22:26:19]thread<8>,clients<150>,connect<1200>,time<1.000632>,send<1200>
+Info [2021-07-08 22:26:20]thread<8>,clients<150>,connect<1200>,time<1.000642>,send<1200>
+Info [2021-07-08 22:26:21]thread<8>,clients<150>,connect<1200>,time<1.000904>,send<1200>
+Info [2021-07-08 22:26:22]thread<8>,clients<150>,connect<1200>,time<1.000004>,send<1200>
+Info [2021-07-08 22:26:23]thread<8>,clients<150>,connect<1200>,time<1.001112>,send<1200>
+Info [2021-07-08 22:26:24]thread<8>,clients<150>,connect<1200>,time<1.000192>,send<1200>
+Info [2021-07-08 22:26:25]thread<8>,clients<150>,connect<1200>,time<1.000164>,send<1200>
+Info [2021-07-08 22:26:26]thread<8>,clients<150>,connect<1200>,time<1.000007>,send<1200>
+Info [2021-07-08 22:26:27]thread<8>,clients<150>,connect<1200>,time<1.001311>,send<1200>
+Info [2021-07-08 22:26:28]thread<8>,clients<150>,connect<1200>,time<1.000048>,send<1200>
+Info [2021-07-08 22:26:29]thread<8>,clients<150>,connect<1200>,time<1.000684>,send<1200>
+Info [2021-07-08 22:26:30]thread<8>,clients<150>,connect<1200>,time<1.000415>,send<1200>
+Info [2021-07-08 22:26:31]thread<8>,clients<150>,connect<1200>,time<1.000577>,send<1200>
+Info [2021-07-08 22:26:32]thread<8>,clients<150>,connect<1200>,time<1.000298>,send<1200>
+Info [2021-07-08 22:26:33]thread<8>,clients<150>,connect<1200>,time<1.001467>,send<1200>
+Info [2021-07-08 22:26:34]thread<8>,clients<150>,connect<1200>,time<1.000501>,send<1200>
+Info [2021-07-08 22:26:35]thread<8>,clients<150>,connect<1200>,time<1.000315>,send<1200>
+Info [2021-07-08 22:26:36]thread<8>,clients<150>,connect<1200>,time<1.000860>,send<1200>
+Info [2021-07-08 22:26:37]thread<8>,clients<150>,connect<1200>,time<1.001033>,send<1200>
+Info [2021-07-08 22:26:38]thread<8>,clients<150>,connect<1200>,time<1.000330>,send<1200>
+Info [2021-07-08 22:26:39]thread<8>,clients<150>,connect<1200>,time<1.001034>,send<1200>
+Info [2021-07-08 22:26:40]thread<8>,clients<150>,connect<1200>,time<1.000409>,send<1200>
+Info [2021-07-08 22:26:41]thread<8>,clients<150>,connect<1200>,time<1.000433>,send<1200>
+Info [2021-07-08 22:26:42]thread<8>,clients<150>,connect<1200>,time<1.001093>,send<1200>
+Info [2021-07-08 22:26:43]thread<8>,clients<150>,connect<1200>,time<1.001254>,send<1200>
+Info [2021-07-08 22:26:44]thread<8>,clients<150>,connect<1200>,time<1.000674>,send<1200>
+Info [2021-07-08 22:26:45]thread<8>,clients<150>,connect<1200>,time<1.000585>,send<1200>
+Info [2021-07-08 22:26:46]thread<8>,clients<150>,connect<1200>,time<1.001175>,send<1200>
+Info [2021-07-08 22:26:47]退出cmdThread线程
+Info [2021-07-08 22:26:47]Thread<1>,exit.
+Info [2021-07-08 22:26:47]Thread<2>,exit.
+Info [2021-07-08 22:26:47]Thread<3>,exit.
+Info [2021-07-08 22:26:47]Thread<4>,exit.
+Info [2021-07-08 22:26:47]Thread<5>,exit.
+Info [2021-07-08 22:26:47]Thread<6>,exit.
+Info [2021-07-08 22:26:47]Thread<7>,exit.
+Info [2021-07-08 22:26:47]Thread<8>,exit.
+Info [2021-07-08 22:26:47]..已退出..

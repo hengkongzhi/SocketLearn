@@ -9,6 +9,7 @@
 #include "CELLLog.hpp"
 #include "CELL.hpp"
 #include "CELLClient.hpp"
+#include "CELLFDSet.hpp"
 
 class EasyTcpClient
 {
@@ -93,31 +94,27 @@ public:
 		if (isRun())
 		{
 			SOCKET _sock = _pClient->sockfd();
-
-			fd_set fdRead;
-			fd_set fdWrite;
-			fd_set* pfdW;
-			FD_ZERO(&fdRead);
-			FD_ZERO(&fdWrite);
-			FD_SET(_sock, &fdRead);
+			_fdRead.zero();
+			_fdWrite.zero();
+			_fdRead.add(_sock);
+			timeval t = {0, microseconds};
+			int ret = 0;
 			if (_pClient->NeedWrite())
 			{
-				FD_SET(_sock, &fdWrite);
-				pfdW = &fdWrite;
+				_fdWrite.add(_sock);
+				ret = select(_sock + 1, _fdRead.fdset(), _fdWrite.fdset(), 0, &t); 
 			}
 			else
 			{
-				pfdW = nullptr;
+				ret = select(_sock + 1, _fdRead.fdset(), nullptr, 0, &t); 
 			}
-			timeval t = {0, microseconds};
-			int ret = select(_sock + 1, &fdRead, pfdW, 0, &t); 
 			if (ret < 0)
 			{
 				CELLLOG_Info("<socket=%d>select任务结束1\n", _sock);
 				Close();
 				return false;
 			}
-			if (FD_ISSET(_sock, &fdRead))
+			if (_fdRead.has(_sock))
 			{
 
 				if (-1 == RecvData(_sock))
@@ -127,16 +124,13 @@ public:
 					return false;
 				}
 			}
-			if (pfdW != nullptr)
+			if (_fdWrite.has(_sock))
 			{
-				if (FD_ISSET(_sock, &fdWrite))
+				if (-1 == _pClient->SendDataReal())
 				{
-					if (-1 == _pClient->SendDataReal())
-					{
-						CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
-						Close();
-						return false;
-					}
+					CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
+					Close();
+					return false;
 				}
 			}
 			return true;
@@ -280,6 +274,8 @@ public:
 protected:
 	ClientSocket* _pClient;
 	bool _isConnect;
+	CELLFDSet _fdRead;
+	CELLFDSet _fdWrite;
 };
 
 #endif
