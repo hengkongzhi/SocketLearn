@@ -393,6 +393,11 @@ public:
 			CELLLOG_Info("错误，建立socket失败...");
 		}
 		else {
+			int flag = 1;
+			if (SOCKET_ERROR == setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&flag, sizeof(flag)))
+			{
+				CELLLOG_Info("setsockopt SO_REUSEADDR failed...");
+			}
 			//printf("建立socket=<%d>成功...\n", (int)_sock);
 			CELLLOG_Info("建立socket=<%d>成功...", (int)_sock);
 		}

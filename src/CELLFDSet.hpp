@@ -4,12 +4,14 @@
 #include<unistd.h> //uni std
 #include<arpa/inet.h>
 #include <string.h>
+#include "CELLLog.hpp"
+#define CELL_MAX_FD 10240
 class CELLFDSet
 {
 public:
     CELLFDSet()
     {
-        int nSocketNum = 10240;
+        int nSocketNum = CELL_MAX_FD;
         _nfdSize = nSocketNum / (8 * sizeof(char));
 
         _pfdSet = (fd_set*)new char[_nfdSize];
@@ -25,7 +27,15 @@ public:
     }
     inline void add(SOCKET s)
     {
-        FD_SET(s, _pfdSet);
+        if (s < CELL_MAX_FD)
+        {
+            FD_SET(s, _pfdSet);
+        }
+        else
+        {
+            CELLLOG_Error("CELLFDSet::add sock<%d>, CELL_MAX_FD<%d>", (int)s, CELL_MAX_FD);
+        }
+        
     }
     inline void del(SOCKET s)
     {
