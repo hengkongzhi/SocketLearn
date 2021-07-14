@@ -8,6 +8,7 @@
 #define SOCKET_ERROR (-1)
 #include <stdio.h>
 #include <vector>
+#include <algorithm>
 std::vector<SOCKET> g_clients;
 bool g_bRun = true;
 void cmdThread()
@@ -34,6 +35,20 @@ int cellEpollCtl(int epfd, int op, SOCKET sockfd, uint32_t events)
     ev.events = events;
     ev.data.fd = sockfd;
     epoll_ctl(epfd, op, sockfd, &ev);
+}
+int recvData(SOCKET cSock)
+{
+    char szRecv[4096] = {};
+    int nLen = (int)recv(cSock, szRecv, 4096, 0);
+    return nLen;
+
+}
+int clientLeave(SOCKET cSock)
+{
+    close(cSock);
+    auto itr = std::find(g_clients.begin(), g_clients.end(), cSock);
+    g_clients.erase(itr);
+    printf("客户端<Socked=%d>已退出.\n", cSock);
 }
 int main()
 {
@@ -63,6 +78,7 @@ int main()
     //linux 2.6.8后size这个值没有意义了
     int epfd = epoll_create(256);
     cellEpollCtl(epfd, EPOLL_CTL_ADD, sock, EPOLLIN);
+    int msgCount = 0;
 
     //用于接收检测到网络事件的数组
     epoll_event events[256] = {};
@@ -95,7 +111,17 @@ int main()
             }
             else if (events[i].events & EPOLLIN)
             {
-                printf("收到客户端数据：socket = %d\n", events[i].data.fd);
+                auto cSockfd = events[i].data.fd;
+                int ret = recvData(cSockfd);
+                if (ret < 0)
+                {
+                    clientLeave(cSockfd);
+                }
+                else
+                {
+                    printf("收到客户端数据:id = %d socket = %d len = %d\n", msgCount++, cSockfd, ret);
+                }
+                
             }
         }
     }
