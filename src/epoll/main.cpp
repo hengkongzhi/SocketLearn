@@ -34,13 +34,33 @@ int cellEpollCtl(int epfd, int op, SOCKET sockfd, uint32_t events)
     epoll_event ev;
     ev.events = events;
     ev.data.fd = sockfd;
-    epoll_ctl(epfd, op, sockfd, &ev);
+    if (epoll_ctl(epfd, op, sockfd, &ev) == -1)
+    {
+        printf("error, epoll_ctl(%d, %d, %d)\n", epfd, op, sockfd);
+        return SOCKET_ERROR;
+    }
+    return 0;
 }
-int recvData(SOCKET cSock)
+char g_szBuff[4096] = {};
+int  g_nLen = 0;
+int readData(SOCKET cSock)
 {
-    char szRecv[4096] = {};
-    int nLen = (int)recv(cSock, szRecv, 4096, 0);
-    return nLen;
+
+    g_nLen = (int)recv(cSock, g_szBuff, 4096, 0);
+    return g_nLen;
+
+}
+int writeData(SOCKET cSock)
+{
+    if (g_nLen > 0)
+    {
+        int nLen = (int)send(cSock, g_szBuff, g_nLen, 0);
+        g_nLen = 0;
+        return nLen;
+    }
+    return 1;
+    
+    
 
 }
 int clientLeave(SOCKET cSock)
@@ -84,7 +104,7 @@ int main()
     epoll_event events[256] = {};
     while (g_bRun)
     {
-        int n = epoll_wait(epfd, events, 256, 0);
+        int n = epoll_wait(epfd, events, 256, 1);
         if (n < 0)
         {
             printf("error,epoll_wait ret=%d\n", n);
@@ -108,11 +128,13 @@ int main()
                     cellEpollCtl(epfd, EPOLL_CTL_ADD, _cSock, EPOLLIN);
                     printf("新客户端加入：socket = %d,IP = %s\n", (int)_cSock, inet_ntoa(clientAddr.sin_addr));
                 }
+                continue;
             }
-            else if (events[i].events & EPOLLIN)
+            if (events[i].events & EPOLLIN)
             {
+                printf("EPOLLIN | %d\n", msgCount);
                 auto cSockfd = events[i].data.fd;
-                int ret = recvData(cSockfd);
+                int ret = readData(cSockfd);
                 if (ret < 0)
                 {
                     clientLeave(cSockfd);
@@ -121,8 +143,27 @@ int main()
                 {
                     printf("收到客户端数据:id = %d socket = %d len = %d\n", msgCount++, cSockfd, ret);
                 }
-                
+                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLOUT);
             }
+            if (events[i].events & EPOLLOUT)
+            {
+                printf("EPOLLOUT | %d\n", msgCount);
+                auto cSockfd = events[i].data.fd;
+                int ret = writeData(cSockfd);
+                if (ret < 0)
+                {
+                    clientLeave(cSockfd);
+                }
+                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLIN);
+            }
+            // if (events[i].events & EPOLLERR)
+            // {
+            //     printf("EPOLLERR: id = %d socket = %d \n", msgCount, events[i].data.fd);
+            // }
+            // if (events[i].events & EPOLLHUP)
+            // {
+            //     printf("EPOLLHUP: id = %d socket = %d \n", msgCount, events[i].data.fd);
+            // }
         }
     }
     for (auto client : g_clients)
