@@ -132,7 +132,7 @@ int main()
             }
             if (events[i].events & EPOLLIN)
             {
-                printf("EPOLLIN | %d\n", msgCount);
+                printf("EPOLLIN | %d\n", ++msgCount);
                 auto cSockfd = events[i].data.fd;
                 int ret = readData(cSockfd);
                 if (ret < 0)
@@ -141,9 +141,9 @@ int main()
                 }
                 else
                 {
-                    printf("收到客户端数据:id = %d socket = %d len = %d\n", msgCount++, cSockfd, ret);
+                    printf("收到客户端数据:id = %d socket = %d len = %d\n", msgCount, cSockfd, ret);
                 }
-                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLOUT);
+                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLOUT | EPOLLIN);
             }
             if (events[i].events & EPOLLOUT)
             {
@@ -154,7 +154,14 @@ int main()
                 {
                     clientLeave(cSockfd);
                 }
-                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLIN);
+                if (msgCount < 5)
+                {
+                    cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLIN);
+                }
+                else
+                {
+                    cellEpollCtl(epfd, EPOLL_CTL_DEL, cSockfd, 0);
+                }       
             }
             // if (events[i].events & EPOLLERR)
             // {
