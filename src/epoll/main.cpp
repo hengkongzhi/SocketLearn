@@ -1,11 +1,4 @@
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <string.h>
-#include <sys/epoll.h>
-#include <thread>
-#define SOCKET int
-#define INVALID_SOCKET (SOCKET)(~0)
-#define SOCKET_ERROR (-1)
+#include "CELLEpoll.hpp"
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
@@ -29,18 +22,7 @@ void cmdThread()
         }
     }
 }
-int cellEpollCtl(int epfd, int op, SOCKET sockfd, uint32_t events)
-{
-    epoll_event ev;
-    ev.events = events;
-    ev.data.fd = sockfd;
-    if (epoll_ctl(epfd, op, sockfd, &ev) == -1)
-    {
-        printf("error, epoll_ctl(%d, %d, %d)\n", epfd, op, sockfd);
-        return SOCKET_ERROR;
-    }
-    return 0;
-}
+
 char g_szBuff[4096] = {};
 int  g_nLen = 0;
 int readData(SOCKET cSock)
@@ -95,16 +77,15 @@ int main()
     {
         printf("监听网络端口成功...\n");
     }
-    //linux 2.6.8后size这个值没有意义了
-    int epfd = epoll_create(256);
-    cellEpollCtl(epfd, EPOLL_CTL_ADD, sock, EPOLLIN);
-    int msgCount = 0;
 
-    //用于接收检测到网络事件的数组
-    epoll_event events[256] = {};
+    CELLEpoll ep;
+    ep.create(256);
+    ep.cellEpollCtl(EPOLL_CTL_ADD, sock, EPOLLIN);
+    int msgCount = 0;
     while (g_bRun)
     {
-        int n = epoll_wait(epfd, events, 256, 1);
+        int n = ep.wait(1);
+        auto events = ep.events();
         if (n < 0)
         {
             printf("error,epoll_wait ret=%d\n", n);
@@ -125,7 +106,7 @@ int main()
                 else
                 {
                     g_clients.push_back(_cSock);
-                    cellEpollCtl(epfd, EPOLL_CTL_ADD, _cSock, EPOLLIN);
+                    ep.cellEpollCtl(EPOLL_CTL_ADD, _cSock, EPOLLIN);
                     printf("新客户端加入：socket = %d,IP = %s\n", (int)_cSock, inet_ntoa(clientAddr.sin_addr));
                 }
                 continue;
@@ -143,7 +124,7 @@ int main()
                 {
                     printf("收到客户端数据:id = %d socket = %d len = %d\n", msgCount, cSockfd, ret);
                 }
-                cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLOUT | EPOLLIN);
+                ep.cellEpollCtl(EPOLL_CTL_MOD, cSockfd, EPOLLOUT | EPOLLIN);
             }
             if (events[i].events & EPOLLOUT)
             {
@@ -156,11 +137,11 @@ int main()
                 }
                 if (msgCount < 5)
                 {
-                    cellEpollCtl(epfd, EPOLL_CTL_MOD, cSockfd, EPOLLIN);
+                    ep.cellEpollCtl(EPOLL_CTL_MOD, cSockfd, EPOLLIN);
                 }
                 else
                 {
-                    cellEpollCtl(epfd, EPOLL_CTL_DEL, cSockfd, 0);
+                    ep.cellEpollCtl(EPOLL_CTL_DEL, cSockfd, 0);
                 }       
             }
             // if (events[i].events & EPOLLERR)
@@ -178,7 +159,7 @@ int main()
         close(client);
     }
     close(sock);
-    close(epfd);
+    ep.destroy();
     printf("已退出。。。\n");
     return 0;
 }

@@ -1,5 +1,5 @@
-#ifndef _CELL_EPOLL_HPP_
-#define _CELL_EPOLL_HPP_
+#ifndef _CELL_EPOLL_CYANG_HPP_
+#define _CELL_EPOLL_CYANG_HPP_
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <string.h>
@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
-class CELLEpoll
+class CELLEpollCyang
 {
 public:
 void init(int post)
