@@ -120,7 +120,7 @@ public:
 			}
 
 			checkTime();
-			if (!DoSelect())
+			if (!DoNetEvents())
 			{
 				pThread->Exit();
 				break;
@@ -128,7 +128,7 @@ public:
 			DoMsg();
 		}
 	}
-	bool DoSelect()
+	virtual bool DoNetEvents()
 	{
 		//伯克利套接字 BSD socket
 
@@ -495,12 +495,12 @@ public:
 		pMinServer->addClient(pClient);
 		OnNetJoin(pClient);
 	}
-
+	template<typename ServerT>
 	void Start(int nCellServer)
 	{
 		for (int n = 0; n < nCellServer; n++)
 		{
-			auto ser = std::make_shared<CellServer>(n + 1);
+			auto ser = std::make_shared<ServerT>(n + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);
 			//注册网络事件接受对象
@@ -557,7 +557,7 @@ public:
 	{
 		_recvCount++;
 	}
-private:
+protected:
 	//处理网络消息
 	void OnRun(CELLThread* pThread)
 	{
@@ -592,6 +592,10 @@ private:
 				Accept();
 			}
 		}
+	}
+	int sockfd()
+	{
+		return _sock;
 	}
 };
 
