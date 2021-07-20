@@ -2,9 +2,15 @@
 #define _EasyTcpSelectServer_hpp_
 
 #include "EasyTcpServer.hpp"
+#include "CELLSelectServer.hpp"
 
 class EasyTcpSelectServer : public EasyTcpServer
 {
+public:
+	void Start(int nCellServer)
+	{
+		EasyTcpServer::Start<CellSelectServer>(nCellServer);
+	}
 protected:
 	//处理网络消息
 	void OnRun(CELLThread* pThread)

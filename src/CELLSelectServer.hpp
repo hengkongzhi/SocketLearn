@@ -124,8 +124,6 @@ private:
 	CELLFDSet _fdRead;//描述符（socket） 集合
 	CELLFDSet _fdWrite;
 	CELLFDSet _fdRead_bak;
-	bool _clients_change;
 	SOCKET _maxSock;
-
 };
 #endif
