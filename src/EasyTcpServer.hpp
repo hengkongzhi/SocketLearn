@@ -66,16 +66,15 @@ private:
 class CellServer
 {
 public:
-	CellServer(int id)
-	{
-		_id = id;
-		_pNetEvent = nullptr;
-		_taskServer.serverId = id;
-	}
 
 	~CellServer()
 	{
 		Close();
+	}
+	void setId(int id)
+	{
+		_id = id;
+		_taskServer.serverId = id;
 	}
 
 	void setEventObj(INetEvent* event)
@@ -325,25 +324,26 @@ public:
 		_taskServer.addTask([pClient, header](){pClient->SendData(header);});
 	}
 private:
-	//正式客户队列
-	std::vector<ClientSocketPtr> _clients;
+
 	//缓冲客户队列
 	std::vector<ClientSocketPtr> _clientsBuff;
 	//缓冲队列的锁
 	std::mutex _mutex;
-
-	//网络事件对象
-	INetEvent* _pNetEvent;
-
 	CellTaskServer _taskServer;
-	CELLFDSet _fdRead;//描述符（socket） 集合
-	CELLFDSet _fdWrite;
-	CELLFDSet _fdRead_bak;
-	bool _clients_change;
-	SOCKET _maxSock;
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
 	int _id = -1;
 	CELLThread _thread;
+	CELLFDSet _fdRead;//描述符（socket） 集合
+	CELLFDSet _fdWrite;
+	CELLFDSet _fdRead_bak;
+	SOCKET _maxSock;
+protected:
+	//正式客户队列
+	std::vector<ClientSocketPtr> _clients;
+	bool _clients_change;
+
+	//网络事件对象
+	INetEvent* _pNetEvent = nullptr;
 };
 
 class EasyTcpServer : public INetEvent
@@ -500,7 +500,8 @@ public:
 	{
 		for (int n = 0; n < nCellServer; n++)
 		{
-			auto ser = std::make_shared<ServerT>(n + 1);
+			auto ser = std::make_shared<ServerT>();
+			ser->setId(n + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);
 			//注册网络事件接受对象

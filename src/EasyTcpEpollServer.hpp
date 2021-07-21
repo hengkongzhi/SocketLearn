@@ -1,10 +1,10 @@
-#ifndef _EasyTcpSelectServer_hpp_
-#define _EasyTcpSelectServer_hpp_
+#ifndef _EasyTcpEpollServer_hpp_
+#define _EasyTcpEpollServer_hpp_
 
 #include "EasyTcpServer.hpp"
 #include "CELLSelectServer.hpp"
 
-class EasyTcpSelectServer : public EasyTcpServer
+class EasyTcpEpollServer : public EasyTcpServer
 {
 public:
 	void Start(int nCellServer)

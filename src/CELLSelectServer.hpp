@@ -119,11 +119,11 @@ public:
 			}
 		}
 	}
-
-private:
+protected:
 	CELLFDSet _fdRead;//描述符（socket） 集合
 	CELLFDSet _fdWrite;
 	CELLFDSet _fdRead_bak;
 	SOCKET _maxSock;
+
 };
 #endif

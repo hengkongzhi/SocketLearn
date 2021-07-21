@@ -5,7 +5,8 @@
 #include "EasyTcpServer.hpp"
 #include <signal.h>
 #include "CELLConfig.hpp"
-class MyServer : public EasyTcpServer
+#include "EasyTcpSelectServer.hpp"
+class MyServer : public EasyTcpSelectServer
 {
 public:
     MyServer()

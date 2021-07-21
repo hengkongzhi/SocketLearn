@@ -1,79 +1,273 @@
-Info [2021-07-08 22:26:02]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Info [2021-07-08 22:26:02]CELLConfig::getStr strIP=127.0.0.1
-Info [2021-07-08 22:26:02]CELLConfig::getInt nPort=4567
-Info [2021-07-08 22:26:02]CELLConfig::getInt nThread=8
-Info [2021-07-08 22:26:02]CELLConfig::getInt nClient=150
-Info [2021-07-08 22:26:02]CELLConfig::getInt nMsg=1
-Info [2021-07-08 22:26:02]CELLConfig::getInt nSendSleep=1000
-Info [2021-07-08 22:26:02]CELLConfig::getInt nSendBuffSize=81920
-Info [2021-07-08 22:26:02]CELLConfig::getInt nRecvBuffSize=81920
-Info [2021-07-08 22:26:02]Thread<1>,start.
-Info [2021-07-08 22:26:02]Thread<3>,start.
-Info [2021-07-08 22:26:02]Thread<2>,start.
-Info [2021-07-08 22:26:02]Thread<4>,start.
-Info [2021-07-08 22:26:02]Thread<5>,start.
-Info [2021-07-08 22:26:02]Thread<6>,start.
-Info [2021-07-08 22:26:02]Thread<7>,start.
-Info [2021-07-08 22:26:02]Thread<8>,start.
-Info [2021-07-08 22:26:03]Thread<2>, Connect<begin=0, end=150, nConnect=686>
-Info [2021-07-08 22:26:03]Thread<3>, Connect<begin=0, end=150, nConnect=799>
-Info [2021-07-08 22:26:03]Thread<7>, Connect<begin=0, end=150, nConnect=826>
-Info [2021-07-08 22:26:03]Thread<4>, Connect<begin=0, end=150, nConnect=985>
-Info [2021-07-08 22:26:03]Thread<6>, Connect<begin=0, end=150, nConnect=992>
-Info [2021-07-08 22:26:03]Thread<8>, Connect<begin=0, end=150, nConnect=1136>
-Info [2021-07-08 22:26:03]Thread<5>, Connect<begin=0, end=150, nConnect=1155>
-Info [2021-07-08 22:26:03]Thread<1>, Connect<begin=0, end=150, nConnect=1200>
-Info [2021-07-08 22:26:03]thread<8>,clients<150>,connect<1200>,time<1.000083>,send<0>
-Info [2021-07-08 22:26:04]thread<8>,clients<150>,connect<1200>,time<1.000489>,send<1200>
-Info [2021-07-08 22:26:05]thread<8>,clients<150>,connect<1200>,time<1.010018>,send<1200>
-Info [2021-07-08 22:26:06]thread<8>,clients<150>,connect<1200>,time<1.001236>,send<1200>
-Info [2021-07-08 22:26:07]thread<8>,clients<150>,connect<1200>,time<1.001202>,send<1200>
-Info [2021-07-08 22:26:08]thread<8>,clients<150>,connect<1200>,time<1.000132>,send<1200>
-Info [2021-07-08 22:26:09]thread<8>,clients<150>,connect<1200>,time<1.001146>,send<1200>
-Info [2021-07-08 22:26:10]thread<8>,clients<150>,connect<1200>,time<1.000576>,send<1200>
-Info [2021-07-08 22:26:11]thread<8>,clients<150>,connect<1200>,time<1.000647>,send<1200>
-Info [2021-07-08 22:26:12]thread<8>,clients<150>,connect<1200>,time<1.001060>,send<1200>
-Info [2021-07-08 22:26:13]thread<8>,clients<150>,connect<1200>,time<1.000890>,send<1200>
-Info [2021-07-08 22:26:14]thread<8>,clients<150>,connect<1200>,time<1.000027>,send<1200>
-Info [2021-07-08 22:26:15]thread<8>,clients<150>,connect<1200>,time<1.001024>,send<1200>
-Info [2021-07-08 22:26:16]thread<8>,clients<150>,connect<1200>,time<1.000689>,send<1200>
-Info [2021-07-08 22:26:17]thread<8>,clients<150>,connect<1200>,time<1.000146>,send<1200>
-Info [2021-07-08 22:26:18]thread<8>,clients<150>,connect<1200>,time<1.001031>,send<1200>
-Info [2021-07-08 22:26:19]thread<8>,clients<150>,connect<1200>,time<1.000632>,send<1200>
-Info [2021-07-08 22:26:20]thread<8>,clients<150>,connect<1200>,time<1.000642>,send<1200>
-Info [2021-07-08 22:26:21]thread<8>,clients<150>,connect<1200>,time<1.000904>,send<1200>
-Info [2021-07-08 22:26:22]thread<8>,clients<150>,connect<1200>,time<1.000004>,send<1200>
-Info [2021-07-08 22:26:23]thread<8>,clients<150>,connect<1200>,time<1.001112>,send<1200>
-Info [2021-07-08 22:26:24]thread<8>,clients<150>,connect<1200>,time<1.000192>,send<1200>
-Info [2021-07-08 22:26:25]thread<8>,clients<150>,connect<1200>,time<1.000164>,send<1200>
-Info [2021-07-08 22:26:26]thread<8>,clients<150>,connect<1200>,time<1.000007>,send<1200>
-Info [2021-07-08 22:26:27]thread<8>,clients<150>,connect<1200>,time<1.001311>,send<1200>
-Info [2021-07-08 22:26:28]thread<8>,clients<150>,connect<1200>,time<1.000048>,send<1200>
-Info [2021-07-08 22:26:29]thread<8>,clients<150>,connect<1200>,time<1.000684>,send<1200>
-Info [2021-07-08 22:26:30]thread<8>,clients<150>,connect<1200>,time<1.000415>,send<1200>
-Info [2021-07-08 22:26:31]thread<8>,clients<150>,connect<1200>,time<1.000577>,send<1200>
-Info [2021-07-08 22:26:32]thread<8>,clients<150>,connect<1200>,time<1.000298>,send<1200>
-Info [2021-07-08 22:26:33]thread<8>,clients<150>,connect<1200>,time<1.001467>,send<1200>
-Info [2021-07-08 22:26:34]thread<8>,clients<150>,connect<1200>,time<1.000501>,send<1200>
-Info [2021-07-08 22:26:35]thread<8>,clients<150>,connect<1200>,time<1.000315>,send<1200>
-Info [2021-07-08 22:26:36]thread<8>,clients<150>,connect<1200>,time<1.000860>,send<1200>
-Info [2021-07-08 22:26:37]thread<8>,clients<150>,connect<1200>,time<1.001033>,send<1200>
-Info [2021-07-08 22:26:38]thread<8>,clients<150>,connect<1200>,time<1.000330>,send<1200>
-Info [2021-07-08 22:26:39]thread<8>,clients<150>,connect<1200>,time<1.001034>,send<1200>
-Info [2021-07-08 22:26:40]thread<8>,clients<150>,connect<1200>,time<1.000409>,send<1200>
-Info [2021-07-08 22:26:41]thread<8>,clients<150>,connect<1200>,time<1.000433>,send<1200>
-Info [2021-07-08 22:26:42]thread<8>,clients<150>,connect<1200>,time<1.001093>,send<1200>
-Info [2021-07-08 22:26:43]thread<8>,clients<150>,connect<1200>,time<1.001254>,send<1200>
-Info [2021-07-08 22:26:44]thread<8>,clients<150>,connect<1200>,time<1.000674>,send<1200>
-Info [2021-07-08 22:26:45]thread<8>,clients<150>,connect<1200>,time<1.000585>,send<1200>
-Info [2021-07-08 22:26:46]thread<8>,clients<150>,connect<1200>,time<1.001175>,send<1200>
-Info [2021-07-08 22:26:47]退出cmdThread线程
-Info [2021-07-08 22:26:47]Thread<1>,exit.
-Info [2021-07-08 22:26:47]Thread<2>,exit.
-Info [2021-07-08 22:26:47]Thread<3>,exit.
-Info [2021-07-08 22:26:47]Thread<4>,exit.
-Info [2021-07-08 22:26:47]Thread<5>,exit.
-Info [2021-07-08 22:26:47]Thread<6>,exit.
-Info [2021-07-08 22:26:47]Thread<7>,exit.
-Info [2021-07-08 22:26:47]Thread<8>,exit.
-Info [2021-07-08 22:26:47]..已退出..
+Info [2021-07-21 23:38:02]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Info [2021-07-21 23:38:02]CELLConfig::getStr strIP=127.0.0.1
+Info [2021-07-21 23:38:02]CELLConfig::getInt nPort=4567
+Info [2021-07-21 23:38:02]CELLConfig::getInt nThread=8
+Info [2021-07-21 23:38:02]CELLConfig::getInt nClient=150
+Info [2021-07-21 23:38:02]CELLConfig::getInt nMsg=1
+Info [2021-07-21 23:38:02]CELLConfig::getInt nSendSleep=1000
+Info [2021-07-21 23:38:02]CELLConfig::getInt nSendBuffSize=81920
+Info [2021-07-21 23:38:02]CELLConfig::getInt nRecvBuffSize=81920
+Info [2021-07-21 23:38:02]Thread<2>,start.
+Info [2021-07-21 23:38:02]Thread<1>,start.
+Info [2021-07-21 23:38:02]Thread<3>,start.
+Info [2021-07-21 23:38:02]Thread<4>,start.
+Info [2021-07-21 23:38:02]Thread<5>,start.
+Info [2021-07-21 23:38:02]Thread<6>,start.
+Info [2021-07-21 23:38:02]Thread<7>,start.
+Info [2021-07-21 23:38:02]Thread<8>,start.
+Info [2021-07-21 23:38:02]Thread<5>, Connect<begin=0, end=150, nConnect=671>
+Info [2021-07-21 23:38:02]Thread<7>, Connect<begin=0, end=150, nConnect=672>
+Info [2021-07-21 23:38:02]Thread<2>, Connect<begin=0, end=150, nConnect=716>
+Info [2021-07-21 23:38:03]Thread<3>, Connect<begin=0, end=150, nConnect=1068>
+Info [2021-07-21 23:38:03]Thread<1>, Connect<begin=0, end=150, nConnect=1130>
+Info [2021-07-21 23:38:03]Thread<8>, Connect<begin=0, end=150, nConnect=1133>
+Info [2021-07-21 23:38:03]Thread<4>, Connect<begin=0, end=150, nConnect=1151>
+Info [2021-07-21 23:38:03]Thread<6>, Connect<begin=0, end=150, nConnect=1200>
+Info [2021-07-21 23:38:03]thread<8>,clients<150>,connect<1200>,time<1.000092>,send<0>
+Info [2021-07-21 23:38:04]thread<8>,clients<150>,connect<1200>,time<1.000285>,send<1200>
+Info [2021-07-21 23:38:05]thread<8>,clients<150>,connect<1200>,time<1.000472>,send<1200>
+Info [2021-07-21 23:38:06]thread<8>,clients<150>,connect<1200>,time<1.000312>,send<1200>
+Info [2021-07-21 23:38:07]thread<8>,clients<150>,connect<1200>,time<1.001194>,send<1200>
+Info [2021-07-21 23:38:08]thread<8>,clients<150>,connect<1200>,time<1.000659>,send<1200>
+Info [2021-07-21 23:38:09]thread<8>,clients<150>,connect<1200>,time<1.000272>,send<1200>
+Info [2021-07-21 23:38:10]thread<8>,clients<150>,connect<1200>,time<1.000421>,send<1200>
+Info [2021-07-21 23:38:11]thread<8>,clients<150>,connect<1200>,time<1.000730>,send<1200>
+Info [2021-07-21 23:38:12]thread<8>,clients<150>,connect<1200>,time<1.001541>,send<1200>
+Info [2021-07-21 23:38:13]thread<8>,clients<150>,connect<1200>,time<1.000391>,send<1200>
+Info [2021-07-21 23:38:14]thread<8>,clients<150>,connect<1200>,time<1.001194>,send<1200>
+Info [2021-07-21 23:38:15]thread<8>,clients<150>,connect<1200>,time<1.001350>,send<1200>
+Info [2021-07-21 23:38:16]thread<8>,clients<150>,connect<1200>,time<1.000715>,send<1200>
+Info [2021-07-21 23:38:17]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
+Info [2021-07-21 23:38:18]thread<8>,clients<150>,connect<1200>,time<1.001074>,send<1200>
+Info [2021-07-21 23:38:19]thread<8>,clients<150>,connect<1200>,time<1.000037>,send<1200>
+Info [2021-07-21 23:38:20]thread<8>,clients<150>,connect<1200>,time<1.000046>,send<1200>
+Info [2021-07-21 23:38:21]thread<8>,clients<150>,connect<1200>,time<1.000257>,send<1200>
+Info [2021-07-21 23:38:22]thread<8>,clients<150>,connect<1200>,time<1.000197>,send<1200>
+Info [2021-07-21 23:38:23]thread<8>,clients<150>,connect<1200>,time<1.000974>,send<1200>
+Info [2021-07-21 23:38:24]thread<8>,clients<150>,connect<1200>,time<1.001378>,send<1200>
+Info [2021-07-21 23:38:25]thread<8>,clients<150>,connect<1200>,time<1.000473>,send<1200>
+Info [2021-07-21 23:38:26]thread<8>,clients<150>,connect<1200>,time<1.000783>,send<1200>
+Info [2021-07-21 23:38:27]thread<8>,clients<150>,connect<1200>,time<1.001466>,send<1200>
+Info [2021-07-21 23:38:28]thread<8>,clients<150>,connect<1200>,time<1.000909>,send<1200>
+Info [2021-07-21 23:38:29]thread<8>,clients<150>,connect<1200>,time<1.001158>,send<1200>
+Info [2021-07-21 23:38:30]thread<8>,clients<150>,connect<1200>,time<1.000270>,send<1200>
+Info [2021-07-21 23:38:31]thread<8>,clients<150>,connect<1200>,time<1.000980>,send<1200>
+Info [2021-07-21 23:38:32]thread<8>,clients<150>,connect<1200>,time<1.011154>,send<1200>
+Info [2021-07-21 23:38:33]thread<8>,clients<150>,connect<1200>,time<1.000233>,send<1200>
+Info [2021-07-21 23:38:34]thread<8>,clients<150>,connect<1200>,time<1.000360>,send<1200>
+Info [2021-07-21 23:38:35]thread<8>,clients<150>,connect<1200>,time<1.000138>,send<1200>
+Info [2021-07-21 23:38:36]thread<8>,clients<150>,connect<1200>,time<1.000844>,send<1200>
+Info [2021-07-21 23:38:37]thread<8>,clients<150>,connect<1200>,time<1.000636>,send<1200>
+Info [2021-07-21 23:38:38]thread<8>,clients<150>,connect<1200>,time<1.000599>,send<1200>
+Info [2021-07-21 23:38:39]thread<8>,clients<150>,connect<1200>,time<1.001088>,send<1200>
+Info [2021-07-21 23:38:40]thread<8>,clients<150>,connect<1200>,time<1.000930>,send<1200>
+Info [2021-07-21 23:38:41]thread<8>,clients<150>,connect<1200>,time<1.000323>,send<1200>
+Info [2021-07-21 23:38:42]thread<8>,clients<150>,connect<1200>,time<1.001436>,send<1200>
+Info [2021-07-21 23:38:43]thread<8>,clients<150>,connect<1200>,time<1.001029>,send<1200>
+Info [2021-07-21 23:38:44]thread<8>,clients<150>,connect<1200>,time<1.000194>,send<1200>
+Info [2021-07-21 23:38:45]thread<8>,clients<150>,connect<1200>,time<1.000508>,send<1200>
+Info [2021-07-21 23:38:46]thread<8>,clients<150>,connect<1200>,time<1.000405>,send<1200>
+Info [2021-07-21 23:38:47]thread<8>,clients<150>,connect<1200>,time<1.000109>,send<1200>
+Info [2021-07-21 23:38:48]thread<8>,clients<150>,connect<1200>,time<1.000705>,send<1200>
+Info [2021-07-21 23:38:49]thread<8>,clients<150>,connect<1200>,time<1.001134>,send<1200>
+Info [2021-07-21 23:38:50]thread<8>,clients<150>,connect<1200>,time<1.000877>,send<1200>
+Info [2021-07-21 23:38:51]thread<8>,clients<150>,connect<1200>,time<1.000767>,send<1200>
+Info [2021-07-21 23:38:52]thread<8>,clients<150>,connect<1200>,time<1.000509>,send<1200>
+Info [2021-07-21 23:38:53]thread<8>,clients<150>,connect<1200>,time<1.000720>,send<1200>
+Info [2021-07-21 23:38:54]thread<8>,clients<150>,connect<1200>,time<1.001139>,send<1200>
+Info [2021-07-21 23:38:55]thread<8>,clients<150>,connect<1200>,time<1.000886>,send<1200>
+Info [2021-07-21 23:38:56]thread<8>,clients<150>,connect<1200>,time<1.000995>,send<1200>
+Info [2021-07-21 23:38:57]thread<8>,clients<150>,connect<1200>,time<1.000005>,send<1200>
+Info [2021-07-21 23:38:58]thread<8>,clients<150>,connect<1200>,time<1.001098>,send<1200>
+Info [2021-07-21 23:38:59]thread<8>,clients<150>,connect<1200>,time<1.000287>,send<1200>
+Info [2021-07-21 23:39:00]thread<8>,clients<150>,connect<1200>,time<1.000301>,send<1200>
+Info [2021-07-21 23:39:01]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
+Info [2021-07-21 23:39:02]thread<8>,clients<150>,connect<1200>,time<1.000597>,send<1200>
+Info [2021-07-21 23:39:03]thread<8>,clients<150>,connect<1200>,time<1.001075>,send<1200>
+Info [2021-07-21 23:39:04]thread<8>,clients<150>,connect<1200>,time<1.000213>,send<1200>
+Info [2021-07-21 23:39:05]thread<8>,clients<150>,connect<1200>,time<1.001005>,send<1200>
+Info [2021-07-21 23:39:06]thread<8>,clients<150>,connect<1200>,time<1.000068>,send<1200>
+Info [2021-07-21 23:39:07]thread<8>,clients<150>,connect<1200>,time<1.000068>,send<1200>
+Info [2021-07-21 23:39:08]thread<8>,clients<150>,connect<1200>,time<1.000113>,send<1200>
+Info [2021-07-21 23:39:09]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
+Info [2021-07-21 23:39:10]thread<8>,clients<150>,connect<1200>,time<1.000902>,send<1200>
+Info [2021-07-21 23:39:11]thread<8>,clients<150>,connect<1200>,time<1.001103>,send<1200>
+Info [2021-07-21 23:39:12]thread<8>,clients<150>,connect<1200>,time<1.000875>,send<1200>
+Info [2021-07-21 23:39:13]thread<8>,clients<150>,connect<1200>,time<1.001218>,send<1200>
+Info [2021-07-21 23:39:14]thread<8>,clients<150>,connect<1200>,time<1.000016>,send<1200>
+Info [2021-07-21 23:39:15]thread<8>,clients<150>,connect<1200>,time<1.000365>,send<1200>
+Info [2021-07-21 23:39:16]thread<8>,clients<150>,connect<1200>,time<1.001695>,send<1200>
+Info [2021-07-21 23:39:17]thread<8>,clients<150>,connect<1200>,time<1.000851>,send<1200>
+Info [2021-07-21 23:39:18]thread<8>,clients<150>,connect<1200>,time<1.000439>,send<1200>
+Info [2021-07-21 23:39:19]thread<8>,clients<150>,connect<1200>,time<1.000212>,send<1200>
+Info [2021-07-21 23:39:20]thread<8>,clients<150>,connect<1200>,time<1.001372>,send<1200>
+Info [2021-07-21 23:39:21]thread<8>,clients<150>,connect<1200>,time<1.000249>,send<1200>
+Info [2021-07-21 23:39:22]thread<8>,clients<150>,connect<1200>,time<1.000654>,send<1200>
+Info [2021-07-21 23:39:23]thread<8>,clients<150>,connect<1200>,time<1.000242>,send<1200>
+Info [2021-07-21 23:39:24]thread<8>,clients<150>,connect<1200>,time<1.000209>,send<1200>
+Info [2021-07-21 23:39:25]thread<8>,clients<150>,connect<1200>,time<1.001982>,send<1200>
+Info [2021-07-21 23:39:26]thread<8>,clients<150>,connect<1200>,time<1.001077>,send<1200>
+Info [2021-07-21 23:39:27]thread<8>,clients<150>,connect<1200>,time<1.001171>,send<1200>
+Info [2021-07-21 23:39:28]thread<8>,clients<150>,connect<1200>,time<1.001482>,send<1200>
+Info [2021-07-21 23:39:29]thread<8>,clients<150>,connect<1200>,time<1.000891>,send<1200>
+Info [2021-07-21 23:39:30]thread<8>,clients<150>,connect<1200>,time<1.001475>,send<1200>
+Info [2021-07-21 23:39:31]thread<8>,clients<150>,connect<1200>,time<1.000998>,send<1200>
+Info [2021-07-21 23:39:32]thread<8>,clients<150>,connect<1200>,time<1.000590>,send<1200>
+Info [2021-07-21 23:39:33]thread<8>,clients<150>,connect<1200>,time<1.001097>,send<1200>
+Info [2021-07-21 23:39:34]thread<8>,clients<150>,connect<1200>,time<1.000521>,send<1200>
+Info [2021-07-21 23:39:35]thread<8>,clients<150>,connect<1200>,time<1.001329>,send<1200>
+Info [2021-07-21 23:39:36]thread<8>,clients<150>,connect<1200>,time<1.000610>,send<1200>
+Info [2021-07-21 23:39:37]thread<8>,clients<150>,connect<1200>,time<1.000055>,send<1200>
+Info [2021-07-21 23:39:38]thread<8>,clients<150>,connect<1200>,time<1.000187>,send<1200>
+Info [2021-07-21 23:39:39]thread<8>,clients<150>,connect<1200>,time<1.000914>,send<1200>
+Info [2021-07-21 23:39:40]thread<8>,clients<150>,connect<1200>,time<1.000152>,send<1200>
+Info [2021-07-21 23:39:41]thread<8>,clients<150>,connect<1200>,time<1.001490>,send<1200>
+Info [2021-07-21 23:39:42]thread<8>,clients<150>,connect<1200>,time<1.001311>,send<1200>
+Info [2021-07-21 23:39:43]thread<8>,clients<150>,connect<1200>,time<1.000944>,send<1200>
+Info [2021-07-21 23:39:44]thread<8>,clients<150>,connect<1200>,time<1.000683>,send<1200>
+Info [2021-07-21 23:39:45]thread<8>,clients<150>,connect<1200>,time<1.000151>,send<1200>
+Info [2021-07-21 23:39:46]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
+Info [2021-07-21 23:39:47]thread<8>,clients<150>,connect<1200>,time<1.000156>,send<1200>
+Info [2021-07-21 23:39:48]thread<8>,clients<150>,connect<1200>,time<1.000560>,send<1200>
+Info [2021-07-21 23:39:49]thread<8>,clients<150>,connect<1200>,time<1.000145>,send<1200>
+Info [2021-07-21 23:39:50]thread<8>,clients<150>,connect<1200>,time<1.001396>,send<1200>
+Info [2021-07-21 23:39:51]thread<8>,clients<150>,connect<1200>,time<1.000657>,send<1200>
+Info [2021-07-21 23:39:52]thread<8>,clients<150>,connect<1200>,time<1.000136>,send<1200>
+Info [2021-07-21 23:39:53]thread<8>,clients<150>,connect<1200>,time<1.000866>,send<1200>
+Info [2021-07-21 23:39:54]thread<8>,clients<150>,connect<1200>,time<1.000104>,send<1200>
+Info [2021-07-21 23:39:55]thread<8>,clients<150>,connect<1200>,time<1.000666>,send<1200>
+Info [2021-07-21 23:39:56]thread<8>,clients<150>,connect<1200>,time<1.000429>,send<1200>
+Info [2021-07-21 23:39:57]thread<8>,clients<150>,connect<1200>,time<1.000158>,send<1200>
+Info [2021-07-21 23:39:58]thread<8>,clients<150>,connect<1200>,time<1.000304>,send<1200>
+Info [2021-07-21 23:39:59]thread<8>,clients<150>,connect<1200>,time<1.000729>,send<1200>
+Info [2021-07-21 23:40:00]thread<8>,clients<150>,connect<1200>,time<1.001039>,send<1200>
+Info [2021-07-21 23:40:01]thread<8>,clients<150>,connect<1200>,time<1.001132>,send<1200>
+Info [2021-07-21 23:40:02]thread<8>,clients<150>,connect<1200>,time<1.001019>,send<1200>
+Info [2021-07-21 23:40:03]thread<8>,clients<150>,connect<1200>,time<1.000324>,send<1200>
+Info [2021-07-21 23:40:04]thread<8>,clients<150>,connect<1200>,time<1.000416>,send<1200>
+Info [2021-07-21 23:40:05]thread<8>,clients<150>,connect<1200>,time<1.000423>,send<1200>
+Info [2021-07-21 23:40:06]thread<8>,clients<150>,connect<1200>,time<1.000829>,send<1200>
+Info [2021-07-21 23:40:07]thread<8>,clients<150>,connect<1200>,time<1.001065>,send<1200>
+Info [2021-07-21 23:40:08]thread<8>,clients<150>,connect<1200>,time<1.000888>,send<1200>
+Info [2021-07-21 23:40:09]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
+Info [2021-07-21 23:40:10]thread<8>,clients<150>,connect<1200>,time<1.000292>,send<1200>
+Info [2021-07-21 23:40:11]thread<8>,clients<150>,connect<1200>,time<1.000644>,send<1200>
+Info [2021-07-21 23:40:12]thread<8>,clients<150>,connect<1200>,time<1.000238>,send<1200>
+Info [2021-07-21 23:40:13]thread<8>,clients<150>,connect<1200>,time<1.000720>,send<1200>
+Info [2021-07-21 23:40:14]thread<8>,clients<150>,connect<1200>,time<1.000412>,send<1200>
+Info [2021-07-21 23:40:15]thread<8>,clients<150>,connect<1200>,time<1.000436>,send<1200>
+Info [2021-07-21 23:40:16]thread<8>,clients<150>,connect<1200>,time<1.001138>,send<1200>
+Info [2021-07-21 23:40:17]thread<8>,clients<150>,connect<1200>,time<1.000691>,send<1200>
+Info [2021-07-21 23:40:18]thread<8>,clients<150>,connect<1200>,time<1.000957>,send<1200>
+Info [2021-07-21 23:40:19]thread<8>,clients<150>,connect<1200>,time<1.000784>,send<1200>
+Info [2021-07-21 23:40:20]thread<8>,clients<150>,connect<1200>,time<1.001128>,send<1200>
+Info [2021-07-21 23:40:21]thread<8>,clients<150>,connect<1200>,time<1.000725>,send<1200>
+Info [2021-07-21 23:40:22]thread<8>,clients<150>,connect<1200>,time<1.000194>,send<1200>
+Info [2021-07-21 23:40:23]thread<8>,clients<150>,connect<1200>,time<1.000677>,send<1200>
+Info [2021-07-21 23:40:24]thread<8>,clients<150>,connect<1200>,time<1.000023>,send<1200>
+Info [2021-07-21 23:40:25]thread<8>,clients<150>,connect<1200>,time<1.000359>,send<1200>
+Info [2021-07-21 23:40:26]thread<8>,clients<150>,connect<1200>,time<1.000723>,send<1200>
+Info [2021-07-21 23:40:27]thread<8>,clients<150>,connect<1200>,time<1.000318>,send<1200>
+Info [2021-07-21 23:40:28]thread<8>,clients<150>,connect<1200>,time<1.000333>,send<1200>
+Info [2021-07-21 23:40:29]thread<8>,clients<150>,connect<1200>,time<1.001232>,send<1200>
+Info [2021-07-21 23:40:30]thread<8>,clients<150>,connect<1200>,time<1.000252>,send<1200>
+Info [2021-07-21 23:40:31]thread<8>,clients<150>,connect<1200>,time<1.000701>,send<1200>
+Info [2021-07-21 23:40:32]thread<8>,clients<150>,connect<1200>,time<1.000344>,send<1200>
+Info [2021-07-21 23:40:33]thread<8>,clients<150>,connect<1200>,time<1.000299>,send<1200>
+Info [2021-07-21 23:40:34]thread<8>,clients<150>,connect<1200>,time<1.001123>,send<1200>
+Info [2021-07-21 23:40:36]thread<8>,clients<150>,connect<1200>,time<1.000539>,send<1200>
+Info [2021-07-21 23:40:37]thread<8>,clients<150>,connect<1200>,time<1.001243>,send<1200>
+Info [2021-07-21 23:40:38]thread<8>,clients<150>,connect<1200>,time<1.000745>,send<1200>
+Info [2021-07-21 23:40:39]thread<8>,clients<150>,connect<1200>,time<1.001305>,send<1200>
+Info [2021-07-21 23:40:40]thread<8>,clients<150>,connect<1200>,time<1.000134>,send<1200>
+Info [2021-07-21 23:40:41]thread<8>,clients<150>,connect<1200>,time<1.000209>,send<1200>
+Info [2021-07-21 23:40:42]thread<8>,clients<150>,connect<1200>,time<1.000078>,send<1200>
+Info [2021-07-21 23:40:43]thread<8>,clients<150>,connect<1200>,time<1.000383>,send<1200>
+Info [2021-07-21 23:40:44]thread<8>,clients<150>,connect<1200>,time<1.000203>,send<1200>
+Info [2021-07-21 23:40:45]thread<8>,clients<150>,connect<1200>,time<1.001179>,send<1200>
+Info [2021-07-21 23:40:46]thread<8>,clients<150>,connect<1200>,time<1.001717>,send<1200>
+Info [2021-07-21 23:40:47]thread<8>,clients<150>,connect<1200>,time<1.000723>,send<1200>
+Info [2021-07-21 23:40:48]thread<8>,clients<150>,connect<1200>,time<1.000258>,send<1200>
+Info [2021-07-21 23:40:49]thread<8>,clients<150>,connect<1200>,time<1.001149>,send<1200>
+Info [2021-07-21 23:40:50]thread<8>,clients<150>,connect<1200>,time<1.000797>,send<1200>
+Info [2021-07-21 23:40:51]thread<8>,clients<150>,connect<1200>,time<1.000059>,send<1200>
+Info [2021-07-21 23:40:52]thread<8>,clients<150>,connect<1200>,time<1.000769>,send<1200>
+Info [2021-07-21 23:40:53]thread<8>,clients<150>,connect<1200>,time<1.000541>,send<1200>
+Info [2021-07-21 23:40:54]thread<8>,clients<150>,connect<1200>,time<1.001242>,send<1200>
+Info [2021-07-21 23:40:55]thread<8>,clients<150>,connect<1200>,time<1.000821>,send<1200>
+Info [2021-07-21 23:40:56]thread<8>,clients<150>,connect<1200>,time<1.000058>,send<1200>
+Info [2021-07-21 23:40:57]thread<8>,clients<150>,connect<1200>,time<1.001066>,send<1200>
+Info [2021-07-21 23:40:58]thread<8>,clients<150>,connect<1200>,time<1.000765>,send<1200>
+Info [2021-07-21 23:40:59]thread<8>,clients<150>,connect<1200>,time<1.000498>,send<1200>
+Info [2021-07-21 23:41:00]thread<8>,clients<150>,connect<1200>,time<1.000859>,send<1200>
+Info [2021-07-21 23:41:01]thread<8>,clients<150>,connect<1200>,time<1.000221>,send<1200>
+Info [2021-07-21 23:41:02]thread<8>,clients<150>,connect<1200>,time<1.000133>,send<1200>
+Info [2021-07-21 23:41:03]thread<8>,clients<150>,connect<1200>,time<1.000040>,send<1200>
+Info [2021-07-21 23:41:04]thread<8>,clients<150>,connect<1200>,time<1.002136>,send<1350>
+Info [2021-07-21 23:41:05]thread<8>,clients<150>,connect<1200>,time<1.001566>,send<1200>
+Info [2021-07-21 23:41:06]thread<8>,clients<150>,connect<1200>,time<1.001832>,send<1350>
+Info [2021-07-21 23:41:07]thread<8>,clients<150>,connect<1200>,time<1.001058>,send<1200>
+Info [2021-07-21 23:41:08]thread<8>,clients<150>,connect<1200>,time<1.000938>,send<1200>
+Info [2021-07-21 23:41:09]thread<8>,clients<150>,connect<1200>,time<1.001782>,send<1350>
+Info [2021-07-21 23:41:10]thread<8>,clients<150>,connect<1200>,time<1.000710>,send<1350>
+Info [2021-07-21 23:41:11]thread<8>,clients<150>,connect<1200>,time<1.001675>,send<1500>
+Info [2021-07-21 23:41:12]thread<8>,clients<150>,connect<1200>,time<1.000642>,send<1350>
+Info [2021-07-21 23:41:13]thread<8>,clients<150>,connect<1200>,time<1.000229>,send<900>
+Info [2021-07-21 23:41:14]thread<8>,clients<150>,connect<1200>,time<1.002831>,send<1500>
+Info [2021-07-21 23:41:15]thread<8>,clients<150>,connect<1200>,time<1.000885>,send<1350>
+Info [2021-07-21 23:41:16]thread<8>,clients<150>,connect<1200>,time<1.001143>,send<1200>
+Info [2021-07-21 23:41:17]thread<8>,clients<150>,connect<1200>,time<1.001161>,send<1050>
+Info [2021-07-21 23:41:18]thread<8>,clients<150>,connect<1200>,time<1.001104>,send<1350>
+Info [2021-07-21 23:41:19]thread<8>,clients<150>,connect<1200>,time<1.001322>,send<1200>
+Info [2021-07-21 23:41:20]thread<8>,clients<150>,connect<1200>,time<1.001173>,send<1200>
+Info [2021-07-21 23:41:21]thread<8>,clients<150>,connect<1200>,time<1.000243>,send<1200>
+Info [2021-07-21 23:41:22]thread<8>,clients<150>,connect<1200>,time<1.000778>,send<1200>
+Info [2021-07-21 23:41:23]thread<8>,clients<150>,connect<1200>,time<1.000023>,send<1200>
+Info [2021-07-21 23:41:24]thread<8>,clients<150>,connect<1200>,time<1.001016>,send<1200>
+Info [2021-07-21 23:41:25]thread<8>,clients<150>,connect<1200>,time<1.001206>,send<1200>
+Info [2021-07-21 23:41:26]thread<8>,clients<150>,connect<1200>,time<1.000045>,send<1200>
+Info [2021-07-21 23:41:27]thread<8>,clients<150>,connect<1200>,time<1.000245>,send<1200>
+Info [2021-07-21 23:41:28]thread<8>,clients<150>,connect<1200>,time<1.000943>,send<1200>
+Info [2021-07-21 23:41:29]thread<8>,clients<150>,connect<1200>,time<1.000504>,send<1200>
+Info [2021-07-21 23:41:30]thread<8>,clients<150>,connect<1200>,time<1.000761>,send<1200>
+Info [2021-07-21 23:41:31]thread<8>,clients<150>,connect<1200>,time<1.000176>,send<1200>
+Info [2021-07-21 23:41:32]thread<8>,clients<150>,connect<1200>,time<1.000521>,send<1200>
+Info [2021-07-21 23:41:33]thread<8>,clients<150>,connect<1200>,time<1.001244>,send<1200>
+Info [2021-07-21 23:41:34]thread<8>,clients<150>,connect<1200>,time<1.001133>,send<1200>
+Info [2021-07-21 23:41:35]thread<8>,clients<150>,connect<1200>,time<1.001132>,send<1200>
+Info [2021-07-21 23:41:36]thread<8>,clients<150>,connect<1200>,time<1.000627>,send<1200>
+Info [2021-07-21 23:41:37]thread<8>,clients<150>,connect<1200>,time<1.000719>,send<1200>
+Info [2021-07-21 23:41:38]thread<8>,clients<150>,connect<1200>,time<1.000169>,send<1200>
+Info [2021-07-21 23:41:39]thread<8>,clients<150>,connect<1200>,time<1.000106>,send<1200>
+Info [2021-07-21 23:41:40]thread<8>,clients<150>,connect<1200>,time<1.000955>,send<1200>
+Info [2021-07-21 23:41:41]thread<8>,clients<150>,connect<1200>,time<1.001356>,send<1200>
+Info [2021-07-21 23:41:42]thread<8>,clients<150>,connect<1200>,time<1.001376>,send<1200>
+Info [2021-07-21 23:41:43]thread<8>,clients<150>,connect<1200>,time<1.000495>,send<1200>
+Info [2021-07-21 23:41:44]thread<8>,clients<150>,connect<1200>,time<1.001184>,send<1200>
+Info [2021-07-21 23:41:45]thread<8>,clients<150>,connect<1200>,time<1.000589>,send<1200>
+Info [2021-07-21 23:41:46]thread<8>,clients<150>,connect<1200>,time<1.000863>,send<1200>
+Info [2021-07-21 23:41:47]thread<8>,clients<150>,connect<1200>,time<1.001000>,send<1200>
+Info [2021-07-21 23:41:48]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
+Info [2021-07-21 23:41:49]thread<8>,clients<150>,connect<1200>,time<1.000940>,send<1200>
+Info [2021-07-21 23:41:50]thread<8>,clients<150>,connect<1200>,time<1.000387>,send<1200>
+Info [2021-07-21 23:41:51]thread<8>,clients<150>,connect<1200>,time<1.000182>,send<1200>
+Info [2021-07-21 23:41:52]thread<8>,clients<150>,connect<1200>,time<1.001376>,send<1200>
+Info [2021-07-21 23:41:53]thread<8>,clients<150>,connect<1200>,time<1.000545>,send<1200>
+Info [2021-07-21 23:41:54]thread<8>,clients<150>,connect<1200>,time<1.001030>,send<1200>
+Info [2021-07-21 23:41:55]thread<8>,clients<150>,connect<1200>,time<1.000504>,send<1200>
+Info [2021-07-21 23:41:56]thread<8>,clients<150>,connect<1200>,time<1.001079>,send<1200>
+Info [2021-07-21 23:41:57]thread<8>,clients<150>,connect<1200>,time<1.000567>,send<1200>
+Info [2021-07-21 23:41:58]thread<8>,clients<150>,connect<1200>,time<1.000776>,send<1200>
+Info [2021-07-21 23:41:59]thread<8>,clients<150>,connect<1200>,time<1.000049>,send<1200>
+Info [2021-07-21 23:42:00]thread<8>,clients<150>,connect<1200>,time<1.000433>,send<1200>
+Info [2021-07-21 23:42:01]thread<8>,clients<150>,connect<1200>,time<1.000094>,send<1200>
+Info [2021-07-21 23:42:01]退出cmdThread线程
+Info [2021-07-21 23:42:01]Thread<1>,exit.
+Info [2021-07-21 23:42:01]Thread<2>,exit.
+Info [2021-07-21 23:42:01]Thread<3>,exit.
+Info [2021-07-21 23:42:01]Thread<4>,exit.
+Info [2021-07-21 23:42:01]Thread<5>,exit.
+Info [2021-07-21 23:42:01]Thread<6>,exit.
+Info [2021-07-21 23:42:01]Thread<7>,exit.
+Info [2021-07-21 23:42:01]Thread<8>,exit.
+Info [2021-07-21 23:42:01]..已退出..
