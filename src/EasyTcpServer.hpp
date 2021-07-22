@@ -294,6 +294,11 @@ public:
 	{
 		_pNetEvent->OnNetMsg(this, pClient, header);
 	}
+	virtual void OnClientJoin(ClientSocketPtr& pClient)
+	{
+
+	}
+
 
 	void addClient(ClientSocketPtr& pClient)
 	{
