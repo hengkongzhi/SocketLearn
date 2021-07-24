@@ -104,6 +104,11 @@ public:
 				{
 					_clients.push_back(pClient);
 					pClient->serverId = _id;
+					if (_pNetEvent)
+					{
+						_pNetEvent->OnNetJoin(pClient);
+					}
+					OnClientJoin(pClient);
 				}
 				_clientsBuff.clear();
 				_clients_change = true;
@@ -119,7 +124,7 @@ public:
 			}
 
 			checkTime();
-			if (!DoNetEvents())
+			if (!this->DoNetEvents())
 			{
 				pThread->Exit();
 				break;
@@ -498,7 +503,7 @@ public:
 			}
 		}
 		pMinServer->addClient(pClient);
-		OnNetJoin(pClient);
+		//OnNetJoin(pClient);
 	}
 	template<typename ServerT>
 	void Start(int nCellServer)

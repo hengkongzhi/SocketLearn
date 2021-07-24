@@ -2,7 +2,7 @@
 #define _EasyTcpEpollServer_hpp_
 
 #include "EasyTcpServer.hpp"
-//#include "CELLSelectServer.hpp"
+#include "CELLEpollServer.hpp"
 #include "CELLEpoll.hpp"
 
 class EasyTcpEpollServer : public EasyTcpServer
@@ -10,7 +10,7 @@ class EasyTcpEpollServer : public EasyTcpServer
 public:
 	void Start(int nCellServer)
 	{
-		//EasyTcpServer::Start<CellSelectServer>(nCellServer); 
+		EasyTcpServer::Start<CellEpollServer>(nCellServer); 
 	}
 protected:
 	//处理网络消息

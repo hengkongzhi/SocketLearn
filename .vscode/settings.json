@@ -49,6 +49,7 @@
         "memory_resource": "cpp",
         "optional": "cpp",
         "random": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "map": "cpp"
     }
 }

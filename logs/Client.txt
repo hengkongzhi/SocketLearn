@@ -1,273 +1,333 @@
-Info [2021-07-21 23:38:02]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Info [2021-07-21 23:38:02]CELLConfig::getStr strIP=127.0.0.1
-Info [2021-07-21 23:38:02]CELLConfig::getInt nPort=4567
-Info [2021-07-21 23:38:02]CELLConfig::getInt nThread=8
-Info [2021-07-21 23:38:02]CELLConfig::getInt nClient=150
-Info [2021-07-21 23:38:02]CELLConfig::getInt nMsg=1
-Info [2021-07-21 23:38:02]CELLConfig::getInt nSendSleep=1000
-Info [2021-07-21 23:38:02]CELLConfig::getInt nSendBuffSize=81920
-Info [2021-07-21 23:38:02]CELLConfig::getInt nRecvBuffSize=81920
-Info [2021-07-21 23:38:02]Thread<2>,start.
-Info [2021-07-21 23:38:02]Thread<1>,start.
-Info [2021-07-21 23:38:02]Thread<3>,start.
-Info [2021-07-21 23:38:02]Thread<4>,start.
-Info [2021-07-21 23:38:02]Thread<5>,start.
-Info [2021-07-21 23:38:02]Thread<6>,start.
-Info [2021-07-21 23:38:02]Thread<7>,start.
-Info [2021-07-21 23:38:02]Thread<8>,start.
-Info [2021-07-21 23:38:02]Thread<5>, Connect<begin=0, end=150, nConnect=671>
-Info [2021-07-21 23:38:02]Thread<7>, Connect<begin=0, end=150, nConnect=672>
-Info [2021-07-21 23:38:02]Thread<2>, Connect<begin=0, end=150, nConnect=716>
-Info [2021-07-21 23:38:03]Thread<3>, Connect<begin=0, end=150, nConnect=1068>
-Info [2021-07-21 23:38:03]Thread<1>, Connect<begin=0, end=150, nConnect=1130>
-Info [2021-07-21 23:38:03]Thread<8>, Connect<begin=0, end=150, nConnect=1133>
-Info [2021-07-21 23:38:03]Thread<4>, Connect<begin=0, end=150, nConnect=1151>
-Info [2021-07-21 23:38:03]Thread<6>, Connect<begin=0, end=150, nConnect=1200>
-Info [2021-07-21 23:38:03]thread<8>,clients<150>,connect<1200>,time<1.000092>,send<0>
-Info [2021-07-21 23:38:04]thread<8>,clients<150>,connect<1200>,time<1.000285>,send<1200>
-Info [2021-07-21 23:38:05]thread<8>,clients<150>,connect<1200>,time<1.000472>,send<1200>
-Info [2021-07-21 23:38:06]thread<8>,clients<150>,connect<1200>,time<1.000312>,send<1200>
-Info [2021-07-21 23:38:07]thread<8>,clients<150>,connect<1200>,time<1.001194>,send<1200>
-Info [2021-07-21 23:38:08]thread<8>,clients<150>,connect<1200>,time<1.000659>,send<1200>
-Info [2021-07-21 23:38:09]thread<8>,clients<150>,connect<1200>,time<1.000272>,send<1200>
-Info [2021-07-21 23:38:10]thread<8>,clients<150>,connect<1200>,time<1.000421>,send<1200>
-Info [2021-07-21 23:38:11]thread<8>,clients<150>,connect<1200>,time<1.000730>,send<1200>
-Info [2021-07-21 23:38:12]thread<8>,clients<150>,connect<1200>,time<1.001541>,send<1200>
-Info [2021-07-21 23:38:13]thread<8>,clients<150>,connect<1200>,time<1.000391>,send<1200>
-Info [2021-07-21 23:38:14]thread<8>,clients<150>,connect<1200>,time<1.001194>,send<1200>
-Info [2021-07-21 23:38:15]thread<8>,clients<150>,connect<1200>,time<1.001350>,send<1200>
-Info [2021-07-21 23:38:16]thread<8>,clients<150>,connect<1200>,time<1.000715>,send<1200>
-Info [2021-07-21 23:38:17]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
-Info [2021-07-21 23:38:18]thread<8>,clients<150>,connect<1200>,time<1.001074>,send<1200>
-Info [2021-07-21 23:38:19]thread<8>,clients<150>,connect<1200>,time<1.000037>,send<1200>
-Info [2021-07-21 23:38:20]thread<8>,clients<150>,connect<1200>,time<1.000046>,send<1200>
-Info [2021-07-21 23:38:21]thread<8>,clients<150>,connect<1200>,time<1.000257>,send<1200>
-Info [2021-07-21 23:38:22]thread<8>,clients<150>,connect<1200>,time<1.000197>,send<1200>
-Info [2021-07-21 23:38:23]thread<8>,clients<150>,connect<1200>,time<1.000974>,send<1200>
-Info [2021-07-21 23:38:24]thread<8>,clients<150>,connect<1200>,time<1.001378>,send<1200>
-Info [2021-07-21 23:38:25]thread<8>,clients<150>,connect<1200>,time<1.000473>,send<1200>
-Info [2021-07-21 23:38:26]thread<8>,clients<150>,connect<1200>,time<1.000783>,send<1200>
-Info [2021-07-21 23:38:27]thread<8>,clients<150>,connect<1200>,time<1.001466>,send<1200>
-Info [2021-07-21 23:38:28]thread<8>,clients<150>,connect<1200>,time<1.000909>,send<1200>
-Info [2021-07-21 23:38:29]thread<8>,clients<150>,connect<1200>,time<1.001158>,send<1200>
-Info [2021-07-21 23:38:30]thread<8>,clients<150>,connect<1200>,time<1.000270>,send<1200>
-Info [2021-07-21 23:38:31]thread<8>,clients<150>,connect<1200>,time<1.000980>,send<1200>
-Info [2021-07-21 23:38:32]thread<8>,clients<150>,connect<1200>,time<1.011154>,send<1200>
-Info [2021-07-21 23:38:33]thread<8>,clients<150>,connect<1200>,time<1.000233>,send<1200>
-Info [2021-07-21 23:38:34]thread<8>,clients<150>,connect<1200>,time<1.000360>,send<1200>
-Info [2021-07-21 23:38:35]thread<8>,clients<150>,connect<1200>,time<1.000138>,send<1200>
-Info [2021-07-21 23:38:36]thread<8>,clients<150>,connect<1200>,time<1.000844>,send<1200>
-Info [2021-07-21 23:38:37]thread<8>,clients<150>,connect<1200>,time<1.000636>,send<1200>
-Info [2021-07-21 23:38:38]thread<8>,clients<150>,connect<1200>,time<1.000599>,send<1200>
-Info [2021-07-21 23:38:39]thread<8>,clients<150>,connect<1200>,time<1.001088>,send<1200>
-Info [2021-07-21 23:38:40]thread<8>,clients<150>,connect<1200>,time<1.000930>,send<1200>
-Info [2021-07-21 23:38:41]thread<8>,clients<150>,connect<1200>,time<1.000323>,send<1200>
-Info [2021-07-21 23:38:42]thread<8>,clients<150>,connect<1200>,time<1.001436>,send<1200>
-Info [2021-07-21 23:38:43]thread<8>,clients<150>,connect<1200>,time<1.001029>,send<1200>
-Info [2021-07-21 23:38:44]thread<8>,clients<150>,connect<1200>,time<1.000194>,send<1200>
-Info [2021-07-21 23:38:45]thread<8>,clients<150>,connect<1200>,time<1.000508>,send<1200>
-Info [2021-07-21 23:38:46]thread<8>,clients<150>,connect<1200>,time<1.000405>,send<1200>
-Info [2021-07-21 23:38:47]thread<8>,clients<150>,connect<1200>,time<1.000109>,send<1200>
-Info [2021-07-21 23:38:48]thread<8>,clients<150>,connect<1200>,time<1.000705>,send<1200>
-Info [2021-07-21 23:38:49]thread<8>,clients<150>,connect<1200>,time<1.001134>,send<1200>
-Info [2021-07-21 23:38:50]thread<8>,clients<150>,connect<1200>,time<1.000877>,send<1200>
-Info [2021-07-21 23:38:51]thread<8>,clients<150>,connect<1200>,time<1.000767>,send<1200>
-Info [2021-07-21 23:38:52]thread<8>,clients<150>,connect<1200>,time<1.000509>,send<1200>
-Info [2021-07-21 23:38:53]thread<8>,clients<150>,connect<1200>,time<1.000720>,send<1200>
-Info [2021-07-21 23:38:54]thread<8>,clients<150>,connect<1200>,time<1.001139>,send<1200>
-Info [2021-07-21 23:38:55]thread<8>,clients<150>,connect<1200>,time<1.000886>,send<1200>
-Info [2021-07-21 23:38:56]thread<8>,clients<150>,connect<1200>,time<1.000995>,send<1200>
-Info [2021-07-21 23:38:57]thread<8>,clients<150>,connect<1200>,time<1.000005>,send<1200>
-Info [2021-07-21 23:38:58]thread<8>,clients<150>,connect<1200>,time<1.001098>,send<1200>
-Info [2021-07-21 23:38:59]thread<8>,clients<150>,connect<1200>,time<1.000287>,send<1200>
-Info [2021-07-21 23:39:00]thread<8>,clients<150>,connect<1200>,time<1.000301>,send<1200>
-Info [2021-07-21 23:39:01]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
-Info [2021-07-21 23:39:02]thread<8>,clients<150>,connect<1200>,time<1.000597>,send<1200>
-Info [2021-07-21 23:39:03]thread<8>,clients<150>,connect<1200>,time<1.001075>,send<1200>
-Info [2021-07-21 23:39:04]thread<8>,clients<150>,connect<1200>,time<1.000213>,send<1200>
-Info [2021-07-21 23:39:05]thread<8>,clients<150>,connect<1200>,time<1.001005>,send<1200>
-Info [2021-07-21 23:39:06]thread<8>,clients<150>,connect<1200>,time<1.000068>,send<1200>
-Info [2021-07-21 23:39:07]thread<8>,clients<150>,connect<1200>,time<1.000068>,send<1200>
-Info [2021-07-21 23:39:08]thread<8>,clients<150>,connect<1200>,time<1.000113>,send<1200>
-Info [2021-07-21 23:39:09]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
-Info [2021-07-21 23:39:10]thread<8>,clients<150>,connect<1200>,time<1.000902>,send<1200>
-Info [2021-07-21 23:39:11]thread<8>,clients<150>,connect<1200>,time<1.001103>,send<1200>
-Info [2021-07-21 23:39:12]thread<8>,clients<150>,connect<1200>,time<1.000875>,send<1200>
-Info [2021-07-21 23:39:13]thread<8>,clients<150>,connect<1200>,time<1.001218>,send<1200>
-Info [2021-07-21 23:39:14]thread<8>,clients<150>,connect<1200>,time<1.000016>,send<1200>
-Info [2021-07-21 23:39:15]thread<8>,clients<150>,connect<1200>,time<1.000365>,send<1200>
-Info [2021-07-21 23:39:16]thread<8>,clients<150>,connect<1200>,time<1.001695>,send<1200>
-Info [2021-07-21 23:39:17]thread<8>,clients<150>,connect<1200>,time<1.000851>,send<1200>
-Info [2021-07-21 23:39:18]thread<8>,clients<150>,connect<1200>,time<1.000439>,send<1200>
-Info [2021-07-21 23:39:19]thread<8>,clients<150>,connect<1200>,time<1.000212>,send<1200>
-Info [2021-07-21 23:39:20]thread<8>,clients<150>,connect<1200>,time<1.001372>,send<1200>
-Info [2021-07-21 23:39:21]thread<8>,clients<150>,connect<1200>,time<1.000249>,send<1200>
-Info [2021-07-21 23:39:22]thread<8>,clients<150>,connect<1200>,time<1.000654>,send<1200>
-Info [2021-07-21 23:39:23]thread<8>,clients<150>,connect<1200>,time<1.000242>,send<1200>
-Info [2021-07-21 23:39:24]thread<8>,clients<150>,connect<1200>,time<1.000209>,send<1200>
-Info [2021-07-21 23:39:25]thread<8>,clients<150>,connect<1200>,time<1.001982>,send<1200>
-Info [2021-07-21 23:39:26]thread<8>,clients<150>,connect<1200>,time<1.001077>,send<1200>
-Info [2021-07-21 23:39:27]thread<8>,clients<150>,connect<1200>,time<1.001171>,send<1200>
-Info [2021-07-21 23:39:28]thread<8>,clients<150>,connect<1200>,time<1.001482>,send<1200>
-Info [2021-07-21 23:39:29]thread<8>,clients<150>,connect<1200>,time<1.000891>,send<1200>
-Info [2021-07-21 23:39:30]thread<8>,clients<150>,connect<1200>,time<1.001475>,send<1200>
-Info [2021-07-21 23:39:31]thread<8>,clients<150>,connect<1200>,time<1.000998>,send<1200>
-Info [2021-07-21 23:39:32]thread<8>,clients<150>,connect<1200>,time<1.000590>,send<1200>
-Info [2021-07-21 23:39:33]thread<8>,clients<150>,connect<1200>,time<1.001097>,send<1200>
-Info [2021-07-21 23:39:34]thread<8>,clients<150>,connect<1200>,time<1.000521>,send<1200>
-Info [2021-07-21 23:39:35]thread<8>,clients<150>,connect<1200>,time<1.001329>,send<1200>
-Info [2021-07-21 23:39:36]thread<8>,clients<150>,connect<1200>,time<1.000610>,send<1200>
-Info [2021-07-21 23:39:37]thread<8>,clients<150>,connect<1200>,time<1.000055>,send<1200>
-Info [2021-07-21 23:39:38]thread<8>,clients<150>,connect<1200>,time<1.000187>,send<1200>
-Info [2021-07-21 23:39:39]thread<8>,clients<150>,connect<1200>,time<1.000914>,send<1200>
-Info [2021-07-21 23:39:40]thread<8>,clients<150>,connect<1200>,time<1.000152>,send<1200>
-Info [2021-07-21 23:39:41]thread<8>,clients<150>,connect<1200>,time<1.001490>,send<1200>
-Info [2021-07-21 23:39:42]thread<8>,clients<150>,connect<1200>,time<1.001311>,send<1200>
-Info [2021-07-21 23:39:43]thread<8>,clients<150>,connect<1200>,time<1.000944>,send<1200>
-Info [2021-07-21 23:39:44]thread<8>,clients<150>,connect<1200>,time<1.000683>,send<1200>
-Info [2021-07-21 23:39:45]thread<8>,clients<150>,connect<1200>,time<1.000151>,send<1200>
-Info [2021-07-21 23:39:46]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
-Info [2021-07-21 23:39:47]thread<8>,clients<150>,connect<1200>,time<1.000156>,send<1200>
-Info [2021-07-21 23:39:48]thread<8>,clients<150>,connect<1200>,time<1.000560>,send<1200>
-Info [2021-07-21 23:39:49]thread<8>,clients<150>,connect<1200>,time<1.000145>,send<1200>
-Info [2021-07-21 23:39:50]thread<8>,clients<150>,connect<1200>,time<1.001396>,send<1200>
-Info [2021-07-21 23:39:51]thread<8>,clients<150>,connect<1200>,time<1.000657>,send<1200>
-Info [2021-07-21 23:39:52]thread<8>,clients<150>,connect<1200>,time<1.000136>,send<1200>
-Info [2021-07-21 23:39:53]thread<8>,clients<150>,connect<1200>,time<1.000866>,send<1200>
-Info [2021-07-21 23:39:54]thread<8>,clients<150>,connect<1200>,time<1.000104>,send<1200>
-Info [2021-07-21 23:39:55]thread<8>,clients<150>,connect<1200>,time<1.000666>,send<1200>
-Info [2021-07-21 23:39:56]thread<8>,clients<150>,connect<1200>,time<1.000429>,send<1200>
-Info [2021-07-21 23:39:57]thread<8>,clients<150>,connect<1200>,time<1.000158>,send<1200>
-Info [2021-07-21 23:39:58]thread<8>,clients<150>,connect<1200>,time<1.000304>,send<1200>
-Info [2021-07-21 23:39:59]thread<8>,clients<150>,connect<1200>,time<1.000729>,send<1200>
-Info [2021-07-21 23:40:00]thread<8>,clients<150>,connect<1200>,time<1.001039>,send<1200>
-Info [2021-07-21 23:40:01]thread<8>,clients<150>,connect<1200>,time<1.001132>,send<1200>
-Info [2021-07-21 23:40:02]thread<8>,clients<150>,connect<1200>,time<1.001019>,send<1200>
-Info [2021-07-21 23:40:03]thread<8>,clients<150>,connect<1200>,time<1.000324>,send<1200>
-Info [2021-07-21 23:40:04]thread<8>,clients<150>,connect<1200>,time<1.000416>,send<1200>
-Info [2021-07-21 23:40:05]thread<8>,clients<150>,connect<1200>,time<1.000423>,send<1200>
-Info [2021-07-21 23:40:06]thread<8>,clients<150>,connect<1200>,time<1.000829>,send<1200>
-Info [2021-07-21 23:40:07]thread<8>,clients<150>,connect<1200>,time<1.001065>,send<1200>
-Info [2021-07-21 23:40:08]thread<8>,clients<150>,connect<1200>,time<1.000888>,send<1200>
-Info [2021-07-21 23:40:09]thread<8>,clients<150>,connect<1200>,time<1.000870>,send<1200>
-Info [2021-07-21 23:40:10]thread<8>,clients<150>,connect<1200>,time<1.000292>,send<1200>
-Info [2021-07-21 23:40:11]thread<8>,clients<150>,connect<1200>,time<1.000644>,send<1200>
-Info [2021-07-21 23:40:12]thread<8>,clients<150>,connect<1200>,time<1.000238>,send<1200>
-Info [2021-07-21 23:40:13]thread<8>,clients<150>,connect<1200>,time<1.000720>,send<1200>
-Info [2021-07-21 23:40:14]thread<8>,clients<150>,connect<1200>,time<1.000412>,send<1200>
-Info [2021-07-21 23:40:15]thread<8>,clients<150>,connect<1200>,time<1.000436>,send<1200>
-Info [2021-07-21 23:40:16]thread<8>,clients<150>,connect<1200>,time<1.001138>,send<1200>
-Info [2021-07-21 23:40:17]thread<8>,clients<150>,connect<1200>,time<1.000691>,send<1200>
-Info [2021-07-21 23:40:18]thread<8>,clients<150>,connect<1200>,time<1.000957>,send<1200>
-Info [2021-07-21 23:40:19]thread<8>,clients<150>,connect<1200>,time<1.000784>,send<1200>
-Info [2021-07-21 23:40:20]thread<8>,clients<150>,connect<1200>,time<1.001128>,send<1200>
-Info [2021-07-21 23:40:21]thread<8>,clients<150>,connect<1200>,time<1.000725>,send<1200>
-Info [2021-07-21 23:40:22]thread<8>,clients<150>,connect<1200>,time<1.000194>,send<1200>
-Info [2021-07-21 23:40:23]thread<8>,clients<150>,connect<1200>,time<1.000677>,send<1200>
-Info [2021-07-21 23:40:24]thread<8>,clients<150>,connect<1200>,time<1.000023>,send<1200>
-Info [2021-07-21 23:40:25]thread<8>,clients<150>,connect<1200>,time<1.000359>,send<1200>
-Info [2021-07-21 23:40:26]thread<8>,clients<150>,connect<1200>,time<1.000723>,send<1200>
-Info [2021-07-21 23:40:27]thread<8>,clients<150>,connect<1200>,time<1.000318>,send<1200>
-Info [2021-07-21 23:40:28]thread<8>,clients<150>,connect<1200>,time<1.000333>,send<1200>
-Info [2021-07-21 23:40:29]thread<8>,clients<150>,connect<1200>,time<1.001232>,send<1200>
-Info [2021-07-21 23:40:30]thread<8>,clients<150>,connect<1200>,time<1.000252>,send<1200>
-Info [2021-07-21 23:40:31]thread<8>,clients<150>,connect<1200>,time<1.000701>,send<1200>
-Info [2021-07-21 23:40:32]thread<8>,clients<150>,connect<1200>,time<1.000344>,send<1200>
-Info [2021-07-21 23:40:33]thread<8>,clients<150>,connect<1200>,time<1.000299>,send<1200>
-Info [2021-07-21 23:40:34]thread<8>,clients<150>,connect<1200>,time<1.001123>,send<1200>
-Info [2021-07-21 23:40:36]thread<8>,clients<150>,connect<1200>,time<1.000539>,send<1200>
-Info [2021-07-21 23:40:37]thread<8>,clients<150>,connect<1200>,time<1.001243>,send<1200>
-Info [2021-07-21 23:40:38]thread<8>,clients<150>,connect<1200>,time<1.000745>,send<1200>
-Info [2021-07-21 23:40:39]thread<8>,clients<150>,connect<1200>,time<1.001305>,send<1200>
-Info [2021-07-21 23:40:40]thread<8>,clients<150>,connect<1200>,time<1.000134>,send<1200>
-Info [2021-07-21 23:40:41]thread<8>,clients<150>,connect<1200>,time<1.000209>,send<1200>
-Info [2021-07-21 23:40:42]thread<8>,clients<150>,connect<1200>,time<1.000078>,send<1200>
-Info [2021-07-21 23:40:43]thread<8>,clients<150>,connect<1200>,time<1.000383>,send<1200>
-Info [2021-07-21 23:40:44]thread<8>,clients<150>,connect<1200>,time<1.000203>,send<1200>
-Info [2021-07-21 23:40:45]thread<8>,clients<150>,connect<1200>,time<1.001179>,send<1200>
-Info [2021-07-21 23:40:46]thread<8>,clients<150>,connect<1200>,time<1.001717>,send<1200>
-Info [2021-07-21 23:40:47]thread<8>,clients<150>,connect<1200>,time<1.000723>,send<1200>
-Info [2021-07-21 23:40:48]thread<8>,clients<150>,connect<1200>,time<1.000258>,send<1200>
-Info [2021-07-21 23:40:49]thread<8>,clients<150>,connect<1200>,time<1.001149>,send<1200>
-Info [2021-07-21 23:40:50]thread<8>,clients<150>,connect<1200>,time<1.000797>,send<1200>
-Info [2021-07-21 23:40:51]thread<8>,clients<150>,connect<1200>,time<1.000059>,send<1200>
-Info [2021-07-21 23:40:52]thread<8>,clients<150>,connect<1200>,time<1.000769>,send<1200>
-Info [2021-07-21 23:40:53]thread<8>,clients<150>,connect<1200>,time<1.000541>,send<1200>
-Info [2021-07-21 23:40:54]thread<8>,clients<150>,connect<1200>,time<1.001242>,send<1200>
-Info [2021-07-21 23:40:55]thread<8>,clients<150>,connect<1200>,time<1.000821>,send<1200>
-Info [2021-07-21 23:40:56]thread<8>,clients<150>,connect<1200>,time<1.000058>,send<1200>
-Info [2021-07-21 23:40:57]thread<8>,clients<150>,connect<1200>,time<1.001066>,send<1200>
-Info [2021-07-21 23:40:58]thread<8>,clients<150>,connect<1200>,time<1.000765>,send<1200>
-Info [2021-07-21 23:40:59]thread<8>,clients<150>,connect<1200>,time<1.000498>,send<1200>
-Info [2021-07-21 23:41:00]thread<8>,clients<150>,connect<1200>,time<1.000859>,send<1200>
-Info [2021-07-21 23:41:01]thread<8>,clients<150>,connect<1200>,time<1.000221>,send<1200>
-Info [2021-07-21 23:41:02]thread<8>,clients<150>,connect<1200>,time<1.000133>,send<1200>
-Info [2021-07-21 23:41:03]thread<8>,clients<150>,connect<1200>,time<1.000040>,send<1200>
-Info [2021-07-21 23:41:04]thread<8>,clients<150>,connect<1200>,time<1.002136>,send<1350>
-Info [2021-07-21 23:41:05]thread<8>,clients<150>,connect<1200>,time<1.001566>,send<1200>
-Info [2021-07-21 23:41:06]thread<8>,clients<150>,connect<1200>,time<1.001832>,send<1350>
-Info [2021-07-21 23:41:07]thread<8>,clients<150>,connect<1200>,time<1.001058>,send<1200>
-Info [2021-07-21 23:41:08]thread<8>,clients<150>,connect<1200>,time<1.000938>,send<1200>
-Info [2021-07-21 23:41:09]thread<8>,clients<150>,connect<1200>,time<1.001782>,send<1350>
-Info [2021-07-21 23:41:10]thread<8>,clients<150>,connect<1200>,time<1.000710>,send<1350>
-Info [2021-07-21 23:41:11]thread<8>,clients<150>,connect<1200>,time<1.001675>,send<1500>
-Info [2021-07-21 23:41:12]thread<8>,clients<150>,connect<1200>,time<1.000642>,send<1350>
-Info [2021-07-21 23:41:13]thread<8>,clients<150>,connect<1200>,time<1.000229>,send<900>
-Info [2021-07-21 23:41:14]thread<8>,clients<150>,connect<1200>,time<1.002831>,send<1500>
-Info [2021-07-21 23:41:15]thread<8>,clients<150>,connect<1200>,time<1.000885>,send<1350>
-Info [2021-07-21 23:41:16]thread<8>,clients<150>,connect<1200>,time<1.001143>,send<1200>
-Info [2021-07-21 23:41:17]thread<8>,clients<150>,connect<1200>,time<1.001161>,send<1050>
-Info [2021-07-21 23:41:18]thread<8>,clients<150>,connect<1200>,time<1.001104>,send<1350>
-Info [2021-07-21 23:41:19]thread<8>,clients<150>,connect<1200>,time<1.001322>,send<1200>
-Info [2021-07-21 23:41:20]thread<8>,clients<150>,connect<1200>,time<1.001173>,send<1200>
-Info [2021-07-21 23:41:21]thread<8>,clients<150>,connect<1200>,time<1.000243>,send<1200>
-Info [2021-07-21 23:41:22]thread<8>,clients<150>,connect<1200>,time<1.000778>,send<1200>
-Info [2021-07-21 23:41:23]thread<8>,clients<150>,connect<1200>,time<1.000023>,send<1200>
-Info [2021-07-21 23:41:24]thread<8>,clients<150>,connect<1200>,time<1.001016>,send<1200>
-Info [2021-07-21 23:41:25]thread<8>,clients<150>,connect<1200>,time<1.001206>,send<1200>
-Info [2021-07-21 23:41:26]thread<8>,clients<150>,connect<1200>,time<1.000045>,send<1200>
-Info [2021-07-21 23:41:27]thread<8>,clients<150>,connect<1200>,time<1.000245>,send<1200>
-Info [2021-07-21 23:41:28]thread<8>,clients<150>,connect<1200>,time<1.000943>,send<1200>
-Info [2021-07-21 23:41:29]thread<8>,clients<150>,connect<1200>,time<1.000504>,send<1200>
-Info [2021-07-21 23:41:30]thread<8>,clients<150>,connect<1200>,time<1.000761>,send<1200>
-Info [2021-07-21 23:41:31]thread<8>,clients<150>,connect<1200>,time<1.000176>,send<1200>
-Info [2021-07-21 23:41:32]thread<8>,clients<150>,connect<1200>,time<1.000521>,send<1200>
-Info [2021-07-21 23:41:33]thread<8>,clients<150>,connect<1200>,time<1.001244>,send<1200>
-Info [2021-07-21 23:41:34]thread<8>,clients<150>,connect<1200>,time<1.001133>,send<1200>
-Info [2021-07-21 23:41:35]thread<8>,clients<150>,connect<1200>,time<1.001132>,send<1200>
-Info [2021-07-21 23:41:36]thread<8>,clients<150>,connect<1200>,time<1.000627>,send<1200>
-Info [2021-07-21 23:41:37]thread<8>,clients<150>,connect<1200>,time<1.000719>,send<1200>
-Info [2021-07-21 23:41:38]thread<8>,clients<150>,connect<1200>,time<1.000169>,send<1200>
-Info [2021-07-21 23:41:39]thread<8>,clients<150>,connect<1200>,time<1.000106>,send<1200>
-Info [2021-07-21 23:41:40]thread<8>,clients<150>,connect<1200>,time<1.000955>,send<1200>
-Info [2021-07-21 23:41:41]thread<8>,clients<150>,connect<1200>,time<1.001356>,send<1200>
-Info [2021-07-21 23:41:42]thread<8>,clients<150>,connect<1200>,time<1.001376>,send<1200>
-Info [2021-07-21 23:41:43]thread<8>,clients<150>,connect<1200>,time<1.000495>,send<1200>
-Info [2021-07-21 23:41:44]thread<8>,clients<150>,connect<1200>,time<1.001184>,send<1200>
-Info [2021-07-21 23:41:45]thread<8>,clients<150>,connect<1200>,time<1.000589>,send<1200>
-Info [2021-07-21 23:41:46]thread<8>,clients<150>,connect<1200>,time<1.000863>,send<1200>
-Info [2021-07-21 23:41:47]thread<8>,clients<150>,connect<1200>,time<1.001000>,send<1200>
-Info [2021-07-21 23:41:48]thread<8>,clients<150>,connect<1200>,time<1.000972>,send<1200>
-Info [2021-07-21 23:41:49]thread<8>,clients<150>,connect<1200>,time<1.000940>,send<1200>
-Info [2021-07-21 23:41:50]thread<8>,clients<150>,connect<1200>,time<1.000387>,send<1200>
-Info [2021-07-21 23:41:51]thread<8>,clients<150>,connect<1200>,time<1.000182>,send<1200>
-Info [2021-07-21 23:41:52]thread<8>,clients<150>,connect<1200>,time<1.001376>,send<1200>
-Info [2021-07-21 23:41:53]thread<8>,clients<150>,connect<1200>,time<1.000545>,send<1200>
-Info [2021-07-21 23:41:54]thread<8>,clients<150>,connect<1200>,time<1.001030>,send<1200>
-Info [2021-07-21 23:41:55]thread<8>,clients<150>,connect<1200>,time<1.000504>,send<1200>
-Info [2021-07-21 23:41:56]thread<8>,clients<150>,connect<1200>,time<1.001079>,send<1200>
-Info [2021-07-21 23:41:57]thread<8>,clients<150>,connect<1200>,time<1.000567>,send<1200>
-Info [2021-07-21 23:41:58]thread<8>,clients<150>,connect<1200>,time<1.000776>,send<1200>
-Info [2021-07-21 23:41:59]thread<8>,clients<150>,connect<1200>,time<1.000049>,send<1200>
-Info [2021-07-21 23:42:00]thread<8>,clients<150>,connect<1200>,time<1.000433>,send<1200>
-Info [2021-07-21 23:42:01]thread<8>,clients<150>,connect<1200>,time<1.000094>,send<1200>
-Info [2021-07-21 23:42:01]退出cmdThread线程
-Info [2021-07-21 23:42:01]Thread<1>,exit.
-Info [2021-07-21 23:42:01]Thread<2>,exit.
-Info [2021-07-21 23:42:01]Thread<3>,exit.
-Info [2021-07-21 23:42:01]Thread<4>,exit.
-Info [2021-07-21 23:42:01]Thread<5>,exit.
-Info [2021-07-21 23:42:01]Thread<6>,exit.
-Info [2021-07-21 23:42:01]Thread<7>,exit.
-Info [2021-07-21 23:42:01]Thread<8>,exit.
-Info [2021-07-21 23:42:01]..已退出..
+Info [2021-07-24 23:22:16]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Info [2021-07-24 23:22:16]CELLConfig::getStr strIP=127.0.0.1
+Info [2021-07-24 23:22:16]CELLConfig::getInt nPort=4567
+Info [2021-07-24 23:22:16]CELLConfig::getInt nThread=8
+Info [2021-07-24 23:22:16]CELLConfig::getInt nClient=150
+Info [2021-07-24 23:22:16]CELLConfig::getInt nMsg=1
+Info [2021-07-24 23:22:16]CELLConfig::getInt nSendSleep=1000
+Info [2021-07-24 23:22:16]CELLConfig::getInt nSendBuffSize=81920
+Info [2021-07-24 23:22:16]CELLConfig::getInt nRecvBuffSize=81920
+Info [2021-07-24 23:22:16]Thread<2>,start.
+Info [2021-07-24 23:22:16]Thread<3>,start.
+Info [2021-07-24 23:22:16]Thread<1>,start.
+Info [2021-07-24 23:22:16]Thread<4>,start.
+Info [2021-07-24 23:22:16]Thread<5>,start.
+Info [2021-07-24 23:22:16]Thread<6>,start.
+Info [2021-07-24 23:22:16]Thread<7>,start.
+Info [2021-07-24 23:22:16]Thread<8>,start.
+Info [2021-07-24 23:22:16]Thread<2>, Connect<begin=0, end=150, nConnect=975>
+Info [2021-07-24 23:22:16]Thread<1>, Connect<begin=0, end=150, nConnect=1068>
+Info [2021-07-24 23:22:16]Thread<3>, Connect<begin=0, end=150, nConnect=1070>
+Info [2021-07-24 23:22:16]Thread<8>, Connect<begin=0, end=150, nConnect=1094>
+Info [2021-07-24 23:22:16]Thread<7>, Connect<begin=0, end=150, nConnect=1119>
+Info [2021-07-24 23:22:16]Thread<6>, Connect<begin=0, end=150, nConnect=1160>
+Info [2021-07-24 23:22:16]Thread<5>, Connect<begin=0, end=150, nConnect=1171>
+Info [2021-07-24 23:22:16]Thread<4>, Connect<begin=0, end=150, nConnect=1200>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<103>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<114>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<117>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<130>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<131>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<139>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<140>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<144>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<147>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<149>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<152>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<154>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<192>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<193>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<205>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<206>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<220>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<222>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<228>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<231>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<247>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<251>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<265>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<275>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<277>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<291>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<293>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<306>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<308>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<327>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<328>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<336>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<339>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<353>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<356>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<362>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<379>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<383>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<388>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<389>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<403>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<407>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<417>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<418>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<433>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<435>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<446>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<448>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<470>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<471>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<485>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<500>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<501>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<528>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<530>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<541>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<543>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<551>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<107>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<112>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<124>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<128>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<143>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<150>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<157>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<162>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<167>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<175>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<182>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<187>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<188>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<195>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<199>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<210>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<213>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<230>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<236>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<241>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<243>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<256>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<261>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<267>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<279>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<282>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<295>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<297>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<304>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<307>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<325>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<326>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<329>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<333>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<346>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<349>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<360>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<373>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<377>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<399>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<401>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<408>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<412>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<424>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<429>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<434>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<437>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<452>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<454>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<465>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<469>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<483>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<490>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<492>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<506>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<515>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<518>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<520>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<525>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<526>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<538>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<539>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<550>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<553>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<564>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<574>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<579>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<590>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<594>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<606>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<609>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<616>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<621>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<629>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<631>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<644>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<646>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<660>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<662>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<670>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<687>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<690>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<701>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<702>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<716>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<718>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<733>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<735>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<748>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<750>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<765>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<768>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<777>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<793>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<794>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<805>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<807>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<821>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<823>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<838>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<840>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<853>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<855>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<869>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<871>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<882>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<883>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<896>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<912>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<915>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<929>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<931>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<944>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<946>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<962>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<963>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<974>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<976>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<986>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<988>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1003>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1004>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1018>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1030>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1040>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1051>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1052>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1055>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1057>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1064>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1067>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1069>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1072>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1075>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<1077>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<100>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<101>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<106>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<109>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<119>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<123>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<136>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<137>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<148>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<156>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<161>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<168>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<173>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<181>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<184>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<196>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<202>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<211>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<215>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<226>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<232>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<250>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<253>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<260>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<266>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<270>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<281>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<283>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<292>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<294>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<305>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<311>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<318>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<321>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<335>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<340>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<348>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<350>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<370>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<375>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<380>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<393>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<398>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<406>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<409>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<425>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<428>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<439>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<441>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<453>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<458>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<467>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<479>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<481>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<494>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<495>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<507>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<510>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<516>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<527>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<532>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<534>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<546>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<547>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<557>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<558>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<570>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<585>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<586>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<599>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<600>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<613>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<614>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<626>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<627>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<635>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<636>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<651>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<654>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<665>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<675>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<679>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<694>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<695>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<708>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<712>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<724>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<726>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<741>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<743>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<754>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<756>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<770>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<771>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<782>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<785>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<788>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<797>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<798>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<813>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<815>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<829>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<831>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<845>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<847>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<860>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<861>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<874>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<876>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<888>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<903>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<904>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<914>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<916>, CELL_MAX_FD<100>
+Error [2021-07-24 23:22:16]CELLFDSet::add sock<930>, CELL_MAX_FD<100>

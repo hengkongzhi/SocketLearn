@@ -3,6 +3,8 @@
 
 #include "EasyTcpServer.hpp"
 #include "CELLEpoll.hpp"
+#include <vector>
+#include <algorithm>
 
 class CellEpollServer : public CellServer
 {
@@ -17,6 +19,19 @@ public:
 	}
 	virtual bool DoNetEvents()
 	{
+		bool bNeedWrite = false;
+		for (auto pClient : _clients)
+		{
+			if (pClient->NeedWrite())
+			{
+				_ep.cellEpollCtl(EPOLL_CTL_MOD, pClient, EPOLLOUT | EPOLLIN);
+				// FD_SET(pClient->sockfd(), &fdWrite);
+			}
+			else
+			{
+				_ep.cellEpollCtl(EPOLL_CTL_MOD, pClient, EPOLLIN);
+			}
+		}
 		int ret = _ep.wait(1);
 		if (ret < 0)
 		{
@@ -54,7 +69,13 @@ public:
 	}
 	void rmClient(ClientSocketPtr& pClient)
 	{
-
+		
+		auto iter = find(_clients.begin(), _clients.end(), pClient);
+		if (iter != _clients.end())
+		{
+			_clients.erase(iter);
+		}
+		_pNetEvent->OnNetLeave(pClient);
 	}
 
 

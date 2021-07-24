@@ -2,11 +2,10 @@
 #include <string>
 #include <iostream>
 #include "Alloctor.h"
-#include "EasyTcpServer.hpp"
 #include <signal.h>
 #include "CELLConfig.hpp"
-#include "EasyTcpSelectServer.hpp"
-class MyServer : public EasyTcpSelectServer
+#include "EasyTcpEpollServer.hpp"
+class MyServer : public EasyTcpEpollServer
 {
 public:
     MyServer()
