@@ -9,7 +9,8 @@
 #define INVALID_SOCKET (SOCKET)(~0)
 #define SOCKET_ERROR (-1)
 #define EPOLL_ERROR  (-1)
-#include "EasyTcpServer.hpp"
+#include "CELLServer.hpp"
+
 class CELLEpoll
 {
 public:

@@ -1,333 +1,50 @@
-Info [2021-07-24 23:22:16]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Info [2021-07-24 23:22:16]CELLConfig::getStr strIP=127.0.0.1
-Info [2021-07-24 23:22:16]CELLConfig::getInt nPort=4567
-Info [2021-07-24 23:22:16]CELLConfig::getInt nThread=8
-Info [2021-07-24 23:22:16]CELLConfig::getInt nClient=150
-Info [2021-07-24 23:22:16]CELLConfig::getInt nMsg=1
-Info [2021-07-24 23:22:16]CELLConfig::getInt nSendSleep=1000
-Info [2021-07-24 23:22:16]CELLConfig::getInt nSendBuffSize=81920
-Info [2021-07-24 23:22:16]CELLConfig::getInt nRecvBuffSize=81920
-Info [2021-07-24 23:22:16]Thread<2>,start.
-Info [2021-07-24 23:22:16]Thread<3>,start.
-Info [2021-07-24 23:22:16]Thread<1>,start.
-Info [2021-07-24 23:22:16]Thread<4>,start.
-Info [2021-07-24 23:22:16]Thread<5>,start.
-Info [2021-07-24 23:22:16]Thread<6>,start.
-Info [2021-07-24 23:22:16]Thread<7>,start.
-Info [2021-07-24 23:22:16]Thread<8>,start.
-Info [2021-07-24 23:22:16]Thread<2>, Connect<begin=0, end=150, nConnect=975>
-Info [2021-07-24 23:22:16]Thread<1>, Connect<begin=0, end=150, nConnect=1068>
-Info [2021-07-24 23:22:16]Thread<3>, Connect<begin=0, end=150, nConnect=1070>
-Info [2021-07-24 23:22:16]Thread<8>, Connect<begin=0, end=150, nConnect=1094>
-Info [2021-07-24 23:22:16]Thread<7>, Connect<begin=0, end=150, nConnect=1119>
-Info [2021-07-24 23:22:16]Thread<6>, Connect<begin=0, end=150, nConnect=1160>
-Info [2021-07-24 23:22:16]Thread<5>, Connect<begin=0, end=150, nConnect=1171>
-Info [2021-07-24 23:22:16]Thread<4>, Connect<begin=0, end=150, nConnect=1200>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<103>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<114>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<117>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<130>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<131>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<139>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<140>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<144>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<147>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<149>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<152>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<154>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<192>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<193>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<205>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<206>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<220>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<222>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<228>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<231>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<247>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<251>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<265>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<275>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<277>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<291>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<293>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<306>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<308>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<327>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<328>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<336>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<339>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<353>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<356>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<362>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<379>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<383>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<388>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<389>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<403>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<407>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<417>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<418>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<433>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<435>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<446>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<448>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<470>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<471>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<485>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<500>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<501>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<528>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<530>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<541>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<543>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<551>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<107>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<112>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<124>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<128>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<143>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<150>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<157>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<162>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<167>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<175>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<182>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<187>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<188>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<195>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<199>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<210>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<213>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<230>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<236>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<241>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<243>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<256>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<261>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<267>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<279>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<282>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<295>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<297>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<304>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<307>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<325>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<326>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<329>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<333>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<346>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<349>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<360>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<373>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<377>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<399>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<401>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<408>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<412>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<424>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<429>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<434>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<437>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<452>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<454>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<465>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<469>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<483>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<490>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<492>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<506>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<515>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<518>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<520>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<525>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<526>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<538>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<539>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<550>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<553>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<564>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<574>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<579>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<590>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<594>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<606>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<609>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<616>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<621>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<629>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<631>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<644>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<646>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<660>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<662>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<670>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<687>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<690>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<701>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<702>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<716>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<718>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<733>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<735>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<748>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<750>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<765>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<768>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<777>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<793>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<794>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<805>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<807>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<821>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<823>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<838>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<840>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<853>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<855>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<869>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<871>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<882>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<883>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<896>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<912>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<915>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<929>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<931>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<944>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<946>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<962>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<963>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<974>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<976>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<986>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<988>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1003>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1004>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1018>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1030>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1040>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1051>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1052>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1055>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1057>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1064>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1067>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1069>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1072>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1075>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<1077>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<100>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<101>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<106>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<109>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<119>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<123>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<136>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<137>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<148>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<156>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<161>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<168>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<173>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<181>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<184>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<196>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<202>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<211>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<215>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<226>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<232>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<250>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<253>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<260>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<266>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<270>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<281>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<283>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<292>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<294>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<305>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<311>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<318>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<321>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<335>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<340>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<348>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<350>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<370>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<375>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<380>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<393>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<398>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<406>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<409>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<425>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<428>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<439>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<441>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<453>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<458>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<467>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<479>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<481>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<494>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<495>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<507>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<510>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<516>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<527>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<532>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<534>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<546>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<547>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<557>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<558>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<570>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<585>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<586>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<599>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<600>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<613>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<614>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<626>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<627>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<635>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<636>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<651>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<654>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<665>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<675>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<679>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<694>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<695>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<708>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<712>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<724>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<726>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<741>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<743>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<754>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<756>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<770>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<771>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<782>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<785>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<788>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<797>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<798>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<813>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<815>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<829>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<831>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<845>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<847>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<860>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<861>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<874>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<876>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<888>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<903>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<904>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<914>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<916>, CELL_MAX_FD<100>
-Error [2021-07-24 23:22:16]CELLFDSet::add sock<930>, CELL_MAX_FD<100>
+Info [2021-07-25 24:18:23]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Info [2021-07-25 24:18:23]CELLConfig::getStr strIP=127.0.0.1
+Info [2021-07-25 24:18:23]CELLConfig::getInt nPort=4567
+Info [2021-07-25 24:18:23]CELLConfig::getInt nThread=8
+Info [2021-07-25 24:18:23]CELLConfig::getInt nClient=150
+Info [2021-07-25 24:18:23]CELLConfig::getInt nMsg=1
+Info [2021-07-25 24:18:23]CELLConfig::getInt nSendSleep=1000
+Info [2021-07-25 24:18:23]CELLConfig::getInt nSendBuffSize=81920
+Info [2021-07-25 24:18:23]CELLConfig::getInt nRecvBuffSize=81920
+Info [2021-07-25 24:18:23]Thread<1>,start.
+Info [2021-07-25 24:18:23]Thread<2>,start.
+Info [2021-07-25 24:18:23]Thread<3>,start.
+Info [2021-07-25 24:18:23]Thread<4>,start.
+Info [2021-07-25 24:18:23]Thread<5>,start.
+Info [2021-07-25 24:18:23]Thread<6>,start.
+Info [2021-07-25 24:18:23]Thread<7>,start.
+Info [2021-07-25 24:18:23]Thread<8>,start.
+Info [2021-07-25 24:18:23]Thread<1>, Connect<begin=0, end=150, nConnect=910>
+Info [2021-07-25 24:18:23]Thread<4>, Connect<begin=0, end=150, nConnect=929>
+Info [2021-07-25 24:18:23]Thread<2>, Connect<begin=0, end=150, nConnect=1051>
+Info [2021-07-25 24:18:23]Thread<5>, Connect<begin=0, end=150, nConnect=1055>
+Info [2021-07-25 24:18:23]Thread<7>, Connect<begin=0, end=150, nConnect=1065>
+Info [2021-07-25 24:18:23]Thread<3>, Connect<begin=0, end=150, nConnect=1150>
+Info [2021-07-25 24:18:23]Thread<6>, Connect<begin=0, end=150, nConnect=1174>
+Info [2021-07-25 24:18:23]Thread<8>, Connect<begin=0, end=150, nConnect=1200>
+Info [2021-07-25 24:18:24]thread<8>,clients<150>,connect<1200>,time<1.000986>,send<0>
+Info [2021-07-25 24:18:25]thread<8>,clients<150>,connect<1200>,time<1.000859>,send<1200>
+Info [2021-07-25 24:18:26]thread<8>,clients<150>,connect<1200>,time<1.000400>,send<1200>
+Info [2021-07-25 24:18:27]thread<8>,clients<150>,connect<1200>,time<1.000283>,send<1200>
+Info [2021-07-25 24:18:28]thread<8>,clients<150>,connect<1200>,time<1.001871>,send<1200>
+Info [2021-07-25 24:18:29]thread<8>,clients<150>,connect<1200>,time<1.000512>,send<1200>
+Info [2021-07-25 24:18:30]thread<8>,clients<150>,connect<1200>,time<1.000399>,send<1200>
+Info [2021-07-25 24:18:31]thread<8>,clients<150>,connect<1200>,time<1.000382>,send<1200>
+Info [2021-07-25 24:18:32]thread<8>,clients<150>,connect<1200>,time<1.000819>,send<1200>
+Info [2021-07-25 24:18:33]thread<8>,clients<150>,connect<1200>,time<1.001262>,send<1200>
+Info [2021-07-25 24:18:34]thread<8>,clients<150>,connect<1200>,time<1.000764>,send<1200>
+Info [2021-07-25 24:18:35]thread<8>,clients<150>,connect<1200>,time<1.001308>,send<1200>
+Info [2021-07-25 24:18:36]thread<8>,clients<150>,connect<1200>,time<1.000098>,send<1200>
+Info [2021-07-25 24:18:37]thread<8>,clients<150>,connect<1200>,time<1.000584>,send<1200>
+Info [2021-07-25 24:18:38]thread<8>,clients<150>,connect<1200>,time<1.000453>,send<1200>
+Info [2021-07-25 24:18:38]退出cmdThread线程
+Info [2021-07-25 24:18:38]Thread<1>,exit.
+Info [2021-07-25 24:18:38]Thread<2>,exit.
+Info [2021-07-25 24:18:38]Thread<3>,exit.
+Info [2021-07-25 24:18:38]Thread<4>,exit.
+Info [2021-07-25 24:18:38]Thread<5>,exit.
+Info [2021-07-25 24:18:38]Thread<6>,exit.
+Info [2021-07-25 24:18:38]Thread<7>,exit.
+Info [2021-07-25 24:18:38]Thread<8>,exit.
+Info [2021-07-25 24:18:38]..已退出..

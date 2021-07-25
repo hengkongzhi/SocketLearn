@@ -5,7 +5,7 @@
 #include<arpa/inet.h>
 #include <string.h>
 #include "CELLLog.hpp"
-#define CELL_MAX_FD 100
+#define CELL_MAX_FD 1300
 class CELLFDSet
 {
 public:

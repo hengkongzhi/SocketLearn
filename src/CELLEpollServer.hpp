@@ -1,7 +1,7 @@
 #ifndef _CELLEpollServer_hpp_
 #define _CELLEpollServer_hpp_
 
-#include "EasyTcpServer.hpp"
+#include "CELLServer.hpp"
 #include "CELLEpoll.hpp"
 #include <vector>
 #include <algorithm>
@@ -76,6 +76,7 @@ public:
 			_clients.erase(iter);
 		}
 		_pNetEvent->OnNetLeave(pClient);
+		printf("epoll exit is here\n");
 	}
 
 
