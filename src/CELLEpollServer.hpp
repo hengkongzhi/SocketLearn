@@ -9,6 +9,10 @@
 class CellEpollServer : public CellServer
 {
 public:
+	~CellEpollServer()
+	{
+		// CellServer::Close();
+	}
 	virtual void OnClientJoin(ClientSocketPtr& pClient)
 	{
 		_ep.cellEpollCtl(EPOLL_CTL_ADD, pClient, EPOLLIN);

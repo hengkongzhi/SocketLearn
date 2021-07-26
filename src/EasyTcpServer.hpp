@@ -31,8 +31,8 @@ class EasyTcpServer : public INetEvent
 private:
 	SOCKET _sock;
 	//消息处理对象，内部会创建线程
-	// std::vector<std::shared_ptr<CellServer>> _cellServers;
-	std::vector<CellServer*> _cellServers;
+	std::vector<std::shared_ptr<CellServer>> _cellServers;
+	// std::vector<CellServer*> _cellServers;
 	//每秒消息计时
 	CELLTimestamp _tTime;
 	CELLThread _thread;
@@ -181,8 +181,8 @@ public:
 	{
 		for (int n = 0; n < nCellServer; n++)
 		{
-			// auto ser = std::make_shared<ServerT>();
-			ServerT* ser = new ServerT();
+			auto ser = std::make_shared<ServerT>();
+			// ServerT* ser = new ServerT();
 			ser->setId(n + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);

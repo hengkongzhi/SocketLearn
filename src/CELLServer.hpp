@@ -68,7 +68,7 @@ class CellServer
 {
 public:
 
-	~CellServer()
+	virtual ~CellServer()
 	{
 		Close();
 	}
