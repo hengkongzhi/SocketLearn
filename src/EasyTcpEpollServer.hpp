@@ -23,7 +23,6 @@ protected:
 		while (pThread->isRun())
 		{
 			time4msg();
-
 			int ret = ep.wait(1); //
 			if (ret < 0)
 			{

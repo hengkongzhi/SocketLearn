@@ -3,6 +3,7 @@
 
 #include "EasyTcpServer.hpp"
 #include "CELLSelectServer.hpp"
+#include "CELLFDSet.hpp"
 
 class EasyTcpSelectServer : public EasyTcpServer
 {

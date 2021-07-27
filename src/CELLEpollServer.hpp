@@ -11,7 +11,7 @@ class CellEpollServer : public CellServer
 public:
 	~CellEpollServer()
 	{
-		// CellServer::Close();
+		Close();
 	}
 	virtual void OnClientJoin(ClientSocketPtr& pClient)
 	{

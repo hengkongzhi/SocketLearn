@@ -22,7 +22,6 @@
 #include "CELLClient.hpp"
 #include "CELLMsgStream.hpp"
 #include "CELLConfig.hpp"
-#include "CELLFDSet.hpp"
 #include "EasyTcpEpollServer.hpp"
 #include "CELLEpollServer.hpp"
 
@@ -31,8 +30,8 @@ class EasyTcpServer : public INetEvent
 private:
 	SOCKET _sock;
 	//消息处理对象，内部会创建线程
-	std::vector<std::shared_ptr<CellServer>> _cellServers;
-	// std::vector<CellServer*> _cellServers;
+	// std::vector<std::shared_ptr<CellServer>> _cellServers;
+	std::vector<CellServer*> _cellServers;
 	//每秒消息计时
 	CELLTimestamp _tTime;
 	CELLThread _thread;
@@ -181,8 +180,8 @@ public:
 	{
 		for (int n = 0; n < nCellServer; n++)
 		{
-			auto ser = std::make_shared<ServerT>();
-			// ServerT* ser = new ServerT();
+			// auto ser = std::make_shared<ServerT>();
+			ServerT* ser = new ServerT();
 			ser->setId(n + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);
@@ -192,11 +191,15 @@ public:
 			ser->Start();
 		}
 		_thread.Start(nullptr, [this](CELLThread* pThread){
-        OnRun(pThread);});
+        this->OnRun(pThread);});
 	}
 	//关闭Socket
 	void Close()
 	{
+		for (auto it : _cellServers)
+		{
+			delete it;
+		}
 		_thread.Close();
 		if (_sock != INVALID_SOCKET)
 		{
@@ -242,39 +245,39 @@ public:
 	}
 protected:
 	//处理网络消息
-	void OnRun(CELLThread* pThread)
+	virtual void OnRun(CELLThread* pThread)
 	{
-		CELLFDSet fdRead;
-		// fd_set fdRead;//描述符（socket） 集合
-		while (pThread->isRun())
-		{
-			time4msg();
-			//伯克利套接字 BSD socket
+		// CELLFDSet fdRead;
+		// // fd_set fdRead;//描述符（socket） 集合
+		// while (pThread->isRun())
+		// {
+		// 	time4msg();
+		// 	//伯克利套接字 BSD socket
 			
-			//清理集合
-			fdRead.zero();
-			// FD_ZERO(&fdRead);
-			//将描述符（socket）加入集合
-			fdRead.add(_sock);
-			// FD_SET(_sock, &fdRead);
-			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
-			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
-			timeval t = { 0,1};
-			int ret = select(_sock + 1, fdRead.fdset(), 0, 0, &t); //
-			if (ret < 0)
-			{
-				CELLLOG_Info("EasyTcpServer.onRun Select任务结束。");
-				pThread->Exit();
-				break;
-			}
-			//判断描述符（socket）是否在集合中
-			if (fdRead.has(_sock))
-			{
-				fdRead.del(_sock);
-				// FD_CLR(_sock, &fdRead);
-				Accept();
-			}
-		}
+		// 	//清理集合
+		// 	fdRead.zero();
+		// 	// FD_ZERO(&fdRead);
+		// 	//将描述符（socket）加入集合
+		// 	fdRead.add(_sock);
+		// 	// FD_SET(_sock, &fdRead);
+		// 	///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
+		// 	///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
+		// 	timeval t = { 0,1};
+		// 	int ret = select(_sock + 1, fdRead.fdset(), 0, 0, &t); //
+		// 	if (ret < 0)
+		// 	{
+		// 		CELLLOG_Info("EasyTcpServer.onRun Select任务结束。");
+		// 		pThread->Exit();
+		// 		break;
+		// 	}
+		// 	//判断描述符（socket）是否在集合中
+		// 	if (fdRead.has(_sock))
+		// 	{
+		// 		fdRead.del(_sock);
+		// 		// FD_CLR(_sock, &fdRead);
+		// 		Accept();
+		// 	}
+		// }
 	}
 	int sockfd()
 	{
