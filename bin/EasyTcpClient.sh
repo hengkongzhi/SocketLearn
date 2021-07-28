@@ -10,8 +10,8 @@ cd `dirname $0`
 # nClient=2
 cmd="strIP=127.0.0.1"
 cmd="$cmd nPort=4567"
-cmd="$cmd nThread=8"
-cmd="$cmd nClient=150"
+cmd="$cmd nThread=1"
+cmd="$cmd nClient=1"
 cmd="$cmd nMsg=1"
 cmd="$cmd nSendSleep=1000"
 cmd="$cmd nSendBuffSize=81920"

@@ -70,7 +70,7 @@ public:
 
 	virtual ~CellServer()
 	{
-		Close();
+		// Close();
 	}
 	void setId(int id)
 	{
@@ -127,13 +127,16 @@ public:
 			checkTime();
 			if (!this->DoNetEvents())
 			{
-				pThread->Exit();
+				pThread->Close();
 				break;
 			}
 			DoMsg();
 		}
 	}
-	virtual bool DoNetEvents() = 0;
+	virtual bool DoNetEvents()
+	{
+
+	}
 	/*{
 		//伯克利套接字 BSD socket
 
@@ -277,6 +280,10 @@ public:
 	}
 	void DoMsg()
 	{
+		if (_clients.size() == 0)
+		{
+			return;
+		}
 		for (auto pClient : _clients)
 		{
 			while (pClient->hasMsg())
