@@ -127,16 +127,13 @@ public:
 			checkTime();
 			if (!this->DoNetEvents())
 			{
-				pThread->Close();
+				pThread->Exit();
 				break;
 			}
 			DoMsg();
 		}
 	}
-	virtual bool DoNetEvents()
-	{
-
-	}
+	virtual bool DoNetEvents() = 0;
 	/*{
 		//伯克利套接字 BSD socket
 
@@ -280,10 +277,6 @@ public:
 	}
 	void DoMsg()
 	{
-		if (_clients.size() == 0)
-		{
-			return;
-		}
 		for (auto pClient : _clients)
 		{
 			while (pClient->hasMsg())

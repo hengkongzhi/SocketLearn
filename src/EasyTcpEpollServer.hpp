@@ -8,14 +8,21 @@
 class EasyTcpEpollServer : public EasyTcpServer
 {
 public:
+	~EasyTcpEpollServer()
+	{
+		_pThread->Close();
+	}
 	void Start(int nCellServer)
 	{
 		EasyTcpServer::Start<CellEpollServer>(nCellServer); 
 	}
 protected:
+
+	CELLThread* _pThread;
 	//处理网络消息
 	void OnRun(CELLThread* pThread)
 	{
+		_pThread = pThread;
 		CELLEpoll ep;
 		ep.create(1);
     	ep.cellEpollCtl(EPOLL_CTL_ADD, sockfd(), EPOLLIN);
