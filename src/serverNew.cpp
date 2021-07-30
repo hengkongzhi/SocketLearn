@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-// #include "Alloctor.h"
+#include "Alloctor.h"
 #include <signal.h>
 #include "CELLConfig.hpp"
 #include "EasyTcpEpollServer.hpp"
@@ -164,12 +164,12 @@ int main(int argc, char* args[])
     server.Bind(strIP, nPort);
     server.Listen(1000);
     server.Start(nThread);
-    CELLTimestamp tTime;
-    double dT = 0;
+    // CELLTimestamp tTime;
+    // double dT = 0;
     while (true)
     {
         char cmdBuf[256] = {};
-        // scanf("%s", cmdBuf);
+        scanf("%s", cmdBuf);
         if (0 == strcmp(cmdBuf, "exit"))
         {
             server.Close();
@@ -178,14 +178,14 @@ int main(int argc, char* args[])
         }
         else
         {
-            // CELLLOG_Info("不支持的命令。");
+            CELLLOG_Info("不支持的命令。");
         }
-        dT = tTime.getElapsedSecond();
-        if (dT > 10)
-        {
-            server.Close();
-            break;
-        }
+        // dT = tTime.getElapsedSecond();
+        // if (dT > 10)
+        // {
+        //     server.Close();
+        //     break;
+        // }
     }
     CELLLOG_Info("已退出。");
     return 0;

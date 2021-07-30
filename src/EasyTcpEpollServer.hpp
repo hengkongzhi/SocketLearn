@@ -8,10 +8,6 @@
 class EasyTcpEpollServer : public EasyTcpServer
 {
 public:
-	~EasyTcpEpollServer()
-	{
-		_pThread->Close();
-	}
 	void Start(int nCellServer)
 	{
 		EasyTcpServer::Start<CellEpollServer>(nCellServer); 

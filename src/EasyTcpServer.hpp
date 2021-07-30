@@ -200,6 +200,7 @@ public:
 		{
 			delete it;
 		}
+		_cellServers.clear();
 		_thread.Close();
 		if (_sock != INVALID_SOCKET)
 		{

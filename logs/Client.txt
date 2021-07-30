@@ -1,31 +1,821 @@
-Info [2021-07-29 23:30:12]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
-Info [2021-07-29 23:30:12]CELLConfig::getStr strIP=127.0.0.1
-Info [2021-07-29 23:30:12]CELLConfig::getInt nPort=4567
-Info [2021-07-29 23:30:12]CELLConfig::getInt nThread=1
-Info [2021-07-29 23:30:12]CELLConfig::getInt nClient=1
-Info [2021-07-29 23:30:12]CELLConfig::getInt nMsg=1
-Info [2021-07-29 23:30:12]CELLConfig::getInt nSendSleep=1000
-Info [2021-07-29 23:30:12]CELLConfig::getInt nSendBuffSize=81920
-Info [2021-07-29 23:30:12]CELLConfig::getInt nRecvBuffSize=81920
-Info [2021-07-29 23:30:12]Thread<1>,start.
-Info [2021-07-29 23:30:12]<socket=4>错误，连接服务器<127.0.0.1:4567>失败...
+Info [2021-07-30 24:07:01]CELLLog::SetLogPath success, </root/LearnSocket/logs/Client.txt,w>
+Info [2021-07-30 24:07:01]CELLConfig::getStr strIP=127.0.0.1
+Info [2021-07-30 24:07:01]CELLConfig::getInt nPort=4567
+Info [2021-07-30 24:07:01]CELLConfig::getInt nThread=8
+Info [2021-07-30 24:07:01]CELLConfig::getInt nClient=150
+Info [2021-07-30 24:07:01]CELLConfig::getInt nMsg=1
+Info [2021-07-30 24:07:01]CELLConfig::getInt nSendSleep=1000
+Info [2021-07-30 24:07:01]CELLConfig::getInt nSendBuffSize=81920
+Info [2021-07-30 24:07:01]CELLConfig::getInt nRecvBuffSize=81920
+Info [2021-07-30 24:07:01]Thread<1>,start.
+Info [2021-07-30 24:07:01]Thread<2>,start.
+Info [2021-07-30 24:07:01]Thread<3>,start.
+Info [2021-07-30 24:07:01]Thread<4>,start.
+Info [2021-07-30 24:07:01]Thread<5>,start.
+Info [2021-07-30 24:07:01]Thread<6>,start.
+Info [2021-07-30 24:07:01]Thread<7>,start.
+Info [2021-07-30 24:07:01]Thread<8>,start.
+Info [2021-07-30 24:07:01]Thread<5>, Connect<begin=0, end=150, nConnect=1004>
+Info [2021-07-30 24:07:01]Thread<1>, Connect<begin=0, end=150, nConnect=1036>
+Info [2021-07-30 24:07:01]Thread<4>, Connect<begin=0, end=150, nConnect=1077>
+Info [2021-07-30 24:07:01]Thread<6>, Connect<begin=0, end=150, nConnect=1099>
+Info [2021-07-30 24:07:01]Thread<7>, Connect<begin=0, end=150, nConnect=1116>
+Info [2021-07-30 24:07:01]Thread<3>, Connect<begin=0, end=150, nConnect=1179>
+Info [2021-07-30 24:07:01]Thread<8>, Connect<begin=0, end=150, nConnect=1192>
+Info [2021-07-30 24:07:01]Thread<2>, Connect<begin=0, end=150, nConnect=1200>
+Info [2021-07-30 24:07:02]thread<8>,clients<150>,connect<1200>,time<1.000478>,send<0>
+Info [2021-07-30 24:07:03]thread<8>,clients<150>,connect<1200>,time<1.000312>,send<1200>
+Info [2021-07-30 24:07:04]thread<8>,clients<150>,connect<1200>,time<1.000655>,send<1200>
+Info [2021-07-30 24:07:05]thread<8>,clients<150>,connect<1200>,time<1.000104>,send<1200>
+Info [2021-07-30 24:07:06]thread<8>,clients<150>,connect<1200>,time<1.000045>,send<1200>
+Info [2021-07-30 24:07:07]thread<8>,clients<150>,connect<1200>,time<1.000119>,send<1200>
+Info [2021-07-30 24:07:07]退出cmdThread线程
+Info [2021-07-30 24:07:07]Thread<1>,exit.
+Info [2021-07-30 24:07:07]Thread<2>,exit.
+Info [2021-07-30 24:07:07]Thread<3>,exit.
+Info [2021-07-30 24:07:07]Thread<4>,exit.
+Info [2021-07-30 24:07:07]Thread<5>,exit.
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=4>select任务结束2
 
-Info [2021-07-29 23:30:12]Thread<1>, Connect<begin=0, end=1, nConnect=0>
-Info [2021-07-29 23:30:13]thread<1>,clients<1>,connect<0>,time<1.000426>,send<0>
-Info [2021-07-29 23:30:14]thread<1>,clients<1>,connect<0>,time<1.000029>,send<0>
-Info [2021-07-29 23:30:15]thread<1>,clients<1>,connect<0>,time<1.000958>,send<0>
-Info [2021-07-29 23:30:16]thread<1>,clients<1>,connect<0>,time<1.000759>,send<0>
-Info [2021-07-29 23:30:17]thread<1>,clients<1>,connect<0>,time<1.000455>,send<0>
-Info [2021-07-29 23:30:18]thread<1>,clients<1>,connect<0>,time<1.000419>,send<0>
-Info [2021-07-29 23:30:19]thread<1>,clients<1>,connect<0>,time<1.001228>,send<0>
-Info [2021-07-29 23:30:20]thread<1>,clients<1>,connect<0>,time<1.000147>,send<0>
-Info [2021-07-29 23:30:21]thread<1>,clients<1>,connect<0>,time<1.001120>,send<0>
-Info [2021-07-29 23:30:22]thread<1>,clients<1>,connect<0>,time<1.000641>,send<0>
-Info [2021-07-29 23:30:23]thread<1>,clients<1>,connect<0>,time<1.001091>,send<0>
-Info [2021-07-29 23:30:24]thread<1>,clients<1>,connect<0>,time<1.000638>,send<0>
-Info [2021-07-29 23:30:25]thread<1>,clients<1>,connect<0>,time<1.000384>,send<0>
-Info [2021-07-29 23:30:26]thread<1>,clients<1>,connect<0>,time<1.000689>,send<0>
-Info [2021-07-29 23:30:27]thread<1>,clients<1>,connect<0>,time<1.000897>,send<0>
-Info [2021-07-29 23:30:27]退出cmdThread线程
-Info [2021-07-29 23:30:27]Thread<1>,exit.
-Info [2021-07-29 23:30:27]..已退出..
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=8>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=10>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=16>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=18>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=22>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=24>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=29>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=32>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=35>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=40>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=43>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=49>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=51>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=58>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=60>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=65>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=67>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=77>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=79>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=86>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=92>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=96>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=107>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=108>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=124>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=125>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=133>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=135>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=138>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=140>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=148>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=153>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=169>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=170>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=178>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=187>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=190>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=203>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=208>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=216>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=217>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=236>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=239>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=245>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=249>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=256>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=263>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=284>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=285>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=298>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=313>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=314>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=321>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=336>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=355>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=356>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=370>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=372>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=386>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=387>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=400>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=402>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=415>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=426>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=429>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=442>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=443>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=456>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=459>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=473>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=483>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=498>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=500>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=520>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=529>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=534>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=536>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=555>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=573>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=575>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=588>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=592>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=601>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=603>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=620>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=621>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=634>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=635>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=643>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=645>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=661>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=665>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=676>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=686>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=689>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=696>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=703>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=712>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=718>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=726>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=732>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=738>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=740>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=752>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=754>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=768>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=782>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=785>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=799>select任务结束2
+
+Info [2021-07-30 24:07:07]Thread<6>,exit.
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=264>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=286>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=287>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=301>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=311>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=332>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=344>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=369>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=384>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=385>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=398>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=399>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=412>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=413>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=427>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=428>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=440>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=441>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=454>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=455>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=470>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=472>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=482>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=496>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=497>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=512>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=522>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=539>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=540>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=552>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=553>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=569>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=571>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=587>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=590>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=600>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=611>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=616>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=627>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=631>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=644>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=646>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=660>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=662>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=671>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=674>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=685>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=691>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=701>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=706>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=715>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=731>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=735>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=749>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=751>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=755>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=762>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=770>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=772>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=788>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=791>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=808>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=810>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=814>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=826>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=836>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=841>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=846>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=852>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=854>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=867>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=870>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=881>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=885>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]Thread<7>,exit.
+Info [2021-07-30 24:07:07]<socket=897>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=898>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=923>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=924>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=937>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=950>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=951>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=968>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=973>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=983>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=984>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1003>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1007>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1014>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1019>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1025>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1028>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1034>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1039>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1048>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1056>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1058>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1074>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1075>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1079>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1080>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1088>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1089>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1118>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1120>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1128>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1129>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1139>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1141>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1143>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1144>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1146>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1147>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1148>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1149>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1150>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1151>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1153>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1154>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1155>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1156>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1157>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1158>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1166>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1168>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1169>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1170>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1171>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1172>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1173>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1174>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1175>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1176>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1177>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1178>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1179>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1181>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1182>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1183>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1186>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1187>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1188>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1189>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1190>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1191>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1192>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1193>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1194>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1195>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=-1
+Info [2021-07-30 24:07:07]<socket=1196>select任务结束2
+
+Info [2021-07-30 24:07:07]read4socket, nLen=0
+Info [2021-07-30 24:07:07]<socket=1197>select任务结束2
+
+Info [2021-07-30 24:07:07]Thread<8>,exit.
+Info [2021-07-30 24:07:07]..已退出..

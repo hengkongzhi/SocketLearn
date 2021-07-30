@@ -80,7 +80,6 @@ public:
 			_clients.erase(iter);
 		}
 		_pNetEvent->OnNetLeave(pClient);
-		printf("epoll exit is here\n");
 	}
 
 

@@ -70,7 +70,7 @@ public:
 
 	virtual ~CellServer()
 	{
-		// Close();
+		Close();
 	}
 	void setId(int id)
 	{
@@ -87,9 +87,11 @@ public:
 	void Close()
 	{
 		// _taskServer.Close();
-		_thread.Close();
-		CELLLOG_Info("CellServer%d.close.", _id);
-
+		if (_thread.isRun())
+		{
+			_thread.Close();
+			CELLLOG_Info("CellServer%d.close.", _id);
+		}
 	}
 
 	//处理网络消息
