@@ -100,6 +100,20 @@ public:
 		}
 		_msgCount++;
 	}
+    virtual void OnNetJoin(ClientSocketPtr& pClient)
+	{
+		_clientCount++;
+	}
+	//cellServer 4 多个线程触发 不安全
+	//如果只开启1个cellServer就是安全的
+	virtual void OnNetLeave(ClientSocketPtr& pClient)
+	{
+		_clientCount--;
+	}
+	virtual void OnNetRecv(ClientSocketPtr& pClient)
+	{
+		_recvCount++;
+	}
 private:
     bool _bSendBack = false;
     bool _bSendFull = false;

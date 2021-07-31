@@ -49,7 +49,7 @@ public:
 		auto events = _ep.events();
 		for (int i = 0; i < ret; i++)
         {
-			ClientSocketPtr pclient = *(ClientSocketPtr*)events[i].data.ptr;
+			ClientSocketPtr& pclient = *(ClientSocketPtr*)events[i].data.ptr;
         	if (pclient.get())
         	{
 				if (events[i].events & EPOLLIN)
@@ -73,13 +73,16 @@ public:
 	}
 	void rmClient(ClientSocketPtr& pClient)
 	{
-		
+		if (_pNetEvent)
+		{
+			_pNetEvent->OnNetLeave(pClient);
+		}
 		auto iter = find(_clients.begin(), _clients.end(), pClient);
 		if (iter != _clients.end())
 		{
 			_clients.erase(iter);
 		}
-		_pNetEvent->OnNetLeave(pClient);
+		
 	}
 
 
