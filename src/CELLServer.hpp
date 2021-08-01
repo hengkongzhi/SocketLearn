@@ -344,7 +344,7 @@ private:
 	std::mutex _mutex;
 	CellTaskServer _taskServer;
 	time_t _oldTime = CELLTime::getTimeInMilliSec();
-	int _id = -1;
+	
 	CELLThread _thread;
 	// CELLFDSet _fdRead;//描述符（socket） 集合
 	// CELLFDSet _fdWrite;
@@ -354,7 +354,7 @@ protected:
 	//正式客户队列
 	std::vector<ClientSocketPtr> _clients;
 	bool _clients_change;
-
+	int _id = -1;
 	//网络事件对象
 	INetEvent* _pNetEvent = nullptr;
 };

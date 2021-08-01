@@ -36,7 +36,7 @@ public:
 				_ep.cellEpollCtl(EPOLL_CTL_MOD, pClient, EPOLLIN);
 			}
 		}
-		int ret = _ep.wait(1);
+		int ret = _ep.wait(0);
 		if (ret < 0)
 		{
 			CELLLOG_Error("CellEpollServer.wait error.");
@@ -45,6 +45,10 @@ public:
 		else if (ret == 0)
 		{
 			return true;
+		}
+		else
+		{
+			printf("ret is %d, id is %d\n", ret, _id);
 		}
 		auto events = _ep.events();
 		for (int i = 0; i < ret; i++)
@@ -59,6 +63,8 @@ public:
 						rmClient(pclient);
 						continue;
 					}
+					// static std::atomic_int x(0);
+					// printf("EPOLLIN = %d\n", (int)x++);
 				}
 				if (events[i].events & EPOLLOUT)
 				{
@@ -66,6 +72,8 @@ public:
 					{
 						rmClient(pclient);
 					}
+					// static std::atomic_int y(0);
+					// printf("EPOLLOUT = %d\n", (int)y++);
 				}
 			}
 		}
