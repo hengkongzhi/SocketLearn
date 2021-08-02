@@ -126,7 +126,7 @@ public:
 				continue;
 			}
 
-			checkTime();
+			// checkTime();
 			if (!this->DoNetEvents())
 			{
 				pThread->Exit();
@@ -293,6 +293,8 @@ public:
 	{
 		// 5 接收客户端数据
 		int nLen = pClient->RecvData();
+		// static std::atomic_int y(0);
+		// printf("RecvData = %d\n", (int)y++);
 		_pNetEvent->OnNetRecv(pClient);
 		return nLen;
 	}

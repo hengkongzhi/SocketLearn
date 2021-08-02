@@ -24,7 +24,7 @@ public:
 	virtual bool DoNetEvents()
 	{
 		bool bNeedWrite = false;
-		for (auto pClient : _clients)
+		for (auto& pClient : _clients)
 		{
 			if (pClient->NeedWrite())
 			{
@@ -46,37 +46,44 @@ public:
 		{
 			return true;
 		}
-		else
-		{
-			printf("ret is %d, id is %d\n", ret, _id);
-		}
+		// else
+		// {
+		// 	printf("ret is %d, id is %d\n", ret, _id);
+		// }
 		auto events = _ep.events();
+		// int x = 0;
+		// int y = 0;
+		// ClientSocketPtr* pclient;
+		// epoll_event* pFlg = events;
 		for (int i = 0; i < ret; i++)
         {
-			ClientSocketPtr& pclient = *(ClientSocketPtr*)events[i].data.ptr;
-        	if (pclient.get())
+			// ClientSocketPtr* pclient = (ClientSocketPtr*)pFlg->data.ptr;
+			// pFlg++;
+			ClientSocketPtr* pclient = (ClientSocketPtr*)events[i].data.ptr;
+			// printf("addr is %p, id is %d\n", pclient->get(), _id);
+        	if (pclient->get())
         	{
 				if (events[i].events & EPOLLIN)
 				{
-					if (-1 == RecvData(pclient))
+					if (-1 == RecvData(*pclient))
 					{
-						rmClient(pclient);
+						rmClient(*pclient);
 						continue;
 					}
-					// static std::atomic_int x(0);
-					// printf("EPOLLIN = %d\n", (int)x++);
 				}
 				if (events[i].events & EPOLLOUT)
 				{
-					if (-1 ==  pclient->SendDataReal())
+					if (-1 ==  (*pclient)->SendDataReal())
 					{
-						rmClient(pclient);
+						rmClient(*pclient);
 					}
 					// static std::atomic_int y(0);
 					// printf("EPOLLOUT = %d\n", (int)y++);
 				}
 			}
 		}
+		// printf("pclient.get() = %d, id is %d\n", y, _id);
+		// printf("EPOLLIN = %d, id is %d\n", x, _id);
 		return true;
 	}
 	void rmClient(ClientSocketPtr& pClient)
