@@ -3,6 +3,7 @@
 #include "CELLBuffer.hpp"
 #include "CELL.hpp"
 #include"CELLObjectPool.hpp"
+#include "CELLNetWork.hpp"
 //缓冲区最小单元大小
 #ifndef RECV_BUFF_SZIE
 #define RECV_BUFF_SZIE 1024 * 1
@@ -34,7 +35,7 @@ public:
 	~ClientSocket()
 	{
 		CELLLOG_Debug("s=%d ClientSocket%d.~ClientSocket", serverId, id);
-		close(_sockfd);
+		CELLNetWork::destroy(_sockfd);
 	}
 
 	SOCKET sockfd()

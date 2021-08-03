@@ -1,9 +1,6 @@
 #ifndef _EasyTcpServer_hpp_
 #define _EasyTcpServer_hpp_
 
-
-#include<unistd.h> //uni std
-#include<arpa/inet.h>
 #include<string.h>
 #include <memory>
 #include<stdio.h>
@@ -12,7 +9,7 @@
 #include<mutex>
 #include<atomic>
 #include <functional>
-
+#include "CELLNetWork.hpp"
 #include"MessageHeader.hpp"
 #include"CELLTimestamp.hpp"
 #include"CELLTask.hpp"
@@ -64,22 +61,22 @@ public:
 	{
 		if (INVALID_SOCKET != _sock)
 		{
-			CELLLOG_Info("<socket=%d>关闭旧连接...", (int)_sock);
-			close(_sock);
+			CELLLOG_Warring("InitSocket close old socket<%d>...", (int)_sock);
+			CELLNetWork::destroy(_sock);
 		}
 		_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == _sock)
 		{
-			CELLLOG_Info("错误，建立socket失败...");
+			CELLLOG_PError("create socket failed...");
 		}
 		else {
 			int flag = 1;
 			if (SOCKET_ERROR == setsockopt(_sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&flag, sizeof(flag)))
 			{
-				CELLLOG_Info("setsockopt SO_REUSEADDR failed...");
+				CELLLOG_PError("setsockopt SO_REUSEADDR failed...");
 			}
 			//printf("建立socket=<%d>成功...\n", (int)_sock);
-			CELLLOG_Info("建立socket=<%d>成功...", (int)_sock);
+			CELLLOG_Info("create socket=<%d> success...", (int)_sock);
 		}
 		return _sock;
 	}
@@ -105,10 +102,10 @@ public:
 		int ret = bind(_sock, (sockaddr*)&_sin, sizeof(_sin));
 		if (SOCKET_ERROR == ret)
 		{
-			CELLLOG_Info("错误,绑定网络端口<%d>失败...", port);
+			CELLLOG_PError("bind port<%d> failed...", port);
 		}
 		else {
-			CELLLOG_Info("绑定网络端口<%d>成功...", port);
+			CELLLOG_Info("bind port<%d> success...", port);
 		}
 		return ret;
 	}
@@ -120,10 +117,10 @@ public:
 		int ret = listen(_sock, n);
 		if (SOCKET_ERROR == ret)
 		{
-			CELLLOG_Info("socket=<%d>错误,监听网络端口失败...",_sock);
+			CELLLOG_PError("listen socket=<%d> failed...", _sock);
 		}
 		else {
-			CELLLOG_Info("socket=<%d>监听网络端口成功...", _sock);
+			CELLLOG_Info("listen socket=<%d> success...", _sock);
 		}
 		return ret;
 	}
@@ -139,7 +136,7 @@ public:
 		if (INVALID_SOCKET == cSock)
 		{
 			//printf("socket=<%d>错误,接受到无效客户端SOCKET...\n", (int)_sock);
-			CELLLOG_Error("socket=<%d>错误,接受到无效客户端SOCKET...errno<%d>errMsg<%s>", (int)_sock, errno, strerror(errno));
+			CELLLOG_PError("accept INVALID_SOCKET...");
 		}
 		else
 		{
@@ -152,7 +149,7 @@ public:
 			}
 			else
 			{
-				close(cSock);
+				CELLNetWork::destroy(cSock);
 				CELLLOG_Warring("Accept to nMaxClient");
 			}
 
@@ -205,9 +202,10 @@ public:
 		if (_sock != INVALID_SOCKET)
 		{
 			//关闭套节字closesocket
-			close(_sock);
+			CELLNetWork::destroy(_sock);
 		}
 	}
+
 
 
 	//计算并输出每秒收到的网络消息
