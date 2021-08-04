@@ -65,7 +65,11 @@ public:
 		}
 		if (ret < 0)
 		{
-			CELLLOG_Info("Cellserver.OnRun select error.");
+			if (errno == EINTR)
+			{
+				return true;
+			}
+			CELLLOG_PError("Cellserver.OnRun select error.");
 			return false;
 		}
 		else if (ret == 0)

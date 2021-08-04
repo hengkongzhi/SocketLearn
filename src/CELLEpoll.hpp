@@ -10,7 +10,7 @@
 #define SOCKET_ERROR (-1)
 #define EPOLL_ERROR  (-1)
 #include "CELLServer.hpp"
-
+#include "CELLNetWork.hpp"
 class CELLEpoll
 {
 public:
@@ -27,7 +27,7 @@ public:
         _epfd = epoll_create(nMaxEvents);
         if (EPOLL_ERROR == _epfd)
         {
-           CELLLOG_Info("epoll_create error.");
+           CELLLOG_PError("epoll_create error.");
             return _epfd;
         }
         _pEvents = new epoll_event[nMaxEvents];
@@ -42,7 +42,7 @@ public:
         int ret = epoll_ctl(_epfd, op, sockfd, &ev);
         if (ret == EPOLL_ERROR)
         {
-            CELLLOG_Info("epoll_ctl1 error.");
+            CELLLOG_PError("epoll_ctl1 error.");
         }
         return ret;
     }
@@ -54,7 +54,7 @@ public:
         int ret = epoll_ctl(_epfd, op, pClient->sockfd(), &ev);
         if (ret == EPOLL_ERROR)
         {
-            CELLLOG_Info("epoll_ctl2 error.");
+            CELLLOG_PError("epoll_ctl2 error.");
         }
         return ret;
     }
@@ -63,7 +63,11 @@ public:
         int ret = epoll_wait(_epfd, _pEvents, _nMaxEvents, time_out);
         if (ret == EPOLL_ERROR)
         {
-            CELLLOG_Info("epoll_wait error.");
+            if (errno == EINTR)
+			{
+				return 0;
+			}
+            CELLLOG_PError("epoll_wait error.");
         }
         return ret;
     }
@@ -80,7 +84,7 @@ public:
         }
         if (_epfd > 0)
         {
-            close(_epfd);
+            CELLNetWork::destroy(_epfd);
             _epfd = -1;
         }
     }

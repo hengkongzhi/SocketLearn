@@ -68,6 +68,7 @@ public:
             ret = send(sockfd, _pBuff, _nLast, 0);
             if (ret <= 0)
             {
+                CELLLOG_PError("write2socket error...");
                 return SOCKET_ERROR;
             }
             if (ret == _nLast)
@@ -91,7 +92,7 @@ public:
             int nLen = (int)recv(sockfd, szRecv, _nSize - _nLast, 0);
             if (nLen <= 0)
             {
-                CELLLOG_Info("read4socket, nLen=%d", nLen);
+                CELLLOG_PError("read4socket, nLen=%d", nLen);
                 return SOCKET_ERROR;
             }
             _nLast += nLen;

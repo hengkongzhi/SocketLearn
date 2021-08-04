@@ -30,13 +30,13 @@ public:
 	{
 		if (_pClient)
 		{
-			CELLLOG_Info("<socket=%d>关闭旧连接...\n", _pClient->sockfd());
+			CELLLOG_Info("<socket=%d> close old connect...", _pClient->sockfd());
 			Close();
 		}
 		SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == sock)
 		{
-			CELLLOG_Info("错误，建立Socket失败...\n");
+			CELLLOG_PError("create Socket failed...");
 		}
 		else {
 			_pClient = new ClientSocket(sock);
@@ -66,7 +66,7 @@ public:
 		int ret = connect(_pClient->sockfd(), (sockaddr*)&_sin, sizeof(sockaddr_in));
 		if (SOCKET_ERROR == ret)
 		{
-			CELLLOG_Info("<socket=%d>错误，连接服务器<%s:%d>失败...\n", _pClient->sockfd(), ip, port);
+			CELLLOG_PError("<socket=%d> error，connect server<%s:%d> failed...", _pClient->sockfd(), ip, port);
 		}
 		else {
 			_isConnect = true;
@@ -110,7 +110,7 @@ public:
 			}
 			if (ret < 0)
 			{
-				CELLLOG_Info("<socket=%d>select任务结束1\n", _sock);
+				CELLLOG_PError("<socket=%d>select exit...", _sock);
 				Close();
 				return false;
 			}
@@ -119,7 +119,7 @@ public:
 
 				if (-1 == RecvData(_sock))
 				{
-					CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
+					CELLLOG_PError("<socket=%d>select RecvData exit...", _sock);
 					Close();
 					return false;
 				}
@@ -128,7 +128,7 @@ public:
 			{
 				if (-1 == _pClient->SendDataReal())
 				{
-					CELLLOG_Info("<socket=%d>select任务结束2\n", _sock);
+					CELLLOG_PError("<socket=%d>select SendDataReal exit...", _sock);
 					Close();
 					return false;
 				}

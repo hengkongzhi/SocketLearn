@@ -29,7 +29,7 @@ protected:
 			int ret = ep.wait(1); //
 			if (ret < 0)
 			{
-				CELLLOG_Info("EasyTcpServer.onRun epoll任务结束。");
+				CELLLOG_Error("EasyTcpServer.onRun ep.wait exit...");
 				pThread->Exit();
 				break;
 			}

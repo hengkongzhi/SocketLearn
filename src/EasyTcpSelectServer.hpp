@@ -35,7 +35,11 @@ protected:
 			int ret = select(sockfd() + 1, fdRead.fdset(), 0, 0, &t); //
 			if (ret < 0)
 			{
-				CELLLOG_Info("EasyTcpServer.onRun Select任务结束。");
+				if (errno == EINTR)
+				{
+					continue;
+				}
+				CELLLOG_PError("EasyTcpServer.onRun Select exit...");
 				pThread->Exit();
 				break;
 			}
