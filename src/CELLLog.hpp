@@ -48,8 +48,11 @@ public:
     template<typename ...Args>
     static void pError(const char* pFormat, Args ...args)
     {
-        Echo("pError ", pFormat, args...);
-        Echo("pError ", "errno<%d>, errmsg<%s>", errno, strerror(errno));
+        auto errCode = errno;
+        Instance()._taskServer.addTask([=](){
+            EchoReal(true, "pError ", pFormat, args...);
+            EchoReal(true, "pError ", "errno<%d>, errmsg<%s>", errCode, strerror(errCode));
+        });
     }
 
 
@@ -95,22 +98,40 @@ public:
     {
         CELLLog* pLog = &Instance();
         pLog->_taskServer.addTask([=](){
+            EchoReal(true, type, pFormat, args...);
+        });
+    }
+    template<typename ...Args>
+    static void EchoReal(bool br, const char* type, const char* pFormat, Args ...args)
+    {
+        CELLLog* pLog = &Instance();
         if (pLog->_logFile)
         {
             auto t = std::chrono::system_clock::now();
             auto tNow = std::chrono::system_clock::to_time_t(t);
             std::tm* now = std::gmtime(&tNow);
-            fprintf(pLog->_logFile, "%s", type);
+            if (type)
+            {
+                fprintf(pLog->_logFile, "%s", type);
+            }
             fprintf(pLog->_logFile, "[%04d-%02d-%02d %02d:%02d:%02d]", now->tm_year + 1900, now->tm_mon + 1, 
                     now->tm_mday, now->tm_hour + TIME_AREA, now->tm_min, now->tm_sec);
             fprintf(pLog->_logFile, pFormat, args...);
-            fprintf(pLog->_logFile, "\n");
+            if (br)
+            {
+                fprintf(pLog->_logFile, "\n");
+            }
             fflush(pLog->_logFile);
         }
-        printf("%s", type);
+        if (type)
+        {
+            printf("%s", type);
+        }
         printf(pFormat, args...);
-        printf("\n");
-        });
+        if (br)
+        {
+            printf("\n");
+        }
     }
     void SetLogPath(const char* logName, const char* mode, bool hasDate = true)
     {
