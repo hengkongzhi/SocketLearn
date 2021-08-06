@@ -1,7 +1,7 @@
-#include "EasyTcpClient.hpp"
+#include "EasyTcpSelectClient.hpp"
 #include "CELLThread.hpp"
 #include "CELLMsgStream.hpp"
-class MyClient : public EasyTcpClient
+class MyClient : public EasyTcpSelectClient
 {
 public:
     virtual void OnNetMsg(DataHeader* header)

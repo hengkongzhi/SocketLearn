@@ -19,13 +19,12 @@
 #include "CELLSemaphore.hpp"
 #include "CELLLog.hpp"
 #include "CELL.hpp"
+#include "CELLNetWork.hpp"
 #include "CELLClient.hpp"
 #include "CELLMsgStream.hpp"
 #include "CELLConfig.hpp"
 // #include "CELLFDSet.hpp"
 #include "CELLEpollServer.hpp"
-
-
 
 typedef std::shared_ptr<ClientSocket> ClientSocketPtr;
 class CellServer;

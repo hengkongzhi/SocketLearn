@@ -9,8 +9,9 @@
 #define INVALID_SOCKET (SOCKET)(~0)
 #define SOCKET_ERROR (-1)
 #define EPOLL_ERROR  (-1)
-#include "CELLServer.hpp"
 #include "CELLNetWork.hpp"
+#include "CELLClient.hpp"
+typedef std::shared_ptr<ClientSocket> ClientSocketPtr;
 class CELLEpoll
 {
 public:
@@ -55,6 +56,18 @@ public:
         if (ret == EPOLL_ERROR)
         {
             CELLLOG_PError("epoll_ctl2 error.");
+        }
+        return ret;
+    }
+    int cellEpollCtl(int op, ClientSocket* pClient, uint32_t events)
+    {
+        epoll_event ev;
+        ev.events = events;
+        ev.data.ptr = pClient;
+        int ret = epoll_ctl(_epfd, op, pClient->sockfd(), &ev);
+        if (ret == EPOLL_ERROR)
+        {
+            CELLLOG_PError("epoll_ctl3 error.");
         }
         return ret;
     }

@@ -9,7 +9,7 @@
 #include "CELLLog.hpp"
 #include "CELL.hpp"
 #include "CELLClient.hpp"
-#include "CELLFDSet.hpp"
+
 
 class EasyTcpClient
 {
@@ -41,6 +41,7 @@ public:
 		else {
 			_pClient = new ClientSocket(sock);
 			//CELLLOG_Info("建立Socket=<%d>成功...\n", _sock);
+			OnInitSocket();
 		}
 		return sock;
 	}
@@ -70,13 +71,14 @@ public:
 		}
 		else {
 			_isConnect = true;
+			OnConnect();
 			//CELLLOG_Info("<socket=%d>连接服务器<%s:%d>成功...\n",_sock, ip, port);
 		}
 		return ret;
 	}
 
 	//关闭套节字closesocket
-	void Close()
+	virtual void Close()
 	{
 		if (_pClient)
 		{
@@ -87,56 +89,58 @@ public:
 		_isConnect = false;
 	}
 
+	
+
 	//处理网络消息
-	bool OnRun(int microseconds = 1)
-	{
+	virtual bool OnRun(int microseconds = 1) = 0;
+	// {
 
-		if (isRun())
-		{
-			SOCKET _sock = _pClient->sockfd();
-			_fdRead.zero();
-			_fdWrite.zero();
-			_fdRead.add(_sock);
-			timeval t = {0, microseconds};
-			int ret = 0;
-			if (_pClient->NeedWrite())
-			{
-				_fdWrite.add(_sock);
-				ret = select(_sock + 1, _fdRead.fdset(), _fdWrite.fdset(), 0, &t); 
-			}
-			else
-			{
-				ret = select(_sock + 1, _fdRead.fdset(), nullptr, 0, &t); 
-			}
-			if (ret < 0)
-			{
-				CELLLOG_PError("<socket=%d>select exit...", _sock);
-				Close();
-				return false;
-			}
-			if (_fdRead.has(_sock))
-			{
+	// 	if (isRun())
+	// 	{
+	// 		SOCKET _sock = _pClient->sockfd();
+	// 		_fdRead.zero();
+	// 		_fdWrite.zero();
+	// 		_fdRead.add(_sock);
+	// 		timeval t = {0, microseconds};
+	// 		int ret = 0;
+	// 		if (_pClient->NeedWrite())
+	// 		{
+	// 			_fdWrite.add(_sock);
+	// 			ret = select(_sock + 1, _fdRead.fdset(), _fdWrite.fdset(), 0, &t); 
+	// 		}
+	// 		else
+	// 		{
+	// 			ret = select(_sock + 1, _fdRead.fdset(), nullptr, 0, &t); 
+	// 		}
+	// 		if (ret < 0)
+	// 		{
+	// 			CELLLOG_PError("<socket=%d>select exit...", _sock);
+	// 			Close();
+	// 			return false;
+	// 		}
+	// 		if (_fdRead.has(_sock))
+	// 		{
 
-				if (-1 == RecvData(_sock))
-				{
-					CELLLOG_PError("<socket=%d>select RecvData exit...", _sock);
-					Close();
-					return false;
-				}
-			}
-			if (_fdWrite.has(_sock))
-			{
-				if (-1 == _pClient->SendDataReal())
-				{
-					CELLLOG_PError("<socket=%d>select SendDataReal exit...", _sock);
-					Close();
-					return false;
-				}
-			}
-			return true;
-		}
-		return false;
-	}
+	// 			if (-1 == RecvData(_sock))
+	// 			{
+	// 				CELLLOG_PError("<socket=%d>select RecvData exit...", _sock);
+	// 				Close();
+	// 				return false;
+	// 			}
+	// 		}
+	// 		if (_fdWrite.has(_sock))
+	// 		{
+	// 			if (-1 == _pClient->SendDataReal())
+	// 			{
+	// 				CELLLOG_PError("<socket=%d>select SendDataReal exit...", _sock);
+	// 				Close();
+	// 				return false;
+	// 			}
+	// 		}
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
 
 	//是否工作中
 	bool isRun()
@@ -272,10 +276,15 @@ public:
 		return 0;
 	}
 protected:
+	virtual void OnInitSocket()
+	{
+	}
+	virtual void OnConnect()
+	{
+	}
+protected:
 	ClientSocket* _pClient;
 	bool _isConnect;
-	CELLFDSet _fdRead;
-	CELLFDSet _fdWrite;
 };
 
 #endif
