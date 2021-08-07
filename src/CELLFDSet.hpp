@@ -5,19 +5,32 @@
 #include<arpa/inet.h>
 #include <string.h>
 #include "CELLLog.hpp"
-#define CELL_MAX_FD 1300
+// #define CELL_MAX_FD 1300
 class CELLFDSet
 {
 public:
     CELLFDSet()
     {
-        int nSocketNum = CELL_MAX_FD;
-        _nfdSize = nSocketNum / (8 * sizeof(char));
+
+    }
+    ~CELLFDSet()
+    {
+        destroy();
+    }
+    void create(int maxFds)
+    {
+        if (maxFds < 65535)
+        {
+            maxFds = 65535;
+        }
+        CELL_MAX_FD = maxFds;
+        int nSocketNum = maxFds;
+        _nfdSize = nSocketNum / (8 * sizeof(char)) + 1;
 
         _pfdSet = (fd_set*)new char[_nfdSize];
         memset(_pfdSet, 0, _nfdSize);
     }
-    ~CELLFDSet()
+    void destroy()
     {
         if (_pfdSet)
         {
@@ -60,5 +73,6 @@ public:
 private:
     fd_set* _pfdSet = nullptr;
     size_t _nfdSize = 0;
+    int CELL_MAX_FD;
 };
 #endif

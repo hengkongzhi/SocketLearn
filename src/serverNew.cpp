@@ -4,8 +4,8 @@
 #include "Alloctor.h"
 #include <signal.h>
 #include "CELLConfig.hpp"
-#include "EasyTcpEpollServer.hpp"
-class MyServer : public EasyTcpEpollServer
+#include "EasyTcpSelectServer.hpp"
+class MyServer : public EasyTcpSelectServer
 {
 public:
     MyServer()

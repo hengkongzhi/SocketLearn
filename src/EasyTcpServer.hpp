@@ -19,7 +19,7 @@
 #include "CELLClient.hpp"
 #include "CELLMsgStream.hpp"
 #include "CELLConfig.hpp"
-#include "EasyTcpEpollServer.hpp"
+// #include "EasyTcpEpollServer.hpp"
 #include "CELLEpollServer.hpp"
 
 class EasyTcpServer : public INetEvent
@@ -34,13 +34,14 @@ private:
 	CELLThread _thread;
 	int _nSendBuffSize;
 	int _nRecvBuffSize;
-	int _nMaxClient;
+	
 protected:
 	//收到消息计数
 	std::atomic_int _recvCount;
 	//客户端计数
 	std::atomic_int _clientCount;
 	std::atomic_int _msgCount;
+	int _nMaxClient;
 public:
 	EasyTcpServer()
 	{
@@ -180,6 +181,7 @@ public:
 			// auto ser = std::make_shared<ServerT>();
 			ServerT* ser = new ServerT();
 			ser->setId(n + 1);
+			ser->setClientNum(_nMaxClient / nCellServer + 1);
 			// auto ser = new CellServer(_sock);
 			_cellServers.push_back(ser);
 			//注册网络事件接受对象

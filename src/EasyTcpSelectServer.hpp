@@ -17,6 +17,7 @@ protected:
 	void OnRun(CELLThread* pThread)
 	{
 		CELLFDSet fdRead;
+		fdRead.create(1);
 		// fd_set fdRead;//描述符（socket） 集合
 		while (pThread->isRun())
 		{
@@ -32,6 +33,7 @@ protected:
 			///nfds 是一个整数值 是指fd_set集合中所有描述符(socket)的范围，而不是数量
 			///既是所有文件描述符最大值+1 在Windows中这个参数可以写0
 			timeval t = { 0,1};
+
 			int ret = select(sockfd() + 1, fdRead.fdset(), 0, 0, &t); //
 			if (ret < 0)
 			{

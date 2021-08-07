@@ -2,10 +2,21 @@
 #define _CELLSelectServer_hpp_
 
 #include "EasyTcpServer.hpp"
+#include "CELLFDSet.hpp"
 
 class CellSelectServer : public CellServer
 {
 public:
+	~CellSelectServer()
+	{
+		Close();
+	}
+	virtual void setClientNum(int socketNum)
+	{
+		_fdRead.create(socketNum);
+		_fdWrite.create(socketNum);
+		_fdRead_bak.create(socketNum);
+	}
 	virtual bool DoNetEvents()
 	{
 		//伯克利套接字 BSD socket

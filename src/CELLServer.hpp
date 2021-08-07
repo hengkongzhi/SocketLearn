@@ -76,6 +76,10 @@ public:
 		_id = id;
 		_taskServer.serverId = id;
 	}
+	virtual void setClientNum(int socketNum)
+	{
+
+	}
 
 	void setEventObj(INetEvent* event)
 	{
@@ -125,7 +129,7 @@ public:
 				continue;
 			}
 
-			// checkTime();
+			checkTime();
 			if (!this->DoNetEvents())
 			{
 				pThread->Exit();
