@@ -19,7 +19,11 @@ public:
 	}
 	CellEpollServer()
 	{
-		_ep.create(1300);
+		
+	}
+	virtual void setClientNum(int socketNum)
+	{
+		_ep.create(socketNum);
 	}
 	virtual bool DoNetEvents()
 	{

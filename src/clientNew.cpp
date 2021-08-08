@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <thread>
-#include "EasyTcpEpollClient.hpp"
+//#include "EasyTcpEpollClient.hpp"
+#include "EasyTcpSelectClient.hpp"
 #include <chrono>
 #include <atomic>
 #include "CELLTimestamp.hpp"
@@ -29,7 +30,7 @@ atomic_int sendCount(0);
 atomic_int readyCount(0);
 atomic_int nConnect(0);
 // EasyTcpClient* client[nClient];
-class MyClient : public EasyTcpEpollClient
+class MyClient : public EasyTcpSelectClient
 {
 public:
     MyClient()

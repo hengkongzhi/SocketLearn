@@ -14,8 +14,8 @@ cmd="$cmd nThread=8"
 cmd="$cmd nClient=150"
 cmd="$cmd nMsg=1"
 cmd="$cmd nSendSleep=1000"
-cmd="$cmd nSendBuffSize=81920"
-cmd="$cmd nRecvBuffSize=81920"
+cmd="$cmd nSendBuffSize=1024"
+cmd="$cmd nRecvBuffSize=1024"
 cmd="$cmd -checkMsgID"
 ./clientNew ${cmd}
 read -p "Press any key to exit.." var
