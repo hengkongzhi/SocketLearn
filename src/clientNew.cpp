@@ -23,6 +23,7 @@ int nSendSleep = 1;
 int nSendBuffSize = SEND_BUFF_SZIE;
 int nRecvBuffSize = RECV_BUFF_SZIE;
 int nWorkSleep = 1;
+bool bCheckSendBack = true;
 
 // const int cCount = 10000;
 // const int tCount = 8;
@@ -39,6 +40,7 @@ public:
     }
     virtual void OnNetMsg(DataHeader* header)
 	{
+        _bSend = false;
 		switch (header->cmd)
 		{
 			case CMD_LOGIN_RESULT:
@@ -61,12 +63,13 @@ public:
     int SendTest(shared_ptr<Login> login)
     {
         int ret = 0;
-        if (_nSendCount > 0)
+        if (_nSendCount > 0 && !_bSend)
         {
             login->msgID = _nSendMsgID;
             ret = SendData(login);
             if (SOCKET_ERROR != ret)
             {
+                _bSend = bCheckSendBack;
                 ++_nSendMsgID;
                 --_nSendCount;
             }
@@ -89,6 +92,7 @@ private:
     int _nSendCount = 0;
     int _nSendMsgID = 1;
     time_t _tRestTime = 0;
+    bool _bSend = false;
 
 
 };
@@ -192,6 +196,8 @@ int main(int argc, char* args[])
     nClient = CELLConfig::Instance().getInt("nClient", 10000);
     nMsg = CELLConfig::Instance().getInt("nMsg", 10);
     nSendSleep = CELLConfig::Instance().getInt("nSendSleep", 100);
+    nWorkSleep = CELLConfig::Instance().getInt("nWorkSleep", 1);
+    bCheckSendBack = CELLConfig::Instance().hasKey("-checkSendBack");
     nSendBuffSize = CELLConfig::Instance().getInt("nSendBuffSize", SEND_BUFF_SZIE);
     nRecvBuffSize = CELLConfig::Instance().getInt("nRecvBuffSize", RECV_BUFF_SZIE);
 
